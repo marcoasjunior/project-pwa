@@ -1,29 +1,24 @@
+'use strict';
+
 module.exports = {
   up: (queryInterface, DataTypes) => {
-    return queryInterface.createTable('Events', {
-      id: {
+    return queryInterface.createTable('User', {
+      iduser: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      local: {
+      name: {
         allowNull: false,
         type: DataTypes.STRING,
       },
-      picture: {
-        allowNull: false,
-        type: DataTypes.BLOB,
-      },
-      date: {
-        allowNull: false,
-        type: DataTypes.DATE,
-      },
-      nome: {
+      email: {
         allowNull: false,
         type: DataTypes.STRING,
+        unique: true,
       },
-      endereço: {
+      password: {
         allowNull: false,
         type: DataTypes.STRING,
       },
@@ -39,6 +34,6 @@ module.exports = {
   },
 
   down: (queryInterface) => {
-    return queryInterface.dropTable('Users');
+    return queryInterface.dropTable('User');
   }
 };

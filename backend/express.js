@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const {User} = require('./models');
+const {Event} = require('./models');
+const {Preference} = require('./models');
 
 app.use(bodyParser.urlencoded({
     extended: false
@@ -16,15 +18,9 @@ app.use(bodyParser.json());
 //     password: '123456'
 // });
 
-app.post('/register', async (req, res) => { //nao funcionando
-    const user = await User.create(req.body);
-    res.json(user);
-  });
-
-app.get('/users/:id', (req, res) => {}); //Listar todos
-  
-app.get('/events/:id', (req, res) => {}); //Buscar
-
+// User.hasMany(Event); // Will add userId to Task model
+// Event.belongsToMany(Preference)
+// Preference.belongsToMany(Event)
 
 app.listen(3000, (req, res) => {
     console.log('Rodando')
