@@ -1,0 +1,44 @@
+@import "./variables.scss";
+@import "./components.scss";
+
+.t-sz0{
+    font-size: 12px;
+}
+.t-sz1{
+    font-size: 20px;
+}
+.t-sz2{
+    font-size: 30px;
+}
+p,h1,h2,h3{
+    color:$red;
+}
+.po{
+    padding: 0;
+}
+.m0{
+    margin: 0;
+}
+.mp0{
+    padding: 0;
+    margin: 0;
+}
+
+
+.bgdisable{
+    background-color: rgb(202, 202, 202);
+}
+.bg-gdr-1{
+    background: linear-gradient(40deg,#ffd86f,#fc6262)!important;
+}
+.white{
+    color: white;
+}
+
+#app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }

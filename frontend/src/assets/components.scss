@@ -1,0 +1,25 @@
+@import './componentsSCSS/cpmButton.scss';
+@import './componentsSCSS/cpmInput.scss';
+@import './componentsSCSS/cpmHome.scss';
+@import './componentsSCSS/cpmPrincipal.scss';
+@import './componentsSCSS/cpmLogin.scss';
+@import './componentsSCSS/cpmTopBar.scss'; 
+
+.wp-card{
+  display: flex;
+  border-radius:50px;
+  box-shadow: 10px 10px 10px red;
+}
+
+.wp-cntr-1{
+width: 300px;
+max-width: 100%;
+margin: auto;
+padding: 0;
+}
+
+.wp-center{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
