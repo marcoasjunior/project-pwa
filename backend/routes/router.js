@@ -1,10 +1,10 @@
+const express = require('express')();
+const router = express.Router()
 
+// router.get('/', BookController.getAllBooks);
+// router.post('/', BookController.addBook);
+// router.get('/:id', BookController.getABook);
+// router.put('/:id', BookController.updatedBook);
+// router.delete('/:id', BookController.deleteBook);
 
-app.post('/register', async (req, res) => { //nao funcionando
-    const user = await User.create(req.body);
-    res.json(user);
-  });
-
-app.get('/users/:id', (req, res) => {}); //Listar todos
-  
-app.get('/events/:id', (req, res) => {}); //Buscar
+module.exports = router;

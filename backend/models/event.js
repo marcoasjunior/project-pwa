@@ -1,5 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
     const Event = sequelize.define('Event', {
+      idevent: {
+        type: DataTypes.INTEGER,
+        primaryKey: true
+    },
       name: DataTypes.STRING,
       iduser: {
         type: DataTypes.INTEGER,
@@ -9,7 +13,9 @@ module.exports = (sequelize, DataTypes) => {
       picture: DataTypes.BLOB,
       edate: DataTypes.DATE,
       adress: DataTypes.STRING,
-    });
+    },{
+      freezeTableName: true
+  });
   
     Event.associate = function(models) {
         Event.belongsTo(models.User);
