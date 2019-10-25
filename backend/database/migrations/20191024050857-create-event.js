@@ -12,7 +12,8 @@ module.exports = {
         references: {
           model: 'User',
           key: 'iduser'
-        }},
+        }
+      },
       local: {
         allowNull: false,
         type: DataTypes.STRING,

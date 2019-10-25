@@ -1,5 +1,5 @@
 module.exports = {
-  up: function(queryInterface, DataTypes) {
+  up: function (queryInterface, DataTypes) {
     return queryInterface.createTable('Event_preference', {
       idevent_pref: {
         allowNull: false,
@@ -20,10 +20,10 @@ module.exports = {
           model: 'Event',
           key: 'idevent'
         }
-      },     
+      },
     });
   },
-  down: function(queryInterface, DataTypes) {
+  down: function (queryInterface, DataTypes) {
     return queryInterface.dropTable('event_preference');
   }
 };

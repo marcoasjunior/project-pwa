@@ -1,4 +1,4 @@
-const express = require('express')();
+const express = require('express')()
 const router = express.Router()
 
 // router.get('/', BookController.getAllBooks);
@@ -7,4 +7,4 @@ const router = express.Router()
 // router.put('/:id', BookController.updatedBook);
 // router.delete('/:id', BookController.deleteBook);
 
-module.exports = router;
+export default router;

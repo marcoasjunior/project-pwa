@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "vue-cli-service serve ./frontend/src/main.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "dev": "nodemon --exec babel-node ./backend/express.js"
+    "dev": "nodemon ./backend/express.js"
   },
   "dependencies": {
     "core-js": "^3.3.2",
