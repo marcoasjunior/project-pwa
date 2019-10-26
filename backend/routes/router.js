@@ -1,10 +1,12 @@
-const express = require('express')()
-const router = express.Router()
+var express = require('express');
+var app = express();
+
+const UserController = require('../controller/user_controller')
 
 // router.get('/', BookController.getAllBooks);
-// router.post('/', BookController.addBook);
+app.post('/user/create', UserController.newUser);
 // router.get('/:id', BookController.getABook);
 // router.put('/:id', BookController.updatedBook);
 // router.delete('/:id', BookController.deleteBook);
 
-export default router;
+module.exports = app;
