@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Event_preference = sequelize.define('User_preference', {
+    const User_preference = sequelize.define('User_preference', {
         iduser_pref: {
             type: DataTypes.INTEGER,
             primaryKey: true
@@ -10,5 +10,5 @@ module.exports = (sequelize, DataTypes) => {
         freezeTableName: true
     });
 
-    return Event_preference;
+    return User_preference;
 };

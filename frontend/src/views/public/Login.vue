@@ -23,7 +23,7 @@
 
 <script>
 // @ is an alias to /src
-import topBar from '@/components/topBar.vue'
+import topBar from '../../components/topBar.vue'
 import cButton from '../../components/cpmButton.vue'
 // import buttons from '@/components/buttons.vue'
 // import buttonZ from '@/components/button.vue'
