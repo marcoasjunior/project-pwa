@@ -23,7 +23,7 @@ module.exports = {
       },
     });
   },
-  down: function (queryInterface, DataTypes) {
-    return queryInterface.dropTable('event_preference');
+  down: function (queryInterface) {
+    return queryInterface.dropTable('User_preference');
   }
 };
