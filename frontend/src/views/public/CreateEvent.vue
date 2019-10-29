@@ -35,19 +35,6 @@ export default {
     topBar,
     cButton
     // buttons,
-  },
-  created() {},
-        mounted() {
-
-        },
-        data: () => ({
-          disable:{login:false , signup:true}
-        }),
-        methods: {
-        },
-        computed: {
-        
-        },
-        watch: {}
+  }
 }
 </script>
