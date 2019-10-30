@@ -1,11 +1,11 @@
 <template>
   <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="dad">
     <div class="mdl-card__media">
-        <img class="img-fluid" :src="coverImage">
+        <img class="img-fluid" :src=vImage>
       </div>
 
       <div class="mdl-card__supporting-text">
-          <span> Evento {{evento}} </span>       
+          <span> Evento {{event}} </span>       
           <span> Local {{local}} </span>
           <span> km {{kilo}}</span>           
       </div>
@@ -25,10 +25,10 @@
 
 export default {
     
-  props: ['evento', 'kilo', 'date'],
+  props: ['event', 'local', 'kilo', 'date', 'image'],
   data() {
     return {
-      coverImage: "https://cdn-istoe-ssl.akamaized.net/wp-content/uploads/sites/14/2019/09/esquilo-1280x720.jpg"
+      vImage: this.image
       
   }}}
 

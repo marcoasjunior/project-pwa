@@ -12,7 +12,8 @@ const {
     Event_preference
 } = require('../models')
 
-//registrar usuário
+
+// registrar usuário
 
 router.post('/register/user', (req, res) => {
     User.create({
@@ -23,7 +24,7 @@ router.post('/register/user', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
-//pegar usuário pelo id
+// pegar usuário pelo id
 
 router.get('/user/:id', (req, res) => {
     User.findAll({
@@ -84,7 +85,7 @@ router.get('/event/:id', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
-// // update evento - precisa fazer algumas validações
+// update evento - precisa fazer algumas validações
 
 router.put('/event/update', (req, res) => {
     Event.update({
