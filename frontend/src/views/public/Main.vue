@@ -14,12 +14,11 @@
 
 <script>
 // @ is an alias to /src
-// import cpmPrincipal from '@/components/cpmPrincipal.vue'
 
 export default {
   name: 'Principal',
   components: {
-    // cpmPrincipal
+    
   }
 }
 </script>

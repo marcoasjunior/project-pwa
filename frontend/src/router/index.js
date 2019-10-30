@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 
 const routes = [
     {
-      path:'/', redirect: '/Principal'
+      path:'/', redirect: '/Main'
     },
 
     { 
@@ -25,8 +25,8 @@ const routes = [
           component: () => import( '../views/public/Signup.vue'),
         },
         {
-          path: '/Principal',
-          component: () => import( '../views/public/Principal.vue'),
+          path: '/Main',
+          component: () => import( '../views/public/Main.vue'),
         },
         
    
