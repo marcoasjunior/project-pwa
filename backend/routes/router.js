@@ -11,7 +11,9 @@ const {
 const {
     Event_preference
 } = require('../models')
-
+const {
+    Preference
+} = require('../models')
 
 // registrar usuário
 
@@ -121,6 +123,38 @@ router.delete('/event/delete/:id', (req, res) => {
                 idevent: req.params.id
             }
         }).then(Event => res.status(201).send(Event))
+        .catch(error => res.status(400).send(error))
+})
+
+// update preference
+
+router.put('/preference/update', (req, res) => {
+    Preference.update({
+            preference: req.body.preference,
+            where: {
+                idpreference: req.body.id
+            }
+        }).then(Preference => res.status(201).send(Preference))
+        .catch(error => res.status(400).send(error))
+})
+
+// pegar preference
+
+router.get('/preference/:id', (req, res) => {
+    Preference.findAll({
+            where: {
+                idpreference: req.params.id
+            }
+        }).then(Preference => res.status(201).send(Preference))
+        .catch(error => res.status(400).send(error))
+})
+
+// criar preference
+
+router.post('/register/preference', (req, res) => {
+    Preference.create({
+            preference: req.body.preference,
+        }).then(Preference => res.status(201).send(Preference))
         .catch(error => res.status(400).send(error))
 })
 

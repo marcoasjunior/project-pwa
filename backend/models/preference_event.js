@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
         idevent: DataTypes.INTEGER,
     }, {
         freezeTableName: true
+    }, {
+        timestamps: false
     });
 
     return Event_preference;

@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
         iduser: DataTypes.INTEGER,
     }, {
         freezeTableName: true
+    },
+    {
+        timestamps: false
     });
 
     return User_preference;
