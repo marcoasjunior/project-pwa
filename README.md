@@ -15,10 +15,11 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
+### Criar banco
 ```
-npm run lint
+No Workbench - create database dbeventos - user: root, senha: root
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Criar tabelas
+```
+Na pasta raiz do projeto (onde está o package.json), rodar no terminal -> npx sequelize-cli db:migrate
