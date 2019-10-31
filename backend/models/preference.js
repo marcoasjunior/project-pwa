@@ -1,23 +1,30 @@
 module.exports = (sequelize, DataTypes) => {
   const Preference = sequelize.define('Preference', {
-    idpreference: {
+    idpref: {
       type: DataTypes.INTEGER,
       primaryKey: true
     },
-    preference: DataTypes.STRING
+    preference: DataTypes.STRING,
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE,
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    }
 
 
   }, {
     freezeTableName: true
-  },
-  {
-    timestamps: false
   });
 
   Preference.associate = function (models) {
     Preference.belongsToMany(models.Event, {
       through: 'Event_preference',
-      as: 'event'
+    })
+    Preference.belongsToMany(models.User, {
+      through: 'User_preference',
     });
   };
 

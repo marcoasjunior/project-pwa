@@ -62,12 +62,12 @@ router.get('/user/preferences/:id', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
-// registrar evento - NÃO FUNCIONANDO
+// registrar evento
 
 router.post('/register/event', (req, res) => {
     Event.create({
             name: req.body.name,
-            iduser: req.body.id,
+            iduser: req.body.iduser,
             local: req.body.local,
             picture: req.body.picture,
             edate: req.body.edate,

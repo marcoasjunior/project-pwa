@@ -8,6 +8,7 @@ module.exports = {
         type: DataTypes.INTEGER,
       },
       iduser: {
+        allowNull: false,
         type: DataTypes.INTEGER,
         references: {
           model: 'User',

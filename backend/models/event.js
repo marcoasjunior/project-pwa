@@ -7,7 +7,11 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     iduser: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: {
+        model: 'User', // 'persons' refers to table name
+        key: 'iduser', // 'id' refers to column name in persons table
+      }
     },
     local: DataTypes.STRING,
     picture: DataTypes.BLOB,
@@ -18,13 +22,14 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Event.associate = function (models) {
-    Event.belongsTo(models.User);
+    Event.belongsTo(models.User, {
+      foreignKey: 'iduser',
+      foreignKeyConstraint: true
+    });
     Event.belongsToMany(models.Preference, {
-      through: 'Event_preference',
-      as: 'preference'
+      through: 'Event_preference'
     });
   };
-
 
   return Event;
 }
