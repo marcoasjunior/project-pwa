@@ -22,4 +22,4 @@ No Workbench - create database dbeventos - user: root, senha: root
 
 ### Criar tabelas
 ```
-Na pasta raiz do projeto (onde está o package.json), rodar no terminal -> npx sequelize-cli db:migrate
+DESCOMENTAR AS LINHAS DO ARQUIVO EXPRESS.JS (9 e 10) - RODAR - DEPOIS COMENTAR NOVAMENTE
