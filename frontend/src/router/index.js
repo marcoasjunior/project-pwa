@@ -28,6 +28,10 @@ const routes = [
           path: '/Main',
           component: () => import( '../views/public/Main.vue'),
         },
+        {
+          path: '/Loading',
+          component: () => import( '../views/public/Loading.vue'),
+        },
         
    
     ]
