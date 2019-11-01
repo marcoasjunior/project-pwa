@@ -1,7 +1,7 @@
 <template>
   <div>
       <span>{{info}}</span> <!--  apenas teste -->
-     <card event ='' local ='' kilo ='' date ='' image =''/>
+     <card v-for="event in info" :key='event.id' event ='event.name' local ='event.local' kilo ='' date ='event.edate' image ='event.picture'/>
      <span>{{errors}}</span> <!--  apenas teste -->
   </div>
 </template>
