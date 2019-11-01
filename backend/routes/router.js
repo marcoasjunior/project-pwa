@@ -62,18 +62,22 @@ router.get('/user/preferences/:id', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
+
 // registrar evento
 
 router.post('/register/event', (req, res) => {
     Event.create({
             name: req.body.name,
-            iduser: req.body.iduser,
             local: req.body.local,
             picture: req.body.picture,
             edate: req.body.edate,
-            adress: req.body.adress
+            adress: req.body.adress,
+            UserId: req.body.UserId,
+        }, {
+            include: [User]
         }).then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
+
 })
 
 // pegar evento pelo id
@@ -81,11 +85,23 @@ router.post('/register/event', (req, res) => {
 router.get('/event/:id', (req, res) => {
     Event.findAll({
             where: {
-                iduser: req.params.id
+                id: req.params.id
             }
         }).then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
 })
+
+// pegar todos os eventos
+
+
+router.get('/eventall', (req, res) => {
+    Event.findAll()
+        .then(Event => res.status(201).send(Event))
+        .catch(error => res.status(400).send(error))
+})
+
+
+
 
 // update evento - precisa fazer algumas validações
 
@@ -102,6 +118,8 @@ router.put('/event/update', (req, res) => {
             }
         }).then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
+
+
 })
 
 // pegar eventos com preferencias

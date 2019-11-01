@@ -4,6 +4,12 @@ const router = require('./routes/router')
 const cors = require('cors')
 
 
+//SOMENTE USAR PARA CRIAR TABELAS
+
+// const Models = require('./models')
+// Models.sequelize.sync({ force: true })
+
+
 app.use(bodyParser.urlencoded({
     extended: false
 }))

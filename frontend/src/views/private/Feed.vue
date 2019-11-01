@@ -1,7 +1,8 @@
 <template>
   <div>
+      <span>{{info}}</span> <!--  apenas teste -->
      <card event ='' local ='' kilo ='' date ='' image =''/>
-     <span>{{errors}}</span>
+     <span>{{errors}}</span> <!--  apenas teste -->
   </div>
 </template>
 
@@ -27,8 +28,9 @@ export default {
 
   mounted() {
 
+  // requisição inicial para pegar os eventos 
     axios
-      .get('http://localhost:3000/api/user/1')
+      .get('http://localhost:3000/api/eventall')
       .then(response => this.info = response.data)
       .catch(e => {
       this.errors.push(e)

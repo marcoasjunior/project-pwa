@@ -1,9 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Preference = sequelize.define('Preference', {
-    idpref: {
-      type: DataTypes.INTEGER,
-      primaryKey: true
-    },
+   
     preference: DataTypes.STRING,
     createdAt: {
       allowNull: false,
