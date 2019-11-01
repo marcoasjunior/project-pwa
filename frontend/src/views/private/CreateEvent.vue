@@ -2,7 +2,18 @@
   <div>
     <topBar></topBar>
 
-    <tag></tag>
+      <button class="upload-image-event">Carrege a imagem</button>
+
+      <div class="align-self-end mt-7">
+        <input type="text" class="input" placeholder="Local do Evento:">
+
+        <!-- deve imprimir mais informações sobre o local do evento -->
+      </div>
+
+      <div class="col-6 mt-7">
+        <p>Adicionar tag:</p>
+        <tag></tag>
+      </div>
 
 
 
