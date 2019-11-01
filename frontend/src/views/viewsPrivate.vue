@@ -25,8 +25,8 @@ export default {
                 },
 
                 {
-                    name: 'Cadastrar',
-                    path: '/Cadastro',
+                    name: 'Create Event',
+                    path: '/CreateEvent',
                     id: 1
                 },
 

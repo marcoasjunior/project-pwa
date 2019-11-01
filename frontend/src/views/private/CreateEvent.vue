@@ -2,7 +2,7 @@
   <div>
     <topBar></topBar>
 
-    <tag>ROCK</tag>
+    <tag></tag>
 
 
 

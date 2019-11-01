@@ -32,6 +32,10 @@ const routes = [
           path: '/Loading',
           component: () => import( '../views/public/Loading.vue'),
         },
+        {
+          path: '/SucessLogin',
+          component: () => import( '../views/public/SucessLogin.vue'),
+        },
         
    
     ]
@@ -51,8 +55,8 @@ const routes = [
         component: () => import( '../views/private/Options.vue'),
       },
       {
-        path: '/Cadastro',
-        component: () => import( '../views/private/Cadastro.vue'),
+        path: '/CreateEvent',
+        component: () => import( '../views/private/CreateEvent.vue'),
       },
   ]
 },

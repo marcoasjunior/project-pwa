@@ -1,0 +1,28 @@
+.tag-preferences{
+    display: block;
+    margin-top: 0.5rem;
+    max-width: 100%;
+    border: none;
+    border-radius: 30px;
+    width: 150px;
+    background-color:transparent;
+    border:#ffd86f solid 1px;
+    color:#ffd86f;
+
+    &:hover{
+        background: linear-gradient(40deg, #ffd86f, #fc6262) !important;
+        color:white;
+
+        animation-name: tag-preferences-animation;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-iteration-count: 1;
+    }
+    
+}
+
+@keyframes tag-preferences-animation {
+    0% { filter: grayscale(0.3);opacity: 0.1;color:#ffd86f;}
+    90% { filter: grayscale(0);opacity: 1;color:white;}
+    100%{filter: grayscale(0);opacity: 1;color:white;}
+  }

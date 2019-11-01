@@ -1,6 +1,9 @@
 <template>
 <div>  
-    <button v-if="cData.type == 'submit'" type="submit" :class=" 'btn white btn-block ' + cData.class" @click="callAction()"> {{ cData.text }}</button>
+
+    <button type="submit" class="tag-preferences" v-for="item in tagname" v-bind:key="item.name"> {{item.name}}  <br> </button>
+
+    <!-- <button type="submit" :class=" 'btn white btn-block ' "> </button> -->
 </div>
 
 </template>
@@ -9,7 +12,7 @@
 
 export default {
   name: 'cpmButton',
-   props: ['cData'],
+//    props: ['cName'],
       
   components: {
       
@@ -19,29 +22,24 @@ export default {
 
         },
         data: () => ({
+            
+            tagname: [
+
+                // dados backend
+                {name: "Rock"},
+                {name: "Balada"},
+                {name: "Festival"}
+            ]
 
         }),
         methods: {
-            callAction(){
-                if(this.cData.actionType){
-                    var actionData;
-                    switch (this.cData.actionType ) {
-                        case 'Path':
-                            actionData = this.cData.link;
-                        break;
-                        default:
-                            // console.log('no action defined')
-                    }
-                    this['callAction'+ this.cData.actionType](actionData);
-                }
-            },
-            callActionPath(path){
-                this.$router.push(path)
-            }
+            
         },
         computed: {
         
         },
-        watch: {}
+        watch: {
+
+        }
 }
 </script>
