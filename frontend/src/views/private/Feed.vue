@@ -1,7 +1,6 @@
 <template>
   <div>
-      <span>{{info}}</span> <!--  apenas teste -->
-     <card v-for="event in info" :key='event.id' event ='event.name' local ='event.local' kilo ='' date ='event.edate' image ='event.picture'/>
+     <card v-for="ev in info" :key='ev.id' :event ='ev.name' :local ='ev.local' kilo ='' :date ='ev.edate' :image ='ev.picture'/>
      <span>{{errors}}</span> <!--  apenas teste -->
   </div>
 </template>
@@ -17,6 +16,7 @@ export default {
   data() {
     return {
       info: null,
+      ev: null,
       errors: []
     }
   },

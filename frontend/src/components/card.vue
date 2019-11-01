@@ -5,12 +5,12 @@
       </div>
 
       <div class="mdl-card__supporting-text">
-          <span> Evento {{event}} </span>       
-          <span> Local {{local}} </span>
-          <span> km {{kilo}}</span>           
+          <span> Evento {{event}} - {{local}}</span>       
+          
+                   
       </div>
       <div class="mdl-card__actions mdl-card--border">
-          <span> Postado há {{date}} </span>
+          <span> Postado em {{date}} </span>
           
       </div>
       <div class="mdl-card__menu">
@@ -25,7 +25,7 @@
 
 export default {
     
-  props: ['event', 'local', 'kilo', 'date', 'image'],
+  props: ['event', 'local', 'date', 'image'],
   data() {
     return {
       vImage: this.image
