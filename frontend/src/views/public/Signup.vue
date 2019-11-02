@@ -7,9 +7,9 @@
       <p> Faça o cadastro com seu e-mail e senha</p>
     </div>
 
-    <input type="text" class="input" placeholder="e-mail">
-    <input type="text" class="input" placeholder="senha">
-    <input type="text" class="input" placeholder="senha">
+    <input type="text" class="input mt-5" placeholder="e-mail">
+    <input type="text" class="input mt-5" placeholder="senha">
+    <input type="text" class="input mt-5" placeholder="senha">
 
     <div class="wp-checkbox">
         <input type="checkbox" name="" id=""> Concordo com os termos e Condições

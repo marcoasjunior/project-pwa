@@ -9,8 +9,8 @@
 
     <div class="row wp-cntr-1 wp-center">
 
-      <input type="text" class="input" placeholder="e-mail">
-      <input type="text" class="input" placeholder="senha">
+      <input type="text" class="input mt-5" placeholder="e-mail">
+      <input type="text" class="input mt-5" placeholder="senha">
       
         <div class="col-12 m0">
             <!-- <router-link to="/Feed">  -->

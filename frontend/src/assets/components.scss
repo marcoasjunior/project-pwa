@@ -6,6 +6,7 @@
 @import './componentsSCSS/cpmTopBar.scss'; 
 @import './componentsSCSS/cpmLoading.scss'; 
 @import './componentsSCSS/cpmTag.scss'; 
+@import './componentsSCSS/cpmOptions.scss'; 
 
 .wp-card{
   display: flex;
@@ -36,3 +37,12 @@ padding: 0;
   border:none;
 }
 
+
+.box-info{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subtitle{
+  
+}

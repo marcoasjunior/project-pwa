@@ -24,15 +24,29 @@ p,h1,h2,h3{
     margin: 0;
 }
 
+.mt-3{
+    margin-top: 30px;
+}
+
 .mt-5{
     // display: block;
     margin-top: 50px;
 }
 
 .mt-7{
-    // display: block;
     margin-top: 70px;
 }
+
+.mb-3{
+    margin-bottom: 30px;
+}
+.mb-6{
+    margin-bottom: 60px;
+}
+.mb-9{
+    margin-bottom: 90px;
+}
+
 
 
 .bgdisable{
@@ -52,3 +66,26 @@ p,h1,h2,h3{
     text-align: center;
     color: #2c3e50;
   }
+
+
+  .input{
+    display: block;
+    padding: 6px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid grey;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @media only screen and (max-width: 600px) {
+        body {
+          background-color: lightblue;
+        }
+      }
+  }
+
+.ml_4 {
+  margin-left: 2.6rem !important;
+}
