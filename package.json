@@ -1,6 +1,9 @@
 {
   "name": "projeto-pwa",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.4.0"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve ./frontend/src/main.js",
