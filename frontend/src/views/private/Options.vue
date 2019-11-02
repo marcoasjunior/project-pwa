@@ -15,7 +15,7 @@
 import optionsCard from '../../components/options-card'
 import optionsSearch from '../../components/options-search'
 import optionsTags from '../../components/options-tags'
-import topBar from '../../components/topBar.vue'
+
 
 
 export default {
@@ -24,7 +24,6 @@ export default {
     optionsCard,
     optionsSearch,
     optionsTags,
-    topBar
   }
 
 }
