@@ -28,6 +28,18 @@ export default {
                 // dados backend
                 {name: "Rock"},
                 {name: "Balada"},
+                {name: "Balada"},
+                {name: "Gospel"},
+                {name: "Balada"},
+                {name: "Balada"},
+                {name: "Balada"},
+                {name: "Balada"},
+                {name: "Balada"},
+                {name: "Balada"},
+                {name: "Balada"},
+                {name: "Balada"},
+                {name: "Balada"},
+                {name: "Balada"},
                 {name: "Festival"}
             ]
 

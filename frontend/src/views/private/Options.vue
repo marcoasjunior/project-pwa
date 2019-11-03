@@ -2,26 +2,41 @@
   <div>
 <topBar></topBar>
 
-    <h3 class="h3 container-fluid">Opções</h3>
+<div class="container mt-5">
+    <h3 class="title"> Opções</h3>
+    <h3>Perfil</h3>
+</div>
 
 
     <cpmOptions></cpmOptions>
 
-    <div class="container box-info">
-      <span class="media subtitle">Nome:</span>
+    <div class="box-info">
+      <p class="media subtitle">Nome:</p>
       <input type="text" class="input mt-3 mb-3" placeholder="Pedro Henrique Lopes...">
     </div>
 
-    <span class="media ml_4 mt-3">Email:</span>
-    <input type="text" class="input mt-3 mb-3" placeholder="pedrolopeshls99@gmail.com">
-    <span class="media ml_4 mt-3">User Name:</span>
-    <input type="text" class="input mt-3 mb-3" placeholder="Pedro Henrique Lopes...">
+    <div class="container box-info">
+      <p class="media subtitle">Email:</p>
+      <input type="text" class="input mt-3 mb-3" placeholder="pedrolopeshls99@gmail.com">
+    </div>
     
-    <optionsSearch></optionsSearch>
-    <h3 class="h3 container-fluid">Preferências de eventos</h3>
-    <p>Configurações de preferência de eventos:</p>
+    <div class="container box-info">
+      <p class="media subtitle">User Name:</p>
+      <input type="text" class="input mt-3 mb-3" placeholder="Pedro Henrique Lopes...">
+    </div>
+    
 
-    <tags></tags>
+    <optionsSearch></optionsSearch>
+
+    <div class="container mt-5">
+      <h1 class="title-b"> Preferências de eventos </h1>
+      <p>Configurações de preferência de eventos:</p>
+    </div>
+
+    
+    <div class="container box-info box-tags">
+      <tags></tags>
+    </div>
 
   </div>
 </template>
