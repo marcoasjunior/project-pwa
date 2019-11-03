@@ -25,13 +25,13 @@ export default {
                 },
 
                 {
-                    name: 'Create Event',
+                    name: 'Novo Evento',
                     path: '/CreateEvent',
                     id: 1
                 },
 
                 {
-                    name: 'Options',
+                    name: 'Opções',
                     path: '/Options',
                     id: 2
                 }

@@ -3,7 +3,6 @@
 <topBar></topBar>
 
 <div class="container mt-5">
-    <h3 class="title"> Opções</h3>
     <h3>Perfil</h3>
 </div>
 
@@ -28,10 +27,7 @@
 
     <optionsSearch></optionsSearch>
 
-    <div class="container mt-5">
-      <h1 class="title-b"> Preferências de eventos </h1>
-      <p>Configurações de preferência de eventos:</p>
-    </div>
+   <h3>Preferências de Eventos</h3>
 
     
     <div class="container box-info box-tags">

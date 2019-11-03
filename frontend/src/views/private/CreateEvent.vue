@@ -1,6 +1,5 @@
 <template>
   <div>
-    <topBar></topBar>
 
       <button class="upload-image-event">Carrege a imagem</button>
 
@@ -25,7 +24,7 @@
 </template>
 
 <script>
-import topBar from '../../components/topBar.vue'
+
 import tag from '../../components/cpmTag.vue'
 
 
@@ -34,7 +33,6 @@ export default {
   name: 'cadastro' //this is the name of the component,  
   ,components: {
     // inputs,
-    topBar,
     tag
   }
 }
