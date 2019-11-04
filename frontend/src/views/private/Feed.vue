@@ -1,6 +1,6 @@
 <template>
   <div>
-     <card v-for="ev in info" :key='ev.id' :event ='ev.name' :local ='ev.local' kilo ='' :date ='ev.edate' :image ='ev.picture'/>
+     <card v-for="ev in info" :key='ev.id' :event ='ev.name' :local ='ev.local' kilo ='' :date ='ev.createdAt' :image ='ev.picture'/>
      <span>{{errors}}</span> <!--  apenas teste -->
   </div>
 </template>

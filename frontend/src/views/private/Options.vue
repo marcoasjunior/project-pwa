@@ -1,17 +1,9 @@
 <template>
   <div>
-<topBar></topBar>
-
-<div class="container mt-5">
-    <h3>Perfil</h3>
-</div>
-
     <options-card></options-card>
     <optionsSearch></optionsSearch>
 
-   <h3>Preferências de Eventos</h3>
-
-    
+    <h3 class="">Preferências de Eventos</h3>
     <div class="container box-info box-tags">
       <tags></tags>
     </div>

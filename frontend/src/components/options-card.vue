@@ -1,34 +1,23 @@
 <template>
   <div>
-    <div class="container-fluid">
-      <div class="card testimonial-card">
-        <div class="avatar mx-auto white">
-          <img :src="info.picture" class="rounded-circle img-fluid">
-        </div>
-        <div class="container">
-          <div class="row">
-            <div class="col" id="titulo">
-              <span>{{info.name}}</span>
-            </div>
+    <div class="card shadow rounded">
+      <img :src='info.picture' class="rounded-circle">
+      <h3 id="emailHelp" class="form-text text-muted">{{info.name}}</h3>
+      <small id="emailHelp" class="form-text text-muted">Deseja mudar os seus dados?</small>
+      <div class="card-body">
+        <form @submit="sendForm">
+          <div class="form-group">
+            <label for="InputEmail">E-mail</label>
+            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"
+              v-model="newData.email" :placeholder="info.email" required>
           </div>
-          <div class="row">
-            <div class="col">
-              <form @submit="sendForm"> 
-                <div class="form-group">
-                  <label for="InputEmail">E-mail</label>
-                  <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp" v-model="newData.email"
-                    :placeholder="info.email" required>
-                  <small id="emailHelp" class="form-text text-muted">Deseja mudar os seus dados?</small>
-                </div>
-                <div class="form-group">
-                  <label for="InputPassword">Password</label>
-                  <input type="password" class="form-control" id="InputPassword1" v-model="newData.password" placeholder="Novo Password" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Alterar Dados</button>
-              </form>
-            </div>
+          <div class="form-group">
+            <label for="InputPassword">Password</label>
+            <input type="password" class="form-control" id="InputPassword1" v-model="newData.password"
+              placeholder="Novo Password" required>
           </div>
-        </div>
+          <button type="submit" class="btn btn-primary">Alterar Dados</button>
+        </form>
       </div>
     </div>
   </div>
@@ -88,27 +77,24 @@ export default {
 
 <style scoped>
 
-.avatar {
-  vertical-align: middle;
+img {
   width: 80px;
   height: 80px;
-  margin-top: 10px
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px
+
+
 }
 
-.h3 {
- 
-  margin-top: 10px;
-  margin-bottom: 10px
+.card {
+  margin-top: 1%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-bottom: 20px;
+  
 }
 
-.p-2 {
-  margin: 0px;
-}
 
-#titulo {
-  text-align: center;
-  font-size: 2.5vh;
-  margin-top: 10px
-}
 
 </style>

@@ -1,23 +1,14 @@
 <template>
-  <div class="demo-card-wide mdl-card mdl-shadow--2dp" id="dad">
-    <div class="mdl-card__media">
-        <img class="img-fluid" :src=vImage>
-      </div>
+  <div class="card shadow rounded" style="width: 30rem;">
+    <img class="card-img-top" :src=vImage>
+    <div class="card-body">
+      <h4 class="card-title">{{event}}</h4>
+      <hr>
+      <!-- Text -->
+      <p class="card-text"> Local: {{local}}</p>
+      <p class="card-text"><small class="text-muted"> Postado no dia {{date}}</small></p>
+    </div>
 
-      <div class="mdl-card__supporting-text">
-          <span> Evento {{event}} - {{local}}</span>       
-          
-                   
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-          <span> Postado em {{date}} </span>
-          
-      </div>
-      <div class="mdl-card__menu">
-          <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-          <i class="material-icons">share</i>
-          </button>
-      </div>
   </div>
 </template>
 
@@ -35,34 +26,9 @@ export default {
 </script>
 
 <style scoped>
-
-#dad{
+.card {
+  margin-top: 1%;
   margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  width: 90%;
-}
-
-.mdl-card__media {
-  max-width: 100%;
-  height: 50%
-}
-
-img {
-  max-width: 100%;
-  height: 30vh;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.demo-card-wide.mdl-card {
-  width: 512px;
-}
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 176px;
-}
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
+  margin-right: auto
 }
 </style>
