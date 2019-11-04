@@ -17,7 +17,7 @@
             <!-- <cButton :cData="{type:'submit', text:'Entrar',link:'SucessLogin',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="checkUser()"></cButton> -->
             <cButton :cData="{type:'submit', text:'Entrar',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="checkUser()"></cButton>
              <!-- </router-link> -->
-             <!-- <span>{{ data }}</span> -->
+             <span>{{ data }}</span>
 
         </div>
     </div>
@@ -43,7 +43,7 @@ export default {
     // buttons,
   },
         created() {
-          this.checkUser();
+          // this.checkUser();
         },
         data: () => ({
           datas: '',
