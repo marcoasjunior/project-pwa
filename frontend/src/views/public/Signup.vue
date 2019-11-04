@@ -11,7 +11,8 @@
     </div>
 
 
-    <input type="email" class="input mt-5" placeholder="e-mail" id="email" v-model="data.email" @keyup="callValidation()">
+    <input type="email" class="input mt-5" placeholder="e-mail" v-model="data.email" @blur="callValidation()">
+    <span class="tooltipWarning">dasdasdas</span>
     <input type="password" class="input mt-5" placeholder="senha"  v-model="data.password" @keyup="callValidation()">
     <input type="password" class="input mt-5" placeholder="senha"  v-model="data.passwordConfirm" @keyup="callValidation()">
 
@@ -105,10 +106,12 @@ export default {
 
             var re = /^(([^<>()\\\\.,;:\s@"]+(\.[^<>()\\\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             let bah = re.test(this.data.email);
-            // eslint-disable-next-line no-console
-            console.log('duhsdushdu' + bah)
+            // console.log('duhsdushdu' + bah)
 
-            if(!this.data.email){
+            if(!bah){
+              
+            // eslint-disable-next-line no-console
+              console.log('Email está incorreto!')
               return true
             }
             else if(this.data.email.length < 3){
