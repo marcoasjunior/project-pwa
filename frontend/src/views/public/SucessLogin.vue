@@ -10,7 +10,7 @@
       <br>
       <br>
       <br>
-      <p> Obrigado pela preferência, fique atento a novos eventos e festas pela Ilha da magia!</p>
+      <p> Let's party!</p>
     </div>
 
     <div class="row wp-cntr-1 wp-center">
