@@ -27,6 +27,16 @@ router.post('/register/user', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
+
+// list all users
+router.get('/list/user', (req, res) => {
+    User.findAll()
+        .then(User => res.status(201).send(User))
+        .catch(error => res.status(400).send(error))
+})
+
+
+
 // pegar usuário pelo id
 
 router.get('/user/:id', (req, res) => {
@@ -43,12 +53,14 @@ router.get('/user/:id', (req, res) => {
 router.put('/update/user', (req, res) => {
     User.update({
             email: req.body.email,
-            password: req.body.password},
+            password: req.body.password
+        },
 
-            {where: {
+            {
+                where: {
                 id: req.body.id
-            }
-        }).then(() => res.status(201).send("Usuário alterado"))
+                }
+            }).then(() => res.status(201).send("Usuário alterado"))
         .catch(error => res.status(400).send(error))
 })
 

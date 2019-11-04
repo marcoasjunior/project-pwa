@@ -17,6 +17,7 @@
             <!-- <cButton :cData="{type:'submit', text:'Entrar',link:'SucessLogin',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="checkUser()"></cButton> -->
             <cButton :cData="{type:'submit', text:'Entrar',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="checkUser()"></cButton>
              <!-- </router-link> -->
+             <span>{{ datas }}</span>
         </div>
     </div>
     </div>
@@ -32,6 +33,12 @@ import {axios} from '../../main'
 
 export default {
   name: 'Login',
+  data() {
+    return {
+      info: null,
+      datas: []
+    }
+  },
   components: {
     // inputs,
     topBar,
@@ -40,23 +47,20 @@ export default {
   },
   created() {},
         mounted() {
+
+            axios.get('http://localhost:3000/api/list/user')
+              .then(response => this.info = response.data)
+              .catch(e => {this.datas.push(e)})
+              // console.log(response.data)
         },
-        data: () => ({
-          disable:{login:false , signup:true}
-        }),
+        // data: () => ({
+        // }),
         methods: {
 
           checkUser(){
 
-            // alert("ok")
+            alert("ok")
             // console.log("ok")
-
-            axios
-              .get('http://localhost:3000/api/register/user')
-              // .then(response => this.info = response.data)
-              // .catch(e => {
-              //   this.errors.push(e)
-            // })
           }
 
         },
