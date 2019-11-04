@@ -39,22 +39,17 @@
 
 <script>
 // @ is an alias to /src
-// import cpmSignup from '@/components/cpmSignup.vue'
 import cButton from '../../components/cpmButton.vue'
 import topBar from '../../components/topBar.vue'
-// import buttons from '@/components/buttons.vue'
-// import buttonZ from '@/components/button.vue'
 import axios from 'axios'
 
 
 export default {
   name: 'Login',
-  // props: ['testData'],
 
   components: {
     cButton,
     topBar
-    // buttons,
   },
   created() {},
         mounted() {
@@ -110,7 +105,7 @@ export default {
               return true
             }
             else if(this.data.email.length < 3){
-              this.error = "Email is not valid";
+              this.error.data.email = "Email is not valid";
               return false
        
             }else{

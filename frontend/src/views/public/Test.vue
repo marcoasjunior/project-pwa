@@ -14,14 +14,6 @@ import axios from 'axios'
 export default {
     name: 'test',
     
-    data() {
-        return {
-            info: null,
-            datas: []
-        }
-    }
-    ,
-    
     components: {},
 
     created() {
@@ -36,7 +28,7 @@ export default {
         getData(){
 
         axios.get('http://localhost:3000/api/list/user')
-        .then(response => this.datas = response.data)
+        .then(response => this.datas = response)
         // .catch(e => {
             // this.errors.push(e)
         // })
