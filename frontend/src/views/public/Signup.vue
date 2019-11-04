@@ -101,6 +101,13 @@ export default {
           },
 
           checkEmailValid(){
+
+
+            var re = /^(([^<>()\\\\.,;:\s@"]+(\.[^<>()\\\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            let bah = re.test(this.data.email);
+            // eslint-disable-next-line no-console
+            console.log('duhsdushdu' + bah)
+
             if(!this.data.email){
               return true
             }
