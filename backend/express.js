@@ -10,11 +10,9 @@ const cors = require('cors')
 // Models.sequelize.sync({ force: true })
 
 
-app.use(bodyParser.urlencoded({
-    extended: false
-}))
 app.use(cors())
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded())
 app.use('/api', router)
 
 

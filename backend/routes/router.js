@@ -21,7 +21,8 @@ router.post('/register/user', (req, res) => {
     User.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            picture: req.body.picture
         }).then(User => res.status(201).send(User))
         .catch(error => res.status(400).send(error))
 })
@@ -31,23 +32,23 @@ router.post('/register/user', (req, res) => {
 router.get('/user/:id', (req, res) => {
     User.findAll({
             where: {
-                iduser: req.params.id
+                id: req.params.id
             }
-        }).then(User => res.status(201).send(User))
+        }).then(User => res.status(201).send(User[0]))
         .catch(error => res.status(400).send(error))
 })
 
 // update usuário
 
-router.put('/user/update/:id', (req, res) => {
+router.put('/update/user', (req, res) => {
     User.update({
             email: req.body.email,
-            password: req.body.password,
+            password: req.body.password},
 
-            where: {
-                iduser: req.params.id
+            {where: {
+                id: req.body.id
             }
-        }).then(User => res.status(201).send(User))
+        }).then(() => res.status(201).send("Usuário alterado"))
         .catch(error => res.status(400).send(error))
 })
 
@@ -71,7 +72,7 @@ router.post('/register/event', (req, res) => {
             local: req.body.local,
             picture: req.body.picture,
             edate: req.body.edate,
-            adress: req.body.adress,
+            address: req.body.address,
             UserId: req.body.UserId,
         }, {
             include: [User]
