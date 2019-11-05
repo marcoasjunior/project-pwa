@@ -36,6 +36,10 @@ const routes = [
           path: '/SucessLogin',
           component: () => import( '../views/public/SucessLogin.vue'),
         },
+        {
+          path: '/Test',
+          component: () => import( '../views/public/Test.vue'),
+        },
         
    
     ]
@@ -58,6 +62,10 @@ const routes = [
         path: '/CreateEvent',
         component: () => import( '../views/private/CreateEvent.vue'),
       },
+      {
+        path: '/MyEvents',
+        component: () => import( '../views/private/MyEvents.vue'),
+      }
   ]
 },
 

@@ -21,33 +21,46 @@ router.post('/register/user', (req, res) => {
     User.create({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            picture: req.body.picture
         }).then(User => res.status(201).send(User))
         .catch(error => res.status(400).send(error))
 })
+
+
+// list all users
+router.get('/list/user', (req, res) => {
+    User.findAll()
+        .then(User => res.status(201).send(User))
+        .catch(error => res.status(400).send(error))
+})
+
+
 
 // pegar usuário pelo id
 
 router.get('/user/:id', (req, res) => {
     User.findAll({
             where: {
-                iduser: req.params.id
+                id: req.params.id
             }
-        }).then(User => res.status(201).send(User))
+        }).then(User => res.status(201).send(User[0]))
         .catch(error => res.status(400).send(error))
 })
 
 // update usuário
 
-router.put('/user/update/:id', (req, res) => {
+router.put('/update/user', (req, res) => {
     User.update({
             email: req.body.email,
-            password: req.body.password,
+            password: req.body.password
+        },
 
-            where: {
-                iduser: req.params.id
-            }
-        }).then(User => res.status(201).send(User))
+            {
+                where: {
+                id: req.body.id
+                }
+            }).then(() => res.status(201).send("Usuário alterado"))
         .catch(error => res.status(400).send(error))
 })
 
@@ -71,7 +84,7 @@ router.post('/register/event', (req, res) => {
             local: req.body.local,
             picture: req.body.picture,
             edate: req.body.edate,
-            adress: req.body.adress,
+            address: req.body.address,
             UserId: req.body.UserId,
         }, {
             include: [User]
@@ -100,23 +113,32 @@ router.get('/eventall', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
+// pegar todos os criados pelo usuario
 
+
+router.get('/eventall/:id', (req, res) => {
+    Event.findAll({where: {
+        UserId: req.params.id
+      }})
+        .then(Event => res.status(201).send(Event))
+        .catch(error => res.status(400).send(error))
+})
 
 
 // update evento - precisa fazer algumas validações
 
-router.put('/event/update', (req, res) => {
+router.put('/update/event', (req, res) => {
     Event.update({
             name: req.body.name,
             local: req.body.local,
-            picture: req.body.picture,
-            edate: req.body.edate,
-            adress: req.body.adress,
-
+            
+            edate: req.body.edate
+        },
+            {
             where: {
-                idevent: req.body.id
-            }
-        }).then(Event => res.status(201).send(Event))
+                id: req.body.id
+            }}
+        ).then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
 
 

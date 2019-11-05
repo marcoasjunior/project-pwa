@@ -1,12 +1,12 @@
 <template>
-    <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <p><span class="container-fluid">Raio de procura</span></p>
-                <input class="mdl-slider mdl-js-slider" type="range" min="1" max="100" value="25" tabindex="0">
-            </div>
-        </div>
-    </div>
+  <div class="card shadow rounded">
+
+    <br>
+    <h3 id="emailHelp" class="form-text text-muted">Raio de procura</h3>
+    <input class="" type="range" min="1" max="100" value="25" tabindex="0">
+    <br>
+
+  </div>
 </template>
 
 <script>
@@ -16,5 +16,14 @@ export default {
 </script>
 
 <style scoped>
+
+.card {
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin-bottom: 3%
+  
+}
 
 </style>

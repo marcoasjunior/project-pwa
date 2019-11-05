@@ -7,12 +7,13 @@
     border-radius: 30px;
     width: 150px;
     background-color:transparent;
-    border:#ffd86f solid 1px;
-    color:#ffd86f;
-
+    border:#000000 solid 1px;
+    color:#000000;
+    
     &:hover{
-        background: linear-gradient(40deg, #ffd86f, #fc6262) !important;
+        background: linear-gradient(40deg, $orange, $rose) !important;
         color:white;
+        border:none;
 
         animation-name: tag-preferences-animation;
         animation-duration: 0.5s;

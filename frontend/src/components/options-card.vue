@@ -1,69 +1,101 @@
 <template>
-  <div>  
-    <div class="container-fluid">
-      <div class="card testimonial-card">
-        <div class="avatar mx-auto white">
-          <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(10).jpg" class="rounded-circle img-fluid">
-        </div>
-          <div class="container">
-            <div class="row">
-              <div class="col" id="titulo">
-                <span>Marco Antônio da Silva Júnior</span>
-              </div>
-            </div>
-           <div class="row">
-              <div class="col">
-                <div class="md-form">
-                  <i class="fas fa-envelope prefix"></i>
-                  <input type="text" id="inputIconEx1" class="form-control">
-                  <label for="inputIconEx1">E-mail address</label>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="md-form">
-                  <i class="fas fa-lock prefix"></i>
-                  <input type="password" id="inputValidationEx2" class="form-control validate">
-                  <label for="inputValidationEx2" data-error="wrong" data-success="right">Type your password</label>
-                </div>
-              </div>
-            </div>
+  <div>
+    <div class="card shadow rounded">
+      <img :src='info.picture' class="rounded-circle">
+      <h3 id="emailHelp" class="form-text text-muted">{{info.name}}</h3>
+      <small id="emailHelp" class="form-text text-muted">Deseja mudar os seus dados?</small>
+      <div class="card-body">
+        <form @submit="sendForm">
+          <div class="form-group">
+            <label for="InputEmail">E-mail</label>
+            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"
+              v-model="newData.email" :placeholder="info.email" required>
           </div>
+          <div class="form-group">
+            <label for="InputPassword">Password</label>
+            <input type="password" class="form-control" id="InputPassword1" v-model="newData.password"
+              placeholder="Novo Password" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Alterar Dados</button>
+        </form>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'options-card'
+import {
+  axios
+} from '../main'
+
+export default {
+  name: 'options-card',
+  data() {
+    return {
+      errors: [],
+      putResponse: null,
+      info: null,
+      newData: {
+        email: '',
+        password: '',
+        id: 1
+      }
+    }
+  },
+  methods: {
+
+    sendForm() {
+      axios
+        .put('http://localhost:3000/api/update/user', this.newData)
+        .then(response => this.putResponse = response)
+        .catch(e => {
+          this.errors.push(e)
+        })
+    
+    this.newData ={
+      email: '',
+      password: ''
+    }
+    }
+  },
+
+  mounted() {
+
+    // requisição inicial para pegar o usuario
+
+    axios
+      .get('http://localhost:3000/api/user/1')
+      .then(response => this.info = response.data)
+      .catch(e => {
+        this.errors.push(e)
+      })
+
+  }
+
 }
 </script>
 
 <style scoped>
 
-.avatar {
-  vertical-align: middle;
+img {
   width: 80px;
   height: 80px;
-  margin-top: 10px
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px
+
+
 }
 
-.h3 {
- 
-  margin-top: 10px;
-  margin-bottom: 10px
+.card {
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin-bottom: 3%
+  
 }
 
-.p-2 {
-  margin: 0px;
-}
 
-#titulo {
-  text-align: center;
-  font-size: 2.5vh;
-  margin-top: 10px
-}
 
 </style>
