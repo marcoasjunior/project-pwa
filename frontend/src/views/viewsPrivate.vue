@@ -31,9 +31,14 @@ export default {
                 },
 
                 {
+                    name: 'Meus Eventos',
+                    path: '/MyEvents',
+                    id: 2
+                },
+                {
                     name: 'Opções',
                     path: '/Options',
-                    id: 2
+                    id: 3
                 }
 
             ]

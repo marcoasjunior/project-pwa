@@ -89,9 +89,10 @@ img {
 
 .card {
   margin-top: 1%;
-  margin-left: 15%;
-  margin-right: 15%;
-  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  margin-bottom: 3%
   
 }
 

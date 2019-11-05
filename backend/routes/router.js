@@ -113,23 +113,32 @@ router.get('/eventall', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
+// pegar todos os criados pelo usuario
 
+
+router.get('/eventall/:id', (req, res) => {
+    Event.findAll({where: {
+        UserId: req.params.id
+      }})
+        .then(Event => res.status(201).send(Event))
+        .catch(error => res.status(400).send(error))
+})
 
 
 // update evento - precisa fazer algumas validações
 
-router.put('/event/update', (req, res) => {
+router.put('/update/event', (req, res) => {
     Event.update({
             name: req.body.name,
             local: req.body.local,
-            picture: req.body.picture,
-            edate: req.body.edate,
-            adress: req.body.adress,
-
+            
+            edate: req.body.edate
+        },
+            {
             where: {
-                idevent: req.body.id
-            }
-        }).then(Event => res.status(201).send(Event))
+                id: req.body.id
+            }}
+        ).then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
 
 
