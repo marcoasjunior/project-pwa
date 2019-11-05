@@ -1,1 +1,1 @@
-web: node ./backend/express.js
+web: node ./frontend/main.js
