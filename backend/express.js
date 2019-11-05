@@ -16,7 +16,7 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 app.use('/api', router)
-app.use(serveStatic(path.join(__dirname, 'dist')))
+app.use(serveStatic(path.join(__dirname, '../dist')))
 
 
 // eslint-disable-next-line no-unused-vars
