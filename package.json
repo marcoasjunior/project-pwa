@@ -6,7 +6,7 @@
   },
   "private": true,
   "scripts": {
-    
+    "postinstall": "npm run build",
     "start": "node ./backend/express.js",
     "serve": "vue-cli-service serve ./frontend/src/main.js",
     "build": "vue-cli-service build ./frontend/src/main.js",
