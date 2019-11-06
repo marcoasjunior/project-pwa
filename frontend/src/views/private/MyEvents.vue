@@ -1,14 +1,17 @@
 <template>
   <div>
-     <card v-for="post in posts" :key='post.id' :post ='post'/>
+    <h4 class="form-text text-muted">Clique no evento para modificá-lo</h4>
+     
+     <card @click.native='modifyEvent(post.id)' v-for="post in posts" :key='post.id' :post ='post'/>
+   
      <span>{{errors}}</span> <!--  apenas teste -->
-     <cardUpdate> </cardUpdate>
+     
   </div>
 </template>
 
 <script>
 import card from '../../components/card'
-import cardUpdate from '../../components/cardUpdate'
+
 import {
   axios
 } from '../../main'
@@ -24,8 +27,17 @@ export default {
   },
 
   components: {
-    card,
-    cardUpdate
+    card
+  },
+
+  methods: {
+
+// metodo para pegar o id do evento
+
+    modifyEvent(id){
+      this.errors = id
+      
+    }
   },
 
 
@@ -44,5 +56,21 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
+.cardPop-enter {
+  opacity: 0;
+}
+
+.cardPop-enter-to {
+  opacity: 1;
+}
+
+.cardPop-enter-active {
+  transition: all 1s ease;
+}
+
+h4 {
+  margin: 20px
+}
+
 </style>

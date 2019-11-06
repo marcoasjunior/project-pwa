@@ -1,6 +1,8 @@
 <template>
   <div>
+    <transition-group name="cardPop" mode=””>
      <card v-for="post in posts" :key='post.id' :post ='post'/>
+    </transition-group>
      <span>{{errors}}</span> <!--  apenas teste -->
   </div>
 </template>
@@ -42,4 +44,18 @@ export default {
 
 </script>
 <style>
+
+.cardPop-enter {
+  opacity: 0;
+}
+
+.cardPop-enter-to {
+  opacity: 1;
+}
+
+.cardPop-enter-active {
+  transition: all 1s ease;
+}
+
+
 </style>
