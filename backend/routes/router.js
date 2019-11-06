@@ -1,4 +1,6 @@
 const router = require('express')()
+// var bcrypt = require('bcrypt-nodejs');
+
 const {
     User
 } = require('../models')
@@ -39,15 +41,27 @@ router.get('/list/user', (req, res) => {
 
 // pegar usuário pelo id
 
-router.get('/user/:id', (req, res) => {
+router.get('/user/:idc', (req, res) => {
     User.findAll({
             where: {
-                id: req.params.id
+                id: req.params.idc
             }
         }).then(User => res.status(201).send(User[0]))
         .catch(error => res.status(400).send(error))
 })
+// ============================================================
 
+
+router.post('/login/user', (req, res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then((User) => res.status(201).send(User.email))
+    .catch(error => res.status(400).send(false))
+})
+
+// ============================================================
 // update usuário
 
 router.put('/update/user', (req, res) => {
@@ -77,7 +91,6 @@ router.get('/user/preferences/:id', (req, res) => {
 
 
 // registrar evento
-
 router.post('/register/event', (req, res) => {
     Event.create({
             name: req.body.name,
@@ -195,6 +208,23 @@ router.post('/register/preference', (req, res) => {
     Preference.create({
             preference: req.body.preference,
         }).then(Preference => res.status(201).send(Preference))
+        .catch(error => res.status(400).send(error))
+})
+
+
+// Checa usuário
+
+router.get('/login/user', (req, res) => {
+    user.findAll({
+            where: {
+                email: req.params.email,
+                password: req.params.password
+
+                = 
+
+                Select
+            }
+        }).then(User => res.status(201).send(User))
         .catch(error => res.status(400).send(error))
 })
 

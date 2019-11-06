@@ -8,3 +8,10 @@
   </div>
 </template>
 
+<script>
+// import './custom.scss'
+
+// export default {
+// }
+</script>
+

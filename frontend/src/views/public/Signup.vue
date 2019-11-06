@@ -7,18 +7,22 @@
       <p> Faça o cadastro com seu e-mail e senha</p>
 
 
-      <span>{{ data }} </span>
+      <!-- <span>{{ data }} </span> -->
     </div>
 
 
-    <input type="email" class="input mt-5" placeholder="e-mail" v-model="data.email" @blur="callValidation()">
-    <span class="tooltipWarning">dasdasdas</span>
+    <input type="email" class="input mt-5" placeholder="e-mail" v-model="data.email" @keyup="callValidation()">
+        <div class="warningContainer" :class="'warning_'+ warningShow">
+               <div v-if="warning" > {{warning}}</div>
+        </div>
     <input type="password" class="input mt-5" placeholder="senha"  v-model="data.password" @keyup="callValidation()">
     <input type="password" class="input mt-5" placeholder="senha"  v-model="data.passwordConfirm" @keyup="callValidation()">
 
     <br>
     {{error}}
     <br>
+
+    <!-- <b-button v-b-tooltip.hover title="tooltip"> hover </b-button> -->
     <!-- {{dataValid}} -->
 
  
@@ -29,9 +33,11 @@
 
         <div class="col-12 m0">
           <span @click="getInfoInputs()">
-             <cButton :cData="{type:'submit', text:'Cadastrar',link:'feed',class:'wp-btn-1 bg-gdr-1'}" ></cButton>
+             <cButton :cData="{type:'submit', text:'Cadastrar',link:'feed',class:' ac wp-btn-1 bg-gdr-1'}" ></cButton>
           </span>
         </div>
+
+     
 
 
 
@@ -62,6 +68,8 @@ export default {
           formValid: false,
           dataValid:{email:false,password:false,passwordConfirm:false,chekBox:''},
           error: '',
+          warning:'',
+          warningShow: false,
         }),
         methods: {
           getInfoInputs(){
@@ -108,11 +116,18 @@ export default {
             let bah = re.test(this.data.email);
             // console.log('duhsdushdu' + bah)
 
+
+
             if(!bah){
+              this.warning = "caralho mano, ufeu";
+              this.warningShow = true;
               
             // eslint-disable-next-line no-console
-              console.log('Email está incorreto!')
+              console.log(this.warningShow)
+              // console.log('Email está incorreto!')
               return true
+            } else if(bah){
+              this.warning = "";
             }
             else if(this.data.email.length < 3){
               this.error.data.email = "Email is not valid";
