@@ -6,7 +6,10 @@
 @import './componentsSCSS/cpmTopBar.scss'; 
 @import './componentsSCSS/cpmLoading.scss'; 
 @import './componentsSCSS/cpmTag.scss'; 
-@import './componentsSCSS/cpmOptions.scss'; 
+@import './componentsSCSS/cpmOptions.scss';
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
 
 .wp-card{
   display: flex;
@@ -103,10 +106,13 @@ padding: 0;
   }
 }
 
+.ac{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 
 .tooltipWarning{
-  visibility: visible;
-    // position: absolute;
     width: 120px;
     background-color: #555;
     color: #fff;
@@ -122,9 +128,11 @@ padding: 0;
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
-  // padding: 5px;
 
-  // &:hover{
-  //   visibility: visible;
-  // }
+}
+
+
+.warningContainer{
+  min-height: 40px;
+  // margin-top: 1px;
 }
