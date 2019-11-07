@@ -17,16 +17,39 @@ const {
     Preference
 } = require('../models')
 
+
 // registrar usuário
 
+
 router.post('/register/user', (req, res) => {
-    User.create({
+    
+    User.findOrCreate({
+        where: {
             name: req.body.name,
             email: req.body.email,
             password: req.body.password,
-            picture: req.body.picture
-        }).then(User => res.status(201).send(User))
-        .catch(error => res.status(400).send(error))
+        }
+
+    })
+    .then(([User, created]) => {
+
+
+        console.log(User.get({
+            plain: true
+          }))
+          console.log(created)
+        
+
+          if(created == true){
+            console.log("Usuário criado")
+        } else{
+            console.log("Usuário já criado")
+          }
+        // if(User.dataValues){}
+        
+        // console.log(created.dataValues)
+
+}, res.send("ops!"))
 })
 
 
@@ -57,8 +80,23 @@ router.post('/login/user', (req, res) => {
         where: {
             email: req.body.email
         }
-    }).then((User) => res.status(201).send(User))
-    .catch(error => res.status(400).send("Não registrado"))
+    }).then((User) => {console.log(User.dataValues);
+        console.log(req.body.password);
+
+        if(req.body.email){
+
+            if(req.body.password == User.dataValues.password ){
+                res.send("user_valid")
+            }else{
+                res.send("user_not_valid")
+            }
+        }else{
+            res.send("email_not_found")
+        }
+    
+        
+    })
+    .catch(error => res.send("error"))
 })
 
 // ============================================================

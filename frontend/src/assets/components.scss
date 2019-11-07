@@ -125,8 +125,21 @@ padding: 0;
     display: block;
     margin-left: 10px;
     margin-right: 10px;
-
-}
+    
+    @media screen and (max-width: 500px) {
+      max-width: 50%;
+      width: 100%;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    
+  }
+  
+  .triangle{
+    display: block;
+    margin-bottom: -7px;
+    color: #555;
+  }
 
 
 .warningContainer{

@@ -29,7 +29,7 @@
 import cButton from '../../components/cpmButton.vue'
 
 export default {
-  name: 'Login',
+  name: 'Signup',
   components: {
     // inputs,
     // topBar,

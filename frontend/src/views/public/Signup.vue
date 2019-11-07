@@ -13,15 +13,41 @@
 
     <input type="email" class="input mt-5" placeholder="e-mail" v-model="data.email" @keyup="callValidation()">
         <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
-               <div v-if="warning" class="warning ac">{{warning}}</div>
+            
+            <div v-if="warning">
+
+                <span class="triangle"> &#9650;</span>
+
+                <div class="warning ac">
+                  {{warning}}
+                </div>
+
+            </div>
         </div>
     <input type="password" class="input mt-5" placeholder="senha"  v-model="data.password" @keyup="callValidation()">
         <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
-               <div v-if="warningPassword" class="warning ac">{{warningPassword}}</div>
+
+          <div v-if="warningPassword">
+                
+                <span class="triangle"> &#9650;</span>
+                
+                <div class="warning ac">
+                 {{warningPassword}}
+                 </div>
+
+          </div>
+                 
         </div>
     <input type="password" class="input mt-5" placeholder="senha"  v-model="data.passwordConfirm" @keyup="callValidation()">
         <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
-               <div v-if="warningPasswordConfirm" class="warning ac">{{warningPasswordConfirm}}</div>
+               
+               <div v-if="warningPasswordConfirm">
+                 <span class="triangle"> &#9650;</span>
+               <div class="warning ac">
+                  {{warningPasswordConfirm}}
+                 </div>
+
+               </div>
         </div>
 
     <br>
@@ -39,7 +65,7 @@
 
         <div class="col-12 m0">
           <span @click="getInfoInputs()">
-             <cButton :cData="{type:'submit', text:'Cadastrar',link:'feed',class:' ac wp-btn-1 bg-gdr-1'}" ></cButton>
+             <cButton :cData="{type:'submit', text:'Cadastrar',link:'feed',class:' ac wp-btn-3 bg-gdr-1'}" ></cButton>
           </span>
         </div>
 
@@ -80,12 +106,13 @@ export default {
           warningShow: false,
         }),
         methods: {
+
           getInfoInputs(){
             axios.post('http://localhost:3000/api/register/user' ,this.data, {
             email: this.data.email,
             password: this.data.password,
             passwordConfirm: this.data.passwordConfirm
-            }).then(alert("Deveir para tela feed ou carregamento depois para o feed"))
+            }).then(response => ( this.checkRegister(response) ))
           },
           getStatusCheckBox(){
             // this.dataValid.chekBox = true;
@@ -115,6 +142,10 @@ export default {
                 this.error = '';
               }
 
+          },
+
+          checkRegister(){
+            // this.$router.push('/Feed')
           },
 
           checkEmailValid(){

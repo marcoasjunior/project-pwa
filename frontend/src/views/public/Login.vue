@@ -15,9 +15,12 @@
         <div class="col-12 m0">
             <!-- <router-link to="/Feed">  -->
             <!-- <cButton :cData="{type:'submit', text:'Entrar',link:'SucessLogin',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="checkUser()"></cButton> -->
-            <cButton :cData="{type:'submit', text:'Entrar',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="login()"></cButton>
+            <span @click="login()">
+              <cButton :cData="{type:'submit', text:'Entrar',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}"></cButton>
+            </span>
              <!-- </router-link> -->
-             <span>{{ data }}</span>
+
+             <!-- <span>{{ info.data.email }}</span> -->
 
         </div>
     </div>
@@ -44,6 +47,7 @@ export default {
         data: () => ({
           datas: '',
           data:{email:'',password:''},
+          info:''
         }),
         mounted() {}
 
@@ -57,13 +61,35 @@ export default {
         methods: {
 
 
-        login(){
+          login(){
+   
             axios.post('http://localhost:3000/api/login/user' ,this.data, {
-            email: this.data.email
+            email: this.data.email,
+            password: this.data.password
             // password: this.data.password,
             // passwordConfirm: this.data.passwordConfirm
-            })
+            
+            }).then(response => ( this.checkUser(response) ))
+
+            // this.checkUser(response)
           },
+
+          checkUser(response){
+
+            if(response.data == 'user_valid'){
+               // eslint-disable-next-line no-console
+                 console.log('deu boa')
+                 this.$router.push('/SucessLogin')
+
+               }else if(response.data == 'user_not_valid'){
+               // eslint-disable-next-line no-console
+                 console.log('deu ruim na senha oyu no email')
+               } else{
+               // eslint-disable-next-line no-console
+                 console.log('fudeu')
+               }
+          }
+
         },
         computed: {
         
