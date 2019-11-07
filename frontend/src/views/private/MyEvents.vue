@@ -1,16 +1,21 @@
 <template>
   <div>
     <h4 class="form-text text-muted">Clique no evento para modificá-lo</h4>
-     
-     <card @click.native='modifyEvent(post.id)' v-for="post in posts" :key='post.id' :post ='post'/>
-   
-     <span>{{errors}}</span> <!--  apenas teste -->
-     
+    <transition-group name="cardPop" mode=””>
+      <card @click.native='showModal(post)' v-for="post in posts" :key='post.id' :post='post' />
+    </transition-group>
+    <b-modal id='modal1' ref="modalCardUpdate" centered title="Modificar Evento" hide-footer>
+      <div class="d-block text-center">
+        <cardUpdate :post='passProps' @modalOff="hideModal" />
+      </div>
+    </b-modal>
+    <span>{{errors}}</span> <!--  apenas teste -->
   </div>
 </template>
 
 <script>
 import card from '../../components/card'
+import cardUpdate from '../../components/cardUpdate'
 
 import {
   axios
@@ -22,22 +27,33 @@ export default {
   data() {
     return {
       posts: null,
-      errors: []
+      errors: [],
+      passProps: null
     }
   },
 
   components: {
-    card
+    card,
+    cardUpdate
   },
 
   methods: {
 
 // metodo para pegar o id do evento
 
-    modifyEvent(id){
-      this.errors = id
+    // modifyEvent(id){
+    //   this.errors = id
       
-    }
+    
+      showModal(id) {
+        this.$refs['modalCardUpdate'].show()
+        this.passProps = id
+      },
+
+      hideModal() {
+        this.$refs['modalCardUpdate'].hide()
+      }
+      
   },
 
 

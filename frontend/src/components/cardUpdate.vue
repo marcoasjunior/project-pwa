@@ -1,6 +1,6 @@
 <template>
     <div class="card shadow rounded">
-        <button class="upload-image-event">Carrege a imagem</button>
+        <button class="upload-image-event">Carrege a nova imagem</button>
         <div class="card-body">
             <form @submit="sendForm">
                 <div class="form-group">
@@ -40,7 +40,7 @@ export default {
                 name: null,
                 local: null,
                 edate: null,
-                id: 1
+                id: this.post.id
 
             }
 
@@ -55,11 +55,13 @@ export default {
                 .catch(e => {
                     this.errors.push(e)
                 })
+            this.$emit('modalOff')
+
         }
 
     },
     mounted() {
-        
+
     },
 }
 

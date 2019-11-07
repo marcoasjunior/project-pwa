@@ -3,12 +3,13 @@
     <transition-group name="cardPop" mode=””>
      <card v-for="post in posts" :key='post.id' :post ='post'/>
     </transition-group>
-     <span>{{errors}}</span> <!--  apenas teste -->
+    <fakeCard v-show="show" />
   </div>
 </template>
 
 <script>
 import card from '../../components/card'
+import fakeCard from '../../components/fakeCard'
 import {
   axios
 } from '../../main'
@@ -19,12 +20,14 @@ export default {
   data() {
     return {
       posts: null,
-      errors: []
+      errors: [],
+      show: false
     }
   },
 
   components: {
-    card
+    card,
+    fakeCard
   },
 
 
@@ -37,6 +40,7 @@ export default {
       .then(response => this.posts = response.data)
       .catch(e => {
       this.errors.push(e)
+      this.show = true
     })
 
   }
