@@ -1,7 +1,7 @@
 <template>
   <div>
 
-      <button class="upload-image-event">Carrege a imagem</button>
+      <button type="upload" class="upload-image-event">Carrege a imagem</button>
 
       <div class="align-self-end mt-7 box-info">
         <p>Adicione o local do evento:</p>

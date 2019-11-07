@@ -5,8 +5,8 @@
     </div>
     <div class="conatiner-button-principal">
       <div class="container-buttons-home col-12">
-        <router-link to="/Login"> <button type="button" class="wp-btn-1 btn btn-primary btn-lg btn-block wp-btn-main">Entrar</button> </router-link>
-        <router-link to="/Signup"> <button type="button" class="wp-btn-2 btn btn-primary btn-lg btn-block wp-btn-main">Cadastrar</button> </router-link>
+        <router-link to="/Login"> <button type="button" class=" ac wp-btn-1 btn btn-primary btn-lg btn-block wp-btn-main">Entrar</button> </router-link>
+        <router-link to="/Signup"> <button type="button" class=" ac wp-btn-2 btn btn-primary btn-lg btn-block wp-btn-main">Cadastrar</button> </router-link>
     </div>
     </div>
   </div>

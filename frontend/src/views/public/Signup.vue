@@ -12,14 +12,20 @@
 
 
     <input type="email" class="input mt-5" placeholder="e-mail" v-model="data.email" @keyup="callValidation()">
-        <div class="warningContainer" :class="'warning_'+ warningShow">
-               <div v-if="warning" > {{warning}}</div>
+        <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
+               <div v-if="warning" class="warning ac">{{warning}}</div>
         </div>
     <input type="password" class="input mt-5" placeholder="senha"  v-model="data.password" @keyup="callValidation()">
+        <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
+               <div v-if="warningPassword" class="warning ac">{{warningPassword}}</div>
+        </div>
     <input type="password" class="input mt-5" placeholder="senha"  v-model="data.passwordConfirm" @keyup="callValidation()">
+        <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
+               <div v-if="warningPasswordConfirm" class="warning ac">{{warningPasswordConfirm}}</div>
+        </div>
 
     <br>
-    {{error}}
+    <!-- {{error}} -->
     <br>
 
     <!-- <b-button v-b-tooltip.hover title="tooltip"> hover </b-button> -->
@@ -27,9 +33,9 @@
 
  
 
-    <div class="wp-checkbox">
+    <!-- <div class="wp-checkbox">
         <input type="checkbox" v-model="dataValid.chekBox" @click="getStatusCheckBox()"> Concordo com os termos e Condições
-    </div>
+    </div> -->
 
         <div class="col-12 m0">
           <span @click="getInfoInputs()">
@@ -69,6 +75,8 @@ export default {
           dataValid:{email:false,password:false,passwordConfirm:false,chekBox:''},
           error: '',
           warning:'',
+          warningPassword:'',
+          warningPasswordConfirm:'',
           warningShow: false,
         }),
         methods: {
@@ -77,7 +85,7 @@ export default {
             email: this.data.email,
             password: this.data.password,
             passwordConfirm: this.data.passwordConfirm
-            })
+            }).then(alert("Deveir para tela feed ou carregamento depois para o feed"))
           },
           getStatusCheckBox(){
             // this.dataValid.chekBox = true;
@@ -119,18 +127,22 @@ export default {
 
 
             if(!bah){
-              this.warning = "caralho mano, ufeu";
+              this.warning = "formatação errada, verifique novamente o email";
               this.warningShow = true;
               
-            // eslint-disable-next-line no-console
-              console.log(this.warningShow)
+              // console.log(this.warningShow)
               // console.log('Email está incorreto!')
               return true
-            } else if(bah){
+            } 
+            if(bah){
               this.warning = "";
             }
-            else if(this.data.email.length < 3){
-              this.error.data.email = "Email is not valid";
+
+            if(bah.length < 10){
+              this.warning = "Email is not valid";
+
+            // eslint-disable-next-line no-console
+
               return false
        
             }else{
@@ -140,19 +152,21 @@ export default {
           },
 
           checkPasswordValid(){
-              if(this.data.password.length < 1 || !this.data.password){
-                this.error = "Password too short";
+              if(this.data.password.length < 5 || !this.data.password){
+                this.warningPassword = "Password too short";
                 return false
               }else{
+                this.warningPassword = "";
                 return true
               }
           },
           checkPasswordConfirm(){
 
             if(this.data.password != this.data.passwordConfirm){
-              this.error = "password does not match";
+              this.warningPasswordConfirm = "password does not match";
                 return false
             }else{
+              this.warningPasswordConfirm = "";
               return true;
             }
           },

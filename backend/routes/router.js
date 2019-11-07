@@ -57,8 +57,8 @@ router.post('/login/user', (req, res) => {
         where: {
             email: req.body.email
         }
-    }).then((User) => res.status(201).send(User.email))
-    .catch(error => res.status(400).send(false))
+    }).then((User) => res.status(201).send(User))
+    .catch(error => res.status(400).send("Não registrado"))
 })
 
 // ============================================================
