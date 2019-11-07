@@ -1,6 +1,7 @@
 <template>
   <div>
     <h4 class="form-text text-muted">Clique no evento para modificá-lo</h4>
+    <fakeCard v-show="show" />
     <transition-group name="cardPop" mode=””>
       <card @click.native='showModal(post)' v-for="post in posts" :key='post.id' :post='post' />
     </transition-group>
@@ -9,13 +10,14 @@
         <cardUpdate :post='passProps' @modalOff="hideModal" />
       </div>
     </b-modal>
-    <span>{{errors}}</span> <!--  apenas teste -->
+   
   </div>
 </template>
 
 <script>
 import card from '../../components/card'
 import cardUpdate from '../../components/cardUpdate'
+import fakeCard from '../../components/fakeCard'
 
 import {
   axios
@@ -28,13 +30,15 @@ export default {
     return {
       posts: null,
       errors: [],
-      passProps: null
+      passProps: null,
+      show: false
     }
   },
 
   components: {
     card,
-    cardUpdate
+    cardUpdate,
+    fakeCard
   },
 
   methods: {
@@ -66,6 +70,7 @@ export default {
       .then(response => this.posts = response.data)
       .catch(e => {
       this.errors.push(e)
+      this.show = true
     })
 
   }
