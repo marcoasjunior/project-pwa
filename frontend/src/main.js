@@ -6,10 +6,11 @@ import router from './router'
 import store from './store'
 import '../src/assets/index.scss'
 import axios from 'axios'
+import moment from 'moment'
 
 
 
-export {axios}
+export {axios, moment}
 
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
