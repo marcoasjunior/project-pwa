@@ -35,4 +35,7 @@ https://cli.vuejs.org/guide/deployment.html#heroku
 https://gist.github.com/hone/24b06869b4c1eca701f9
 https://devcenter.heroku.com/articles/buildpacks#detection-failure
 
+###
+link CRIAR PREVIEW e carregar imagem https://stackoverflow.com/questions/49106045/preview-an-image-before-it-is-uploaded-vuejs
+
 ```
