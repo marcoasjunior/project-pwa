@@ -110,7 +110,7 @@ router.post('/login/user', (req, res) => {
     
         
     })
-    .catch(error => res.send("error"))
+    .catch(error => res.send(error))
 })
 
 // ============================================================
@@ -132,7 +132,7 @@ router.put('/update/user', (req, res) => {
 
 // update usuário IMAGEM
 
-router.put('/update/user', (req, res) => {
+router.put('/update/user/image', (req, res) => {
     User.update({
             picture: req.body.file,
         },
