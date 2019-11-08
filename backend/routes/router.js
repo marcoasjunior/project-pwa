@@ -279,9 +279,9 @@ router.get('/preference/:id', (req, res) => {
 // criar preference
 
 router.get('/tags/preferences', (req, res) => {
-    Preference.create({
+    Preference.findAll({
             preference: req.body.preference,
-        }).then(Preference => res.status(201).send(Preference))
+        }).then(Preference => res.send(Preference))
         .catch(error => res.status(400).send(error))
 })
 
