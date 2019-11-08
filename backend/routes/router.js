@@ -218,7 +218,7 @@ router.put('/update/event', (req, res) => {
     Event.update({
             name: req.body.name,
             local: req.body.local,
-            
+            picture: req.body.newFile,
             edate: req.body.edate
         },
             {

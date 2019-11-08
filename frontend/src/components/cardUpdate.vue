@@ -1,6 +1,10 @@
 <template>
     <div class="card shadow rounded">
-        <button class="upload-image-event">Carrege a nova imagem</button>
+        <div id="preview">
+            <b-img v-show="url" :src="url" fluid />
+        </div>
+        <input id='image_uploads' ref="fileInput" type="file" @change="onFileChange($event)" required capture
+            accept="image/*,.pdf">
         <div class="card-body">
             <form @submit="sendForm">
                 <div class="form-group">
@@ -36,10 +40,13 @@ export default {
     data() {
         return {
             errors: [],
+            url: null,
+            
             newData: {
                 name: null,
                 local: null,
                 edate: null,
+                picture: null,
                 id: this.post.id
 
             }
@@ -48,22 +55,33 @@ export default {
     },
     methods: {
 
+    onFileChange(e) {
+            const file = e.target.files[0];
+            this.url = URL.createObjectURL(file);
+            this.newData.picture = file
+        },
+
+
         sendForm() {
+
+            const config = {
+                header: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+
             axios
-                .put('http://localhost:3000/api/update/event', this.newData)
+                .put('http://localhost:3000/api/update/event', this.newData, config)
                 .then(response => this.putResponse = response)
                 .catch(e => {
                     this.errors.push(e)
                 })
             this.$emit('modalOff')
 
-        }
+        },
 
-    },
-    mounted() {
-
-    },
-}
+    }
+    }
 
 </script>
 
