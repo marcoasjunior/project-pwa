@@ -10,6 +10,20 @@
       <!-- <span>{{ data }} </span> -->
     </div>
 
+    <input type="name" class="input mt-5" placeholder="nome" v-model="data.name" @keyup="callValidation()">
+    <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
+
+          <div v-if="warningName">
+                
+                <span class="triangle"> &#9650;</span>
+                
+                <div class="warning ac">
+                 {{warningName}}
+                 </div>
+
+          </div>
+                 
+        </div>
 
     <input type="email" class="input mt-5" placeholder="e-mail" v-model="data.email" @keyup="callValidation()">
         <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
@@ -54,7 +68,7 @@
     <!-- {{error}} -->
     <br>
 
-    <!-- <b-button v-b-tooltip.hover title="tooltip"> hover </b-button> -->
+    <!-- <b-button v-b-tooltip.hover title="marco"> hover </b-button> -->
     <!-- {{dataValid}} -->
 
  
@@ -100,6 +114,7 @@ export default {
           formValid: false,
           dataValid:{email:false,password:false,passwordConfirm:false,chekBox:''},
           error: '',
+          warningName:'',
           warning:'',
           warningPassword:'',
           warningPasswordConfirm:'',
@@ -109,6 +124,7 @@ export default {
 
           getInfoInputs(){
             axios.post('http://localhost:3000/api/register/user' ,this.data, {
+            name: this.data.name,
             email: this.data.email,
             password: this.data.password,
             passwordConfirm: this.data.passwordConfirm
@@ -128,9 +144,16 @@ export default {
 
           callValidation(){
               this.formValid = true;
+              
+              if(this.formValid){
+              this.formValid = this.checkNameValid();
+              }
+              
+
               if(this.formValid){
               this.formValid = this.checkEmailValid();
               }
+
               if(this.formValid){
               this.formValid = this.checkPasswordValid();
               }
@@ -144,8 +167,24 @@ export default {
 
           },
 
-          checkRegister(){
-            // this.$router.push('/Feed')
+          checkRegister(response){
+            // eslint-disable-next-line no-console
+            if(response.data == "user_created"){
+              this.$router.push('/Feed')
+              
+            }else{
+              alert("deu ruim ai mano")
+            }         
+          },
+
+          checkNameValid(){
+            if(this.data.name.length < 5){
+                this.warningName = "Nome inválido";
+                return false
+              }else{
+                this.warningName = "";
+                return true
+              }
           },
 
           checkEmailValid(){

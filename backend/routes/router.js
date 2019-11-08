@@ -37,19 +37,33 @@ router.post('/register/user', (req, res) => {
         console.log(User.get({
             plain: true
           }))
-          console.log(created)
-        
+          console.log(User.dataValues)
 
-          if(created == true){
-            console.log("Usuário criado")
-        } else{
-            console.log("Usuário já criado")
-          }
+        if(created == true){
+            console.log("usuário criado")
+            res.send("user_created")
+        }
+
+        else if(User.dataValues.email == req.body.email){
+            console.log("email já cadastrado")
+            res.send("email_alredy_exist")
+        }
+            
+            // else{
+            //     console.log(" usuario cadastrado ")
+            // }
+
+
+           
         // if(User.dataValues){}
         
         // console.log(created.dataValues)
 
-}, res.send("ops!"))
+}
+
+// , res.send()
+
+)
 })
 
 
@@ -138,6 +152,8 @@ router.post('/register/event', (req, res) => {
             address: req.body.address,
             UserId: req.body.UserId,
         }, {
+
+            // incluindo o usuário na tabela de evento 
             include: [User]
         }).then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
@@ -242,27 +258,10 @@ router.get('/preference/:id', (req, res) => {
 
 // criar preference
 
-router.post('/register/preference', (req, res) => {
+router.get('/tags/preferences', (req, res) => {
     Preference.create({
             preference: req.body.preference,
         }).then(Preference => res.status(201).send(Preference))
-        .catch(error => res.status(400).send(error))
-})
-
-
-// Checa usuário
-
-router.get('/login/user', (req, res) => {
-    user.findAll({
-            where: {
-                email: req.params.email,
-                password: req.params.password
-
-                = 
-
-                Select
-            }
-        }).then(User => res.status(201).send(User))
         .catch(error => res.status(400).send(error))
 })
 

@@ -28,7 +28,7 @@ export default {
   created() {},
         mounted() {
 
-          axios.get('http://localhost:3000/api/eventall')
+          axios.get('http://localhost:3000/api/tags/preferences')
           .then(response => this.data = response.data)
 
         },
