@@ -31,13 +31,18 @@ padding: 0;
 }
 
 // Create Event
+.upload[type="file"]{
+  display: none;
+}
+
 
 .upload-image-event{
+  display: block;
   max-width: 50%;
   width: 100%;
   min-height: 200px;
-  background-color: rgb(223, 223, 223);
-  border:none;
+  background-color: rgb(255, 0, 0);
+  // border:none;
 
   @media screen and (max-width: 500px) {
     max-width: 100%;

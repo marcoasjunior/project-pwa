@@ -1,11 +1,18 @@
 <template>
   <div>
 
-      <button type="upload" class="upload-image-event">Carrege a imagem</button>
+      <!-- <button type="upload" class="upload-image-event">Carrege a imagem</button> -->
+        <input type="file" class="upload" required capture accept="image/*,.pdf">
+        <span class="upload-image-event" for="file"></span>
 
       <div class="align-self-end mt-7 box-info">
         <p>Adicione o local do evento:</p>
+
+        <input type="text" class="input" placeholder="nome do Evento:">
         <input type="text" class="input" placeholder="Local do Evento:">
+        <input type="date" class="input" placeholder="data do Evento:">
+        <input type="text" class="input" placeholder="endereço do Evento:">
+        <input type="text" class="input" placeholder="Evento criado por:">
 
         <!-- deve imprimir mais informações sobre o local do evento -->
       </div>

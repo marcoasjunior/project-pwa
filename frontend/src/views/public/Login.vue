@@ -83,10 +83,10 @@ export default {
 
                }else if(response.data == 'user_not_valid'){
                // eslint-disable-next-line no-console
-                 console.log('deu ruim na senha oyu no email')
+                 alert('deu ruim na senha no no email')
                } else{
                // eslint-disable-next-line no-console
-                 console.log('fudeu')
+                 console.log('user invalid')
                }
           }
 
