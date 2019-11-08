@@ -170,11 +170,11 @@ export default {
           checkRegister(response){
             // eslint-disable-next-line no-console
             if(response.data == "user_created"){
-              this.$router.push('/Feed')
+              this.$router.push('/SucessSignup')
               
             }else{
               alert("deu ruim ai mano")
-            }         
+            }
           },
 
           checkNameValid(){
