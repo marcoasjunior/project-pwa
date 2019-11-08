@@ -1,6 +1,12 @@
 <template>
   <div>
-    <options-card></options-card>
+    <options-card @showModal="showModals"></options-card>
+
+    <b-modal id='modal1' ref="modalCardUpdate" centered title="Modificar Foto" hide-footer>
+      <div class="d-block text-center">
+        <cardOptionsUpdate @modalOff='hideModals'  />
+      </div>
+    </b-modal>
     <optionsSearch></optionsSearch>
 
     <h3 class="">Preferências de Eventos</h3>
@@ -16,15 +22,31 @@
 import optionsSearch from '../../components/options-search'
 import tags from '../../components/cpmTag'
 import optionsCard from '../../components/options-card'
+import cardOptionsUpdate from '../../components/cardOptionsUpdate'
+
 
 
 
 export default {
   name: 'options',
+
+  methods: {
+
+    showModals() {
+        this.$refs['modalCardUpdate'].show()
+      },
+
+       hideModals() {
+        this.$refs['modalCardUpdate'].hide()
+      }
+
+  },
+
   components: {
     
     optionsCard,
     optionsSearch,
+    cardOptionsUpdate,
     tags,
   }
 

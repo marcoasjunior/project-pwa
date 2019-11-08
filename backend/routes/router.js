@@ -130,6 +130,22 @@ router.put('/update/user', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
+// update usuário IMAGEM
+
+router.put('/update/user', (req, res) => {
+    User.update({
+            picture: req.body.file,
+        },
+
+            {
+                where: {
+                id: req.body.id
+                }
+            }).then(() => res.status(201).send("Usuário alterado"))
+        .catch(error => res.status(400).send(error))
+})
+
+
 // pegar preferencias do usuario
 
 router.get('/user/preferences/:id', (req, res) => {
@@ -171,11 +187,15 @@ router.get('/event/:id', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
-// pegar todos os eventos
+// pegar todos os eventos ORDER BY DESC
 
 
 router.get('/eventall', (req, res) => {
-    Event.findAll()
+    Event.findAll({
+        order: [
+            ['id', 'DESC'],
+        ],
+    })
         .then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
 })

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   name: 'cpmButton',
@@ -28,8 +28,8 @@ export default {
   created() {},
         mounted() {
 
-          axios.get('http://localhost:3000/api/tags/preferences')
-          .then(response => this.data = response.data)
+          // axios.get('http://localhost:3000/api/tags/preferences')
+          // .then(response => this.data = response.data)
 
         },
         data: () => ({
