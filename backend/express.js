@@ -2,8 +2,9 @@ const app = require('express')()
 const bodyParser = require('body-parser')
 const router = require('./routes/router')
 const cors = require('cors')
-var path = require('path')
-var serveStatic = require('serve-static')
+const path = require('path')
+const serveStatic = require('serve-static')
+
 
 
 
