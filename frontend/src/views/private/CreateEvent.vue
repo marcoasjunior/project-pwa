@@ -2,8 +2,13 @@
   <div>
 
       <!-- <button type="upload" class="upload-image-event">Carrege a imagem</button> -->
+
+<card></card>
+
+
+
         <input type="file" class="upload" required capture accept="image/*,.pdf">
-        <span class="upload-image-event" for="file"></span>
+        <span class="ac upload-image-event" for="file"></span>
 
       <div class="align-self-end mt-7 box-info">
         <p>Adicione o local do evento:</p>
@@ -33,6 +38,7 @@
 <script>
 
 import tag from '../../components/cpmTag.vue'
+import card from '../../components/cpmCard.vue'
 
 
 
@@ -40,7 +46,8 @@ export default {
   name: 'cadastro' //this is the name of the component,  
   ,components: {
     // inputs,
-    tag
+    tag,
+    card
   }
 }
 </script>
