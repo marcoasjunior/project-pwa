@@ -1,19 +1,18 @@
-module.exports = {
-  username: 'root',
-  password: 'root',
-  database: 'dbeventos',
-  host: 'localhost',
-  dialect: 'mysql',
-}
+// module.exports = {
+//   username: 'root',
+//   password: 'root',
+//   database: 'dbeventos',
+//   host: 'localhost',
+//   dialect: 'mysql',
+// }
 
 // ATIVAR QUANDO QUISER USAR O BANCO ONLINE
  
-// module.exports = {
-//   username: 'nekuckazhhkmnb',
-//   password: '0ba5d9638dc84953353351b09c90b7bc2c5070b127ff51c7ed1258660f63cf20',
-//   database: 'd36qa82325pqnu',
-//   host: 'ec2-174-129-253-125.compute-1.amazonaws.com',
-//   dialect: 'postgres',
-//   dialectOptions: {
-//     "ssl": true
-//   }}
+module.exports = {
+  username: 'nuhpa68ij2ww1jzy',
+  password: 'ns5yihb54sidikg7',
+  database: 'gb18rjtcz6zwty36',
+  host: 'otwsl2e23jrxcqvx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+  dialect: 'mysql',
+  ssl: true
+}
