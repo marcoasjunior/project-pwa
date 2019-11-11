@@ -13,21 +13,20 @@
 
     <div class="box-info">
         <p>Adicione o local do evento:</p>
+    <span> {{ datas }}</span>
 
-        <input type="text" class="input mt-2" placeholder="nome do Evento:" v-model="data.name">
-        <input type="text" class="input mt-2" placeholder="Local do Evento:" v-model="data.place">
-        <input type="date" class="input mt-2" placeholder="data do Evento:" v-model="data.date">
-        <input type="text" class="input mt-2" placeholder="endereço do Evento:" v-model="data.adress">
-        <input type="text" class="input mt-2 mb-1" placeholder="Evento criado por:" v-model="data.user">
+        <input type="text" class="input mt-2" placeholder="nome do Evento:" v-model="datas.name">
+        <input type="text" class="input mt-2" placeholder="Local do Evento:" v-model="datas.place">
+        <input type="date" class="input mt-2" placeholder="data do Evento:" v-model="datas.date">
+        <input type="text" class="input mt-2" placeholder="endereço do Evento:" v-model="datas.adress">
+        <input type="text" class="input mt-2 mb-1" placeholder="Evento criado por:" v-model="datas.user">
         <!-- deve imprimir mais informações sobre o loacal do evento -->
+        <button class="btn btn-primary mt-2 mb-2"  @click="createEvent()">Criar Evento</button>
       </div>
-
-
    </div>
 
 
     <!-- <span v-for="item in data" v-bind:key="item.name" @onload="loadTag()"> {{item.name}}  <br> </span> -->
-    <!-- <span> {{ data }}</span> -->
 
 
     <!-- <button type="submit" :class=" 'btn white btn-block ' "> </button> -->
@@ -56,7 +55,7 @@ export default {
         data: () => ({
 
           data:'',
-        //   datas:{name:'',placeName:'',date:'',adress:'',userName:''},
+          datas:{name:'',placeName:'',date:'',adress:'',userName:''},
 
 
         }),
@@ -65,17 +64,17 @@ export default {
             // console.log(this.data)
           },
 
-        //   createEvent(){
-        //     axios.post('/register/event' ,this.data, {
-        //     name: this.data.name,
-        //     placeName: this.data.placeName,
-        //     date: this.data.date,
-        //     adress: this.data.adress,
-        //     userName: this.data.userName,
-        //     updated: this.data.updated,
+          createEvent(){
+            axios.post('http://localhost:3000/api/register/event' ,this.data, {
+            name: this.datas.name,
+            placeName: this.datas.local,
+            date: this.datas.date,
+            adress: this.datas.adress,
+            userName: this.datas.userName,
+            updated: this.datas.updated,
             
-        //     }).then(response => ( this.checkUser(response) ))
-        //   }
+            }).then(response => ( this.checkUser(response) ))
+          }
 
             
         },
