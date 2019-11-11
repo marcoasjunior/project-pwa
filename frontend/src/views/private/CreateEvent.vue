@@ -7,20 +7,8 @@
 
 
 
-        <input type="file" class="upload" required capture accept="image/*,.pdf">
-        <span class="ac upload-image-event" for="file"></span>
-
-      <div class="align-self-end mt-7 box-info">
-        <p>Adicione o local do evento:</p>
-
-        <input type="text" class="input" placeholder="nome do Evento:">
-        <input type="text" class="input" placeholder="Local do Evento:">
-        <input type="date" class="input" placeholder="data do Evento:">
-        <input type="text" class="input" placeholder="endereço do Evento:">
-        <input type="text" class="input" placeholder="Evento criado por:">
-
-        <!-- deve imprimir mais informações sobre o local do evento -->
-      </div>
+        <!-- <input type="file" class="upload" required capture accept="image/*,.pdf">
+        <span class="ac upload-image-event" for="file">asnda</span> -->
 
       <div class="col-6 mt-7">
         <p>Adicionar tag:</p>
@@ -36,6 +24,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 
 import tag from '../../components/cpmTag.vue'
 import card from '../../components/cpmCard.vue'
@@ -48,7 +38,38 @@ export default {
     // inputs,
     tag,
     card
-  }
+  },
+
+  created() {
+          // this.checkUser();
+        },
+        data: () => ({
+          datas: '',
+          data:{email:'',password:''},
+          info:''
+        }),
+        mounted() {
+
+          axios.get('http://localhost:3000/api/tags/preferences')
+          .then(response => this.data = response.data);
+
+        }
+
+          
+
+            // axios.get('http://localhost:3000/api/list/user')
+            //   .then(response => this.info = response.data)
+            //   .catch(e => {this.datas.push(e)})
+            //   console.log(response.data)
+      ,
+        methods: {
+
+        },
+        computed: {
+        
+        },
+        watch: {}
+
 }
 </script>
 <style>

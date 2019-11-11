@@ -7,6 +7,7 @@
 @import './componentsSCSS/cpmLoading.scss'; 
 @import './componentsSCSS/cpmTag.scss'; 
 @import './componentsSCSS/cpmOptions.scss';
+@import './componentsSCSS/cpmCard.scss';
 
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap-vue/src/index.scss';
@@ -31,39 +32,7 @@ padding: 0;
 }
 
 // Create Event
-.upload[type="file"]{
-  display: none;
-}
 
-
-.upload-image-event{
-  display: block;
-  max-width: 50%;
-  width: 100%;
-  min-height: 200px;
-  background-color: rgb(255, 0, 0);
-  // border:none;
-
-  @media screen and (max-width: 500px) {
-    max-width: 100%;
-    width: 100%;
-    min-height: 200px;
-  }
-}
-
-
-.box-info{
-  display: block;
-  max-width: 25%;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media screen and (max-width: 600px) {
-    max-width: 100%;
-    width: 100%;
-  }
-}
 
 .subtitle{
   margin-right: auto !important;
@@ -150,4 +119,8 @@ padding: 0;
 .warningContainer{
   min-height: 35px;
   // margin-top: 1px;
+}
+
+.color-icon{
+  color: rgba(206, 206, 206, 0.637);
 }
