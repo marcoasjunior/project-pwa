@@ -1,4 +1,8 @@
 const router = require('express')()
+const multer = require('multer')
+const storage = multer.memoryStorage()
+const upload = multer({storage: storage, limits: {fileSize: 1000 * 1000 * 3}})
+const sharp = require('sharp');
 // var bcrypt = require('bcrypt-nodejs');
 
 const {
@@ -132,9 +136,14 @@ router.put('/update/user', (req, res) => {
 
 // update usuário IMAGEM
 
-router.put('/update/user/image', (req, res) => {
+router.put('/update/user/image', upload.single('file'), (req, res) => {
+
+    const resized = sharp(req.file).resize(200).toBuffer()
+                            
+    // eslint-disable-next-line no-console
+    console.log(resized)
     User.update({
-            picture: req.body.file,
+            picture: resized,
         },
 
             {
