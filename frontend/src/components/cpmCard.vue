@@ -16,10 +16,10 @@
     <span> {{ datas }}</span>
 
         <input type="text" class="input mt-2" placeholder="nome do Evento:" v-model="datas.name">
-        <input type="text" class="input mt-2" placeholder="Local do Evento:" v-model="datas.place">
+        <input type="text" class="input mt-2" placeholder="Local do Evento:" v-model="datas.local">
         <input type="date" class="input mt-2" placeholder="data do Evento:" v-model="datas.date">
-        <input type="text" class="input mt-2" placeholder="endereço do Evento:" v-model="datas.adress">
-        <input type="text" class="input mt-2 mb-1" placeholder="Evento criado por:" v-model="datas.user">
+        <input type="text" class="input mt-2" placeholder="endereço do Evento:" v-model="datas.addres">
+        <input type="text" class="input mt-2 mb-1" placeholder="Evento criado por:" v-model="datas.UserId">
         <!-- deve imprimir mais informações sobre o loacal do evento -->
         <button class="btn btn-primary mt-2 mb-2"  @click="createEvent()">Criar Evento</button>
       </div>
@@ -55,7 +55,7 @@ export default {
         data: () => ({
 
           data:'',
-          datas:{name:'',placeName:'',date:'',adress:'',userName:''},
+          datas:{name:'',local:'',date:'',addres:'',UserId:''},
 
 
         }),
@@ -65,14 +65,12 @@ export default {
           },
 
           createEvent(){
-            axios.post('http://localhost:3000/api/register/event' ,this.data, {
-            name: this.datas.name,
-            placeName: this.datas.local,
-            date: this.datas.date,
-            adress: this.datas.adress,
-            userName: this.datas.userName,
-            updated: this.datas.updated,
-            
+            axios.post('http://localhost:3000/api/register/event' ,this.datas, {
+                name: this.datas.name,
+                local: this.datas.local,
+                edate: this.datas.date,
+                addres: this.datas.addres,
+                UserId: this.datas.UserId,
             }).then(response => ( this.checkUser(response) ))
           }
 

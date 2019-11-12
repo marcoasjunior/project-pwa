@@ -1,8 +1,4 @@
 const router = require('express')()
-const multer = require('multer')
-const storage = require('../config/multer')
-const upload = multer({ storage: storage })
-const sharp = require('sharp');
 // var bcrypt = require('bcrypt-nodejs');
 
 const {
@@ -136,18 +132,9 @@ router.put('/update/user', (req, res) => {
 
 // update usuário IMAGEM
 
-router.put('/update/user/image', upload.single('file'), (req, res) => {
-
-    // const host = req.host;
-    // const filePath = req.protocol + "://" + host + '/' + req.file.path;
-
-    // eslint-disable-next-line no-console
-    console.log(`${req.file}
-    ${req.file.filename}
-    ${req.file.path}`)
-
+router.put('/update/user/image', (req, res) => {
     User.update({
-            picture: req.file.filename,
+            picture: req.body.file,
         },
 
             {
@@ -178,7 +165,7 @@ router.post('/register/event', (req, res) => {
             local: req.body.local,
             picture: req.body.picture,
             edate: req.body.edate,
-            address: req.body.address,
+            addres: req.body.addres,
             UserId: req.body.UserId,
         }, {
 
