@@ -36,7 +36,7 @@ export default {
                 const file = e.target.files[0];
                 this.url = URL.createObjectURL(file);
                 this.newFile  = file
-                alert(e.target.files[0].name)
+          
  
             },
 

@@ -5,9 +5,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
-    {
-      path:'/', redirect: '/Main'
-    },
+    // {
+    //   path:'/', redirect: '/Main'
+    // },
 
     { 
       path: '/Public', 
