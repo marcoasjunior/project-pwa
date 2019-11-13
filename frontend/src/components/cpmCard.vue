@@ -3,8 +3,9 @@
 
     <!-- <button type="submit" class="tag-preferences" v-for="item in tagname" v-bind:key="item.name"> {{item.name}}  <br> </button> -->
    <div class="ac container_card">
-
-        <input type="file" class="upload" required capture accept="image/*,.pdf">
+        <!-- <input type="file" accept="image/*,.pdf" ref="file" v-on:change="transformToBinary()"> -->
+        
+        <input type="file" class="upload" accept="image/*,.pdf" v-model="image.name">
         <span class="ac upload-image-event" for="file">
             <h5 class="mt-3"> faça o upload da imagem aqui </h5>
             <br>
@@ -14,6 +15,7 @@
     <div class="box-info">
         <p>Adicione o local do evento:</p>
     <span> {{ datas }}</span>
+    <span> {{ image.name }}</span>
 
         <input type="text" class="input mt-2" placeholder="nome do Evento:" v-model="datas.name">
         <input type="text" class="input mt-2" placeholder="Local do Evento:" v-model="datas.local">
@@ -52,8 +54,9 @@ export default {
           
 
         },
-        data: () => ({
+        data: () => ({ 
 
+          image:'',
           data:'',
           datas:{name:'',local:'',date:'',addres:'',UserId:''},
 
@@ -62,6 +65,14 @@ export default {
         methods: {
           loadTag(){
             // console.log(this.data)
+          },
+
+          transformToBinary(){
+            // alert(image: this.image.picture)
+
+            // axios.post('http://localhost:3000/api/update/user/image' ,this.datas, {
+            //     picture: this.image.picture,
+            // }
           },
 
           createEvent(){

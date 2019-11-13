@@ -9,7 +9,7 @@
     }
     
     .upload[type="file"]{
-        display: none;
+        display: block;
     }
     
     .box-info{
@@ -48,6 +48,7 @@
   }
 
   .upload-icon{
+      cursor: pointer;
       width: 50px;
       color: #a1a1a1;
   }

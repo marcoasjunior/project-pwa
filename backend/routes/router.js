@@ -139,7 +139,7 @@ router.put('/update/user/image', (req, res) => {
 
             {
                 where: {
-                id: req.body.id
+                    id: req.body.id
                 }
             }).then(() => res.status(201).send("Usuário alterado"))
         .catch(error => res.status(400).send(error))
