@@ -1,6 +1,6 @@
 module.exports = {
   username: 'root',
-  password: 'senai',
+  password: 'root',
   database: 'dbeventos',
   host: 'localhost',
   dialect: 'mysql',
