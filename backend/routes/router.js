@@ -1,7 +1,12 @@
 const router = require('express')()
 const multer = require('multer')
 const storage = require('../config/multer')
-const upload = multer({ storage: storage })
+const upload = multer({
+    storage: storage
+})
+const cloudinary = require('cloudinary').v2
+// const cloudConfig = require('../config/cloudinary')
+const uniqueFilename = new Date().toISOString()
 const sharp = require('sharp');
 // var bcrypt = require('bcrypt-nodejs');
 
@@ -26,48 +31,46 @@ const {
 
 
 router.post('/register/user', (req, res) => {
-    
+
     User.findOrCreate({
-        where: {
-            name: req.body.name,
-            email: req.body.email,
-            password: req.body.password,
-        }
+            where: {
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+            }
 
-    })
-    .then(([User, created]) => {
-
-
-        console.log(User.get({
-            plain: true
-          }))
-          console.log(User.dataValues)
-
-        if(created == true){
-            console.log("usuário criado")
-            res.send("user_created")
-        }
-
-        else if(User.dataValues.email == req.body.email){
-            console.log("email já cadastrado")
-            res.send("email_alredy_exist")
-        }
-            
-            // else{
-            //     console.log(" usuario cadastrado ")
-            // }
+        })
+        .then(([User, created]) => {
 
 
-           
-        // if(User.dataValues){}
-        
-        // console.log(created.dataValues)
+                console.log(User.get({
+                    plain: true
+                }))
+                console.log(User.dataValues)
 
-}
+                if (created == true) {
+                    console.log("usuário criado")
+                    res.send("user_created")
+                } else if (User.dataValues.email == req.body.email) {
+                    console.log("email já cadastrado")
+                    res.send("email_alredy_exist")
+                }
 
-// , res.send()
+                // else{
+                //     console.log(" usuario cadastrado ")
+                // }
 
-)
+
+
+                // if(User.dataValues){}
+
+                // console.log(created.dataValues)
+
+            }
+
+            // , res.send()
+
+        )
 })
 
 
@@ -95,26 +98,27 @@ router.get('/user/:idc', (req, res) => {
 
 router.post('/login/user', (req, res) => {
     User.findOne({
-        where: {
-            email: req.body.email
-        }
-    }).then((User) => {console.log(User.dataValues);
-        console.log(req.body.password);
-
-        if(req.body.email){
-
-            if(req.body.password == User.dataValues.password ){
-                res.send("user_valid")
-            }else{
-                res.send("user_not_valid")
+            where: {
+                email: req.body.email
             }
-        }else{
-            res.send("email_not_found")
-        }
-    
-        
-    })
-    .catch(error => res.send(error))
+        }).then((User) => {
+            console.log(User.dataValues);
+            console.log(req.body.password);
+
+            if (req.body.email) {
+
+                if (req.body.password == User.dataValues.password) {
+                    res.send("user_valid")
+                } else {
+                    res.send("user_not_valid")
+                }
+            } else {
+                res.send("email_not_found")
+            }
+
+
+        })
+        .catch(error => res.send(error))
 })
 
 // ============================================================
@@ -122,13 +126,13 @@ router.post('/login/user', (req, res) => {
 
 router.put('/update/user', (req, res) => {
     User.update({
-            email: req.body.email,
-            password: req.body.password
-        },
+                email: req.body.email,
+                password: req.body.password
+            },
 
             {
                 where: {
-                id: req.body.id
+                    id: req.body.id
                 }
             }).then(() => res.status(201).send("Usuário alterado"))
         .catch(error => res.status(400).send(error))
@@ -138,24 +142,41 @@ router.put('/update/user', (req, res) => {
 
 router.put('/update/user/image', upload.single('file'), (req, res) => {
 
-    // const host = req.host;
-    // const filePath = req.protocol + "://" + host + '/' + req.file.path;
+    // SEND FILE TO CLOUDINARY
 
-    // eslint-disable-next-line no-console
-    console.log(`${req.file}
-    ${req.file.filename}
-    ${req.file.path}`)
+    cloudinary.config({
+        cloud_name: 'dvzbogxib',
+        api_key: '564392447589239',
+        api_secret: 'lBY9lvTcbNawz-AyvEg9WMW_ga8'
+    })
 
-    User.update({
-            picture: req.file.filename,
-        },
+    cloudinary.uploader.upload(req.file.path, {public_id: `users/${uniqueFilename}`},
+
+        function (err, image) {
+            if (err) res.send(err)
+            // eslint-disable-next-line no-console
+            console.log('file uploaded to Cloudinary')
+            // remove file from server
+            const fs = require('fs')
+            fs.unlinkSync(req.file.path)
+            // return image details
+            res.json(image)
+            // eslint-disable-next-line no-console
+            console.log(image.url)
+
+            User.update({
+                picture: image.url,
+            },
 
             {
                 where: {
-                id: req.body.id
+                    id: req.body.id
                 }
-            }).then(() => res.status(201).send("Usuário alterado"))
-        .catch(error => res.status(400).send(error))
+            })
+        }
+    )
+    
+   
 })
 
 
@@ -205,10 +226,10 @@ router.get('/event/:id', (req, res) => {
 
 router.get('/eventall', (req, res) => {
     Event.findAll({
-        order: [
-            ['id', 'DESC'],
-        ],
-    })
+            order: [
+                ['id', 'DESC'],
+            ],
+        })
         .then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
 })
@@ -217,9 +238,11 @@ router.get('/eventall', (req, res) => {
 
 
 router.get('/eventall/:id', (req, res) => {
-    Event.findAll({where: {
-        UserId: req.params.id
-      }})
+    Event.findAll({
+            where: {
+                UserId: req.params.id
+            }
+        })
         .then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
 })
@@ -233,12 +256,11 @@ router.put('/update/event', (req, res) => {
             local: req.body.local,
             picture: req.body.newFile,
             edate: req.body.edate
-        },
-            {
+        }, {
             where: {
                 id: req.body.id
-            }}
-        ).then(Event => res.status(201).send(Event))
+            }
+        }).then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
 
 
