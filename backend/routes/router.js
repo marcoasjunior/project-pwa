@@ -18,6 +18,73 @@ const {
 } = require('../models')
 
 
+
+
+router.put('/update/user/image', (req, res) => {
+    User.update({
+            picture: req.body.file,
+        },
+
+
+            {
+                where: {
+                    id: req.body.id
+                }
+            }).then(() => {
+                let fileContent = base64_encode(req.file.filename);
+                
+                router.fileExample.create(
+                    {fileName:req.file.originalname,fileExt:req.file.mimetype,file:fileContent }
+                  )
+
+            },res.status(201).send("Usuário alterado"))
+        .catch(error => res.status(400).send(error))
+})
+
+
+
+router.post('/file', upload.single('file'),(req, res) => {
+
+    evet.create({
+
+    })
+
+    //res.json(req.file);
+      if(req.file){
+      //Reading the file saved in src/temp folder
+      let fileContent = base64_encode(req.file.filename);//sendind filename which Multer gives
+      //Calling db(sequelize connector) and the entity (fileExample) to create the new data
+      db.fileExample.create(
+        {fileName:req.file.originalname,fileExt:req.file.mimetype,file:fileContent }
+      ).then(function() {
+          console.log('Success!');
+      }, function (error) {
+        console.log(error);res.sendStatus(500);	 
+      });//
+    }
+  });
+
+
+// var fs = require('fs');
+
+// //Convertendo binario em arquivo
+// function base64_decode(base64str,fileName){
+//   var bitmap = new Buffer (base64str, 'base64');
+//   fs.writeFileSync('src/temp/'+fileName+'',bitmap, 'binary', function (err){
+//     if(err){
+//       console.log('Conversao com erro');
+//     }
+//   } );
+// }
+
+// //Convertendo arquivo em binário
+// function base64_encode(fileName){
+//   var bitmap = fs.readFileSync('src/temp/'+fileName+'');
+//   return new Buffer (bitmap).toString('base64');
+// }
+
+
+
 // registrar usuário
 
 
