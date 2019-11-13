@@ -18,6 +18,11 @@
                         v-model="newData.local" required>
                 </div>
                 <div class="form-group">
+                    <label for="InputLocal">Novo endereço</label>
+                    <input type="text" class="form-control" id="InputAdress1" aria-describedby="emailHelp"
+                        v-model="newData.address" required>
+                </div>
+                <div class="form-group">
                     <label for="InputPassword">Nova data</label>
                     <input type="text" class="form-control" id="InputDate1" v-model="newData.edate" required>
                 </div>
@@ -41,13 +46,14 @@ export default {
         return {
             errors: [],
             url: null,
+            putResponse: [],
             
             newData: {
                 name: null,
                 local: null,
                 edate: null,
-                picture: null,
-                id: this.post.id
+                address: null,
+                file: null
 
             }
 
@@ -58,11 +64,19 @@ export default {
     onFileChange(e) {
             const file = e.target.files[0];
             this.url = URL.createObjectURL(file);
-            this.newData.picture = file
+            this.newData.file = file
         },
 
 
         sendForm() {
+            const formData = new FormData()
+            formData.append('file', this.newData.file)
+            formData.append('name', this.newData.name)
+            formData.append('local', this.newData.local)
+            formData.append('edate', this.newData.edate)
+            formData.append('address', this.newData.address)
+            formData.append('id', this.post.id)
+            this.putResponse = formData
 
             const config = {
                 header: {
@@ -71,16 +85,18 @@ export default {
             }
 
             axios
-                .put('http://localhost:3000/api/update/event', this.newData, config)
+                .put('http://localhost:3000/api/update/event', formData, config)
                 .then(response => this.putResponse = response)
                 .catch(e => {
                     this.errors.push(e)
                 })
             this.$emit('modalOff')
 
+        }
+
         },
 
-    }
+    
     }
 
 </script>
@@ -90,7 +106,7 @@ export default {
   margin-top: 1%;
   margin-left: auto;
   margin-right: auto;
-  width: 90%
+  width: 90%;
 }
 svg {
   width: 20px;

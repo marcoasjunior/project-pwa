@@ -27,6 +27,7 @@ const {
 } = require('../models')
 
 
+
 // registrar usuário
 
 
@@ -250,18 +251,48 @@ router.get('/eventall/:id', (req, res) => {
 
 // update evento - precisa fazer algumas validações
 
-router.put('/update/event', (req, res) => {
-    Event.update({
-            name: req.body.name,
-            local: req.body.local,
-            picture: req.body.newFile,
-            edate: req.body.edate
-        }, {
-            where: {
-                id: req.body.id
-            }
-        }).then(Event => res.status(201).send(Event))
-        .catch(error => res.status(400).send(error))
+router.put('/update/event', upload.single('file'), (req, res) => {
+    
+    // SEND FILE TO CLOUDINARY
+
+    cloudinary.config({
+        cloud_name: 'dvzbogxib',
+        api_key: '564392447589239',
+        api_secret: 'lBY9lvTcbNawz-AyvEg9WMW_ga8'
+    })
+
+    cloudinary.uploader.upload(req.file.path, {public_id: `users/${uniqueFilename}`},
+
+        function (err, image) {
+            if (err) res.send(err)
+            // eslint-disable-next-line no-console
+            console.log('file uploaded to Cloudinary')
+            // remove file from server
+            const fs = require('fs')
+            fs.unlinkSync(req.file.path)
+            // return image details
+            res.json(image)
+            // eslint-disable-next-line no-console
+            console.log(image.url)
+
+            Event.update({
+                name: req.body.name,
+                local: req.body.local,
+                address: req.body.address,
+                picture: image.url,
+                edate: req.body.edate
+            }, {
+                where: {
+                    id: req.body.id
+                }
+            })
+        }
+    )
+    
+   
+
+    
+    
 
 
 })

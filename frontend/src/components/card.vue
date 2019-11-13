@@ -1,9 +1,8 @@
 <template>
 
   <b-container>
-    <b-img left src='https://image.insider.com/597b5236f8d1e641008b4683?width=1300&format=jpeg&auto=webp' class="rounded-circle avatar" />
-    
-    <b-card :title="post.name" 
+    <b-card 
+      :title="post.name" 
       :img-src="post.picture" 
       header-tag="header" 
       footer-tag="footer" 
@@ -32,7 +31,14 @@
       </b-list-group>
 
       <template v-slot:footer>
-        <em>Postado {{post.createdAt | formatCreateDate}}</em>
+        <div>       
+        <b-container class="row">
+          <b-row align-v="center">
+            <b-col><b-img left :src='avatar' class="rounded-circle avatar" /></b-col>
+            <b-col><em>Postado {{post.createdAt | formatCreateDate}}</em></b-col>
+          </b-row>
+        </b-container>
+        </div>
       </template>
 
       </b-card>
@@ -44,13 +50,17 @@
 <script>
 
 import {moment} from '../main'
+import {axios} from '../main'
 
 export default {
     props: {
         post: Object
       },
       data() {
-        return {}
+        return {
+          avatar: '',
+          errors: []
+        }
 
       },
 
@@ -69,10 +79,23 @@ export default {
               }
         }
         
-      }
+      },
 
+    mounted() {
 
-    }
+  // requisição inicial para pegar o avatar 
+
+    axios
+      .get(`http://localhost:3000/api/user/${this.post.id}`)
+      .then(response => {
+        this.avatar = response.data
+      })
+      .catch(e => {
+      this.errors.push(e)
+
+    })
+
+    }}
 
 </script>
 
@@ -82,7 +105,7 @@ export default {
   margin-top: 3%;
   margin-left: auto;
   margin-right: auto;
-  width: 90%
+  width: 90%;
 }
 svg {
   width: 20px;
@@ -92,13 +115,6 @@ svg {
 .avatar {
   width: 40px;
   height: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px
-
-
 }
-
-
 
 </style>
