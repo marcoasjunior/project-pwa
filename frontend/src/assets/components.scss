@@ -1,3 +1,5 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
 @import './componentsSCSS/cpmButton.scss';
 @import './componentsSCSS/cpmInput.scss';
 @import './componentsSCSS/cpmHome.scss';
@@ -9,8 +11,6 @@
 @import './componentsSCSS/cpmOptions.scss';
 @import './componentsSCSS/cpmCard.scss';
 
-@import 'node_modules/bootstrap/scss/bootstrap';
-@import 'node_modules/bootstrap-vue/src/index.scss';
 
 .wp-card{
   display: flex;
@@ -81,6 +81,7 @@ padding: 0;
 }
 
 .ac{
+  display: block;
   margin-left: auto !important;
   margin-right: auto !important;
 }

@@ -75,10 +75,11 @@ export default {
           },
 
           checkUser(response){
-
-            if(response.data == 'user_valid'){
+            
+            if(response.data.email == this.data.email){
                // eslint-disable-next-line no-console
                  console.log('deu boa')
+                 sessionStorage.id = this.data.id;
                  this.$router.push('/SucessLogin')
 
                }else if(response.data == 'user_not_valid'){

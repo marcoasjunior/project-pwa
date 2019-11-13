@@ -108,7 +108,7 @@ router.post('/login/user', (req, res) => {
             if (req.body.email) {
 
                 if (req.body.password == User.dataValues.password) {
-                    res.send("user_valid")
+                    res.send(User).send("user_valid")
                 } else {
                     res.send("user_not_valid")
                 }
