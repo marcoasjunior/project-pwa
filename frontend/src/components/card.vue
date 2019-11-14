@@ -86,7 +86,7 @@ export default {
   // requisição inicial para pegar o avatar 
 
     axios
-      .get(`http://localhost:3000/api/user/${this.post.id}`)
+      .get(`http://localhost:3000/api/avatar/${this.post.id}`)
       .then(response => {
         this.avatar = response.data
       })

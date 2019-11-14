@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const router = require('express')()
 const multer = require('multer')
 const storage = require('../config/multer')
@@ -96,6 +97,25 @@ router.get('/user/:idc', (req, res) => {
 })
 // ============================================================
 
+// pegar avatar do usuario
+
+
+router.get('/avatar/:idc', (req, res) => {
+    Event.findAll({
+        attributes: ['UserId'],
+        where: {
+            id: req.params.idc
+        },
+        include: [{
+            model: User,
+            required: true,
+            
+        }]
+    }).then(User => res.json(User[0].User.picture))
+});
+
+// ============================================================
+
 
 router.post('/login/user', (req, res) => {
     User.findOne({
@@ -151,7 +171,9 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
         api_secret: 'lBY9lvTcbNawz-AyvEg9WMW_ga8'
     })
 
-    cloudinary.uploader.upload(req.file.path, {public_id: `users/${uniqueFilename}`},
+    cloudinary.uploader.upload(req.file.path, {
+            public_id: `users/${uniqueFilename}`
+        },
 
         function (err, image) {
             if (err) res.send(err)
@@ -166,18 +188,18 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
             console.log(image.url)
 
             User.update({
-                picture: image.url,
-            },
+                    picture: image.url,
+                },
 
-            {
-                where: {
-                    id: req.body.id
-                }
-            })
+                {
+                    where: {
+                        id: req.body.id
+                    }
+                })
         }
     )
-    
-   
+
+
 })
 
 
@@ -252,7 +274,7 @@ router.get('/eventall/:id', (req, res) => {
 // update evento - precisa fazer algumas validações
 
 router.put('/update/event', upload.single('file'), (req, res) => {
-    
+
     // SEND FILE TO CLOUDINARY
 
     cloudinary.config({
@@ -261,7 +283,9 @@ router.put('/update/event', upload.single('file'), (req, res) => {
         api_secret: 'lBY9lvTcbNawz-AyvEg9WMW_ga8'
     })
 
-    cloudinary.uploader.upload(req.file.path, {public_id: `users/${uniqueFilename}`},
+    cloudinary.uploader.upload(req.file.path, {
+            public_id: `users/${uniqueFilename}`
+        },
 
         function (err, image) {
             if (err) res.send(err)
@@ -288,11 +312,11 @@ router.put('/update/event', upload.single('file'), (req, res) => {
             })
         }
     )
-    
-   
 
-    
-    
+
+
+
+
 
 
 })
