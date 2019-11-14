@@ -32,6 +32,7 @@
     <div class="box-info">
         <p>Adicione o local do evento:</p>
     <span> {{ datas }}</span>
+    <span> {{ image.name }}</span>
 
         <input type="text" class="input mt-2" placeholder="nome do Evento:" v-model="datas.name">
         <input type="text" class="input mt-2" placeholder="Local do Evento:" v-model="datas.local">
@@ -70,7 +71,7 @@ export default {
           
 
         },
-        data: () => ({
+        data: () => ({ 
 
           batata:'',
           data:'',

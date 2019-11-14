@@ -21,7 +21,7 @@ module.exports = {
       },
       picture: {
         allowNull: false,
-        type: DataTypes.BLOB,
+        type: DataTypes.STRING,
       },
       edate: {
         allowNull: false,
