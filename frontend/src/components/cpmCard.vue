@@ -75,7 +75,7 @@ export default {
           batata:'',
           data:'',
           src:'',
-          datas:{name:'',placeName:'',date:'',adress:'',userName:''},
+          datas:{name:'',placeName:'',date:'',adress:'',userName:'', image:''},
 
 
         }),
@@ -83,59 +83,20 @@ export default {
           loadTag(){
             // console.log(this.data)
           },
+          openFile(evento) {
+            var input = evento.target;
 
+              var reader = new FileReader();
+              reader.onload = function(){
+                var dataURL = reader.result;
+                this.batata = dataURL;
 
-          // var openFile = function(event) {
-          //     var input = event.target;
+          // // eslint-disable-next-line no-console
+          // console.log(this.batata);
 
-          //     var reader = new FileReader();
-          //     reader.onload = function(){
-          //       var dataURL = reader.result;
-          //       var output = document.getElementById('output');
-          //       output.src = dataURL;
-          //     };
-          //     reader.readAsDataURL(input.files[0]);
-          //   };
-
-
-          // render(evento){
-
-
-          //       //  let file = evento.target.files[0];
-          //       // let input = evento.target
-
-          //       //  if(file){
-          //       //   alert("porra")
-          //       //   let reader = new FileReader();
-          //       // // eslint-disable-next-line no-console
-          //       // console.log(reader);
-
-          //       // render.onload = function(){
-          //       // // eslint-disable-next-line no-console
-          //       // console.log(reader);
-          //       // var dataURL = reader.result;
-          //       // this.batata = dataURL;
-
-          //       // }
-
-
-          //                        //  }
-          // },
-
-                openFile(evento) {
-                  var input = evento.target;
-
-                    var reader = new FileReader();
-                    reader.onload = function(){
-                      var dataURL = reader.result;
-                      this.batata = dataURL;
-
-                // eslint-disable-next-line no-console
-                console.log(this.batata);
-
-                    };
-                    reader.readAsDataURL(input.files[0]);
-                },
+              };
+              reader.readAsDataURL(input.files[0]);
+          },
 
 
 
@@ -155,6 +116,10 @@ export default {
 
 
           createEvent(){
+
+          // eslint-disable-next-line no-console
+          console.log(this.batata)
+
             axios.post('http://localhost:3000/api/register/event' ,this.data, {
             name: this.datas.name,
             placeName: this.datas.local,
@@ -162,6 +127,8 @@ export default {
             adress: this.datas.adress,
             userName: this.datas.userName,
             updated: this.datas.updated,
+            image: this.batata
+
             
             }).then(response => ( this.checkUser(response) ))
           }
