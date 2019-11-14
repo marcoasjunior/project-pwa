@@ -8,7 +8,6 @@ const upload = multer({
 const cloudinary = require('cloudinary').v2
 // const cloudConfig = require('../config/cloudinary')
 const uniqueFilename = new Date().toISOString()
-const sharp = require('sharp');
 // var bcrypt = require('bcrypt-nodejs');
 
 const {
@@ -27,10 +26,7 @@ const {
     Preference
 } = require('../models')
 
-
-
 // registrar usuário
-
 
 router.post('/register/user', (req, res) => {
 
