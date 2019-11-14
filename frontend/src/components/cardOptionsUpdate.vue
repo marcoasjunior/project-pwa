@@ -34,6 +34,8 @@ export default {
 
         onFileChange(e) {
                 const file = e.target.files[0];
+                // eslint-disable-next-line no-console
+                console.log();
                 this.url = URL.createObjectURL(file);
                 this.newFile  = file
                 

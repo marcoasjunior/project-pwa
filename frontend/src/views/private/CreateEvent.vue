@@ -3,7 +3,8 @@
 
       <!-- <button type="upload" class="upload-image-event">Carrege a imagem</button> -->
 
-<card></card>
+<!-- <card></card> -->
+<marcoPolo></marcoPolo>
 
 
 
@@ -28,7 +29,8 @@ import axios from 'axios';
 
 
 import tag from '../../components/cpmTag.vue'
-import card from '../../components/cpmCard.vue'
+// import card from '../../components/cpmCard.vue'
+import marcoPolo from '../../components/cpmCreateEvent.vue'
 
 
 
@@ -37,7 +39,8 @@ export default {
   ,components: {
     // inputs,
     tag,
-    card
+    // card
+    marcoPolo
   },
 
   created() {

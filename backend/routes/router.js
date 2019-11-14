@@ -367,4 +367,62 @@ router.get('/tags/preferences', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
+
+
+router.post('/create/event', upload.single('file'), (req, res) => {
+
+    // SEND FILE TO CLOUDINARY
+
+    cloudinary.config({
+        cloud_name: 'dvzbogxib',
+        api_key: '564392447589239',
+        api_secret: 'lBY9lvTcbNawz-AyvEg9WMW_ga8'
+    })
+
+    cloudinary.uploader.upload(req.file.path, {
+            public_id: `users/${uniqueFilename}`
+        },
+
+        function (err, image) {
+            if (err) res.send(err)
+            // eslint-disable-next-line no-console
+            console.log('file uploaded to Cloudinary')
+            // remove file from server
+            const fs = require('fs')
+            fs.unlinkSync(req.file.path)
+            // return image details
+            res.json(image)
+            // eslint-disable-next-line no-console
+            console.log(image.url)
+
+            Event.create({
+                    name: req.body.name,
+                    local: req.body.local,
+                    edate: req.body.edate,
+                    address: req.body.address,
+                    UserId: req.body.UserId,
+                    picture: image.url,
+                },
+
+                // {
+                //     where: {
+                //         id: req.body.id
+                //     }
+                // }
+                
+                )
+        }
+    )
+
+
+})
+
+
+
+
+
+
+
+
+
 module.exports = router

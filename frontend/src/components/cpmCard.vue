@@ -104,6 +104,8 @@ export default {
               renderImage(event) {
                 this.batata = "";
                 var input = event.target;
+                  // eslint-disable-next-line no-console
+                  console.log(input);
               
                 let action = input.files[0]
                 
@@ -123,9 +125,11 @@ export default {
 
 
           createEvent(){
-                // eslint-disable-next-line no-console
-                console.log(this.batata);
                 const imageData = new FormData();
+
+                // eslint-disable-next-line no-console
+                console.log(this.batata)
+
                 imageData.append('file', this.batata);
                 imageData.append('id', sessionStorage.getItem('id'));
 
@@ -137,7 +141,7 @@ export default {
 
 
               axios
-                .put('http://localhost:3000/api/update/event', imageData, config)
+                .post('http://localhost:3000/api/create/event', imageData, config)
                 .then(response => 
                     // eslint-disable-next-line no-console
                   console.log(response)
