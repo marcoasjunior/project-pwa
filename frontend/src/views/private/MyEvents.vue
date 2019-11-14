@@ -66,7 +66,7 @@ export default {
   // requisição inicial para pegar os eventos 
 
     axios
-      .get('http://localhost:3000/api/eventall/1')
+      .get(`http://localhost:3000/api/eventall/${sessionStorage.getItem('id')}`)
       .then(response => this.posts = response.data)
       .catch(e => {
       this.errors.push(e)

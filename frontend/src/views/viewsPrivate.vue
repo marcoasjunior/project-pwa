@@ -80,20 +80,20 @@ a:hover {
 
 @keyframes going {
   from {
-    transform: translateX(0);
+    transform: translateY(0);
   }
   to {
-    transform: translateX(-30px);
+    transform: translateY(+30px);
     opacity: 0;
   }
 }
 @keyframes coming {
   from {
-    transform: translateX(-30px);
+    transform: translateY(-30px);
     opacity: 0;
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }

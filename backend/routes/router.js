@@ -8,7 +8,6 @@ const upload = multer({
 const cloudinary = require('cloudinary').v2
 // const cloudConfig = require('../config/cloudinary')
 const uniqueFilename = new Date().toISOString()
-const sharp = require('sharp');
 // var bcrypt = require('bcrypt-nodejs');
 
 const {
@@ -27,10 +26,7 @@ const {
     Preference
 } = require('../models')
 
-
-
 // registrar usuário
-
 
 router.post('/register/user', (req, res) => {
 
@@ -271,7 +267,7 @@ router.get('/eventall/:id', (req, res) => {
 })
 
 
-// update evento - precisa fazer algumas validações
+// update evento 
 
 router.put('/update/event', upload.single('file'), (req, res) => {
 
@@ -312,13 +308,6 @@ router.put('/update/event', upload.single('file'), (req, res) => {
             })
         }
     )
-
-
-
-
-
-
-
 })
 
 // pegar eventos com preferencias
