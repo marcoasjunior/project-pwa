@@ -269,7 +269,7 @@ router.get('/eventall/:id', (req, res) => {
 
 // update evento 
 
-router.put('/update/event', upload.single('file'), (req, res) => {
+router.put('/updwwate/event', upload.single('file'), (req, res) => {
 
     // SEND FILE TO CLOUDINARY
 
