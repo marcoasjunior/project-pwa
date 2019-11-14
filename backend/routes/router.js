@@ -267,7 +267,7 @@ router.get('/eventall/:id', (req, res) => {
 })
 
 
-// update evento - precisa fazer algumas validações
+// update evento 
 
 router.put('/update/event', upload.single('file'), (req, res) => {
 
@@ -308,13 +308,6 @@ router.put('/update/event', upload.single('file'), (req, res) => {
             })
         }
     )
-
-
-
-
-
-
-
 })
 
 // pegar eventos com preferencias
