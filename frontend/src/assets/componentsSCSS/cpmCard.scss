@@ -8,9 +8,9 @@
         display: block;
     }
     
-    .upload[type="file"]{
-        display: none;
-    }
+    // .upload[type="file"]{
+    //     opacity: 0;
+    // }
     
     .box-info{
         background-color: rgb(223, 223, 223);
@@ -24,8 +24,8 @@
         border-radius: 0px 0px 10px 10px;
         
         @media screen and (max-width: 1990px) {
-            max-width: 100%;
-            width: 100%;
+            max-width: 50%;
+            width: 50%;
         }
     }
 }
@@ -36,14 +36,14 @@
     max-width: 100%;
     min-height: 150px;
     min-height: 160px;
-    width: 100%;
+    width: 50%;
     background-color: rgb(240, 240, 240);
     // border:none;
   
     @media screen and (max-width: 500px) {
       max-width: 100%;
       width: 100%;
-      min-height: 160px;
+      min-height: 200px;
     }
   }
 
@@ -52,4 +52,40 @@
       color: #a1a1a1;
   }
 
-  
+  .upload{
+    cursor: pointer;
+  }
+
+  .container-upload{
+      overflow: hidden;
+      position: relative;
+    //   background-color: red;
+      width: 160px;
+      height: 100px;
+      input,svg{
+        position: absolute;
+        left: 0;
+        top:0;
+        height: 100%;
+        width: 100%;
+      }
+      input{
+        //   background-color: royalblue;
+          z-index: 11;
+          opacity: 0;
+      }
+      svg{
+        // background-color: black;
+        z-index: 10;
+    }
+}
+
+
+.image-preview{
+    position: absolute;
+    z-index: 11;
+    left: 0;
+    max-width: 100%;
+    //   width: 500px;
+    //   height:600px;
+  }

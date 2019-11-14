@@ -37,7 +37,9 @@ export default {
 
     axios
       .get('http://localhost:3000/api/eventall')
-      .then(response => this.posts = response.data)
+      .then(response => {
+        this.posts = response.data
+      })
       .catch(e => {
       this.errors.push(e)
       this.show = true

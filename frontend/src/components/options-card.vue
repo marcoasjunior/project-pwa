@@ -38,7 +38,7 @@ export default {
       newData: {
         email: '',
         password: '',
-        id: 1
+        id: sessionStorage.getItem('id')
       }
     }
   },
@@ -68,7 +68,7 @@ export default {
     // requisição inicial para pegar o usuario
 
     axios
-      .get('http://localhost:3000/api/user/1')
+      .get(`http://localhost:3000/api/user/${sessionStorage.getItem('id')}`)
       .then(response => this.info = response.data)
       .catch(e => {
         this.errors.push(e)

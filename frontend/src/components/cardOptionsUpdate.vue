@@ -44,7 +44,7 @@ export default {
         sendForm() {
             const formData = new FormData()
             formData.append('file', this.newFile)
-            formData.append('id', 1)
+            formData.append('id', sessionStorage.getItem('id'))
             this.putResponse = formData
 
             const config = {
