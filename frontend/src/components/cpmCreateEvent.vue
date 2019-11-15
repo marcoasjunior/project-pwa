@@ -8,18 +8,17 @@
         <div class="card-body">
             <form @submit="sendForm">
 
-
-
-
                     <b-form-input class="mt-5 mb-3" v-model="data.name" required placeholder="Nome do Evento"></b-form-input>
 
-                    <b-form-input class="mt-2 mb-3" v-model="data.local" required placeholder="local do Evento"></b-form-input>
+                    <b-form-input class="mt-2 mb-3" v-model="data.local" required placeholder="Local do Evento"></b-form-input>
                     
-                    <b-form-input class="mt-2 mb-3" v-model="data.address" required placeholder="endereço do Evento"></b-form-input>
+                    <b-form-input class="mt-2 mb-3" v-model="query" required placeholder="Endereço"></b-form-input>
                     
-                    <b-form-input type="date" class="mt-2 mb-3" v-model="data.edate" required placeholder="data do Evento"></b-form-input>
+                    <cardAddress @address='query = $event' :query='query'> </cardAddress>
+                    
+                    <b-form-input type="date" class="mt-2 mb-3" v-model="data.edate" required></b-form-input>
 
-                <button type="submit" class="btn btn-primary">Alterar Dados</button>
+                <button type="submit" class="btn btn-primary">Criar Evento</button>
 
             </form>
         </div>
@@ -30,18 +29,17 @@
 import {
     axios
 } from '../main'
+import cardAddress from './cardAddress.vue'
 
 export default {
 
-    props: {
-        post: Object
-    },
     data() {
         return {
             errors: [],
             url: null,
             putResponse: [],
-            
+            query: "",
+
             data: {
                 name: '',
                 local: '',
@@ -49,17 +47,22 @@ export default {
                 address: '',
                 file: '',
             }
-
         }
     },
+
+    components: {
+        cardAddress
+    },
+
     methods: {
 
-    onFileChange(e) {
+    
+
+        onFileChange(e) {
             const file = e.target.files[0];
             this.url = URL.createObjectURL(file);
             this.data.file = file
         },
-
 
         sendForm() {
             const formData = new FormData()
@@ -86,10 +89,10 @@ export default {
 
         }
 
-        },
+    },
 
-    
-    }
+
+}
 
 </script>
 

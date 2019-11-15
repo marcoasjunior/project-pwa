@@ -1,27 +1,22 @@
 <template>
   <div>
 
-      <!-- <button type="upload" class="upload-image-event">Carrege a imagem</button> -->
-
-<!-- <card></card> -->
-<marcoPolo></marcoPolo>
 
 
+    <marcoPolo></marcoPolo>
 
-        <!-- <input type="file" class="upload" required capture accept="image/*,.pdf">
-        <span class="ac upload-image-event" for="file">asnda</span> -->
+    <div class="col-6 mt-7">
+      <p>Adicionar tag:</p>
+    </div>
 
-      <div class="col-6 mt-7">
-        <p>Adicionar tag:</p>
-      </div>
-        
-        <div class="container box-info box-tags">
-          <tag></tag>
-        </div>
+    <div class="container box-info box-tags">
+      <tag></tag>
+    </div>
 
 
 
   </div>
+
 </template>
 
 <script>
@@ -29,7 +24,7 @@ import axios from 'axios';
 
 
 import tag from '../../components/cpmTag.vue'
-// import card from '../../components/cpmCard.vue'
+// import cardAddress from '../../components/cardAddress.vue'
 import marcoPolo from '../../components/cpmCreateEvent.vue'
 
 
@@ -39,7 +34,7 @@ export default {
   ,components: {
     // inputs,
     tag,
-    // card
+  //  cardAddress,
     marcoPolo
   },
 
@@ -56,15 +51,7 @@ export default {
           axios.get('http://localhost:3000/api/tags/preferences')
           .then(response => this.data = response.data);
 
-        }
-
-          
-
-            // axios.get('http://localhost:3000/api/list/user')
-            //   .then(response => this.info = response.data)
-            //   .catch(e => {this.datas.push(e)})
-            //   console.log(response.data)
-      ,
+        },
         methods: {
 
         },
