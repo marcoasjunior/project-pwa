@@ -46,7 +46,7 @@ export default {
     methods: {
 
         completeAddress() {
-            this.$emit('address', `${this.street}, ${this.complement}, ${this.district}, ${this.postcode}, ${this.country}`)
+            this.$emit('address', `${this.street}, ${this.complement}, ${this.district}, ${this.city}, ${this.postcode}, ${this.country}`)
         }
         
     },
