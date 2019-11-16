@@ -8,7 +8,7 @@
         display: block;
     }
     
-    // .upload[type="file"]{
+    //[type="file"]{
     //     opacity: 0;
     // }
     
@@ -49,7 +49,8 @@
 
   .upload-icon{
       cursor: pointer;
-      width: 50px;
+      width: 200px !important;
+      height: 100px !important;
       color: #a1a1a1;
   }
 
@@ -63,6 +64,7 @@
     //   background-color: red;
       width: 160px;
       height: 100px;
+
       input,svg{
         position: absolute;
         left: 0;

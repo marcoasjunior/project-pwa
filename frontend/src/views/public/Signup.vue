@@ -10,7 +10,12 @@
       <!-- <span>{{ data }} </span> -->
     </div>
 
-    <input type="name" class="input mt-5" placeholder="nome" v-model="data.name" @keyup="callValidation()">
+    <div class="upload-image-perfeil">
+
+    </div>
+
+
+    <b-form-input class="mt-5 mb-3 input-bv ac" v-model="data.name" required placeholder="Nome" @keyup="callValidation()"></b-form-input>
     <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
 
           <div v-if="warningName">
@@ -25,7 +30,7 @@
                  
         </div>
 
-    <input type="email" class="input mt-5" placeholder="e-mail" v-model="data.email" @keyup="callValidation()">
+      <b-form-input class="mt-5 mb-3 input-bv ac" v-model="data.email" required placeholder="e-mail" @keyup="callValidation()"></b-form-input>
         <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
             
             <div v-if="warning">
@@ -38,7 +43,8 @@
 
             </div>
         </div>
-    <input type="password" class="input mt-5" placeholder="senha"  v-model="data.password" @keyup="callValidation()">
+
+      <b-form-input type="password" class="mt-5 mb-3 input-bv ac" v-model="data.password" required placeholder="Senha" @keyup="callValidation()"></b-form-input>
         <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
 
           <div v-if="warningPassword">
@@ -52,7 +58,8 @@
           </div>
                  
         </div>
-    <input type="password" class="input mt-5" placeholder="senha"  v-model="data.passwordConfirm" @keyup="callValidation()">
+
+      <b-form-input type="password" class="mt-5 mb-3 input-bv ac" v-model="data.passwordConfirm" required placeholder="Confirmar senha" @keyup="callValidation()"></b-form-input>
         <div class="warningContainer mt-2" :class="'warning_'+ warningShow">
                
                <div v-if="warningPasswordConfirm">

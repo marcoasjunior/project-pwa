@@ -9,8 +9,9 @@
 
     <div class="row wp-cntr-1 wp-center">
 
-      <input type="text" class="input mt-5" placeholder="e-mail" v-model="data.email">
-      <input type="text" class="input mt-5" placeholder="senha" v-model="data.password">
+      <b-form-input class="mt-5 mb-3" v-model="data.email" required placeholder="e-mail"></b-form-input>
+      <b-form-input type="password" class="mt-5 mb-3" v-model="data.password" required placeholder="e-mail"></b-form-input>
+
 
       <div class="col-12 m0">
         <!-- <router-link to="/Feed">  -->
