@@ -1,17 +1,19 @@
 <template>
-  <div class="card shadow rounded">
-
-    <br>
-    <h3 id="emailHelp" class="form-text text-muted">Raio de procura</h3>
-    <input class="" type="range" min="1" max="100" value="25" tabindex="0">
-    <br>
-
+  <div class='card shadow rounded'>
+    <label for="range-1">Raio de procura</label>
+    <b-form-input id="range-1" v-model="value" type="range" min="1" max="50"></b-form-input>
+    <div class="mt-2">Distância: {{ value }}km</div>
   </div>
 </template>
 
 <script>
 export default {
-    name: 'options-search'
+    name: 'options-search',
+ data() {
+      return {
+        value: '10'
+      }
+    }
 }
 </script>
 

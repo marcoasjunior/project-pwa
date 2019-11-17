@@ -3,9 +3,13 @@ module.exports = (sequelize, DataTypes) => {
     
     name: DataTypes.STRING,
     local: DataTypes.STRING,
-    picture: DataTypes.BLOB,
-    edate: DataTypes.DATE,
     address: DataTypes.STRING,
+    latitude: DataTypes.DECIMAL,
+    longitude: DataTypes.DECIMAL,
+    picture: DataTypes.STRING,
+    edate: DataTypes.DATE,
+
+
   }, {
     freezeTableName: true
   });
