@@ -72,18 +72,3 @@ export default {
 }
 
 </script>
-
-<style scoped>
-
-.card {
-  margin-top: 1%;
-  margin-left: auto;
-  margin-right: auto;
-  
-}
-button {
-    margin: 20px
-}
-
-
-</style>
