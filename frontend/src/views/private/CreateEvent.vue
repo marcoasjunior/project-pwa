@@ -1,7 +1,9 @@
 <template>
   <div>
 
-
+    <b-alert :show="dismissCountDown" dismissible fade variant="info" @dismiss-count-down="countDownChanged">
+      Crie um novo evento abaixo
+    </b-alert>
 
     <marcoPolo></marcoPolo>
 
@@ -21,44 +23,46 @@
 
 <script>
 import axios from 'axios';
-
-
 import tag from '../../components/cpmTag.vue'
-// import cardAddress from '../../components/cardAddress.vue'
 import marcoPolo from '../../components/cpmCreateEvent.vue'
 
 
 
 export default {
-  name: 'cadastro' //this is the name of the component,  
-  ,components: {
-    // inputs,
-    tag,
-  //  cardAddress,
-    marcoPolo
-  },
+    name: 'cadastro',
 
-  created() {
-          // this.checkUser();
-        },
-        data: () => ({
-          datas: '',
-          data:{email:'',password:''},
-          info:''
-        }),
-        mounted() {
+    components: {
+      tag,
+      marcoPolo
+    },
 
-          axios.get('http://localhost:3000/api/tags/preferences')
-          .then(response => this.data = response.data);
+    created() {
+      // this.checkUser();
+    },
+    data: () => ({
+      datas: '',
+      data: {
+        email: '',
+        password: ''
+      },
+      info: '',
+      dismissSecs: 8,
+      dismissCountDown: 8,
+      showDismissibleAlert: false
+    }),
+    mounted() {
 
-        },
-        methods: {
+      axios.get('http://localhost:3000/api/tags/preferences')
+        .then(response => this.data = response.data);
 
-        },
-        computed: {
-        
-        },
-        watch: {}
+    },
+    methods: {
+
+    },
+    computed: {
+
+    },
+    watch: {}
 
 }
 </script>
