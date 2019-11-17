@@ -21,7 +21,10 @@ export default {
     return {
       posts: null,
       errors: [],
-      show: false
+      show: false,
+      location:null,
+      gettingLocation: false,
+      errorStr:null
     }
   },
 
@@ -30,6 +33,26 @@ export default {
     fakeCard
   },
 
+   created() {
+    //do we support geolocation
+    if(!("geolocation" in navigator)) {
+      this.errorStr = 'Geolocation is not available.';
+      return;
+    }
+
+    this.gettingLocation = true;
+    // get position
+    navigator.geolocation.getCurrentPosition(pos => {
+      this.gettingLocation = false
+      this.location = pos
+      sessionStorage.latidude = pos.coords.latitude
+      sessionStorage.longitude = pos.coords.longitude
+
+    }, err => {
+      this.gettingLocation = false;
+      this.errorStr = err.message;
+    })
+  },
 
   mounted() {
 
