@@ -4,6 +4,7 @@
     <b-alert :show="dismissCountDown" dismissible fade variant="info" @dismiss-count-down="countDownChanged">
       Clique no evento para modificá-lo
     </b-alert>
+
     <fakeCard v-show="show" />
     <transition-group name="cardPop" mode=””>
       <card @click.native='showModal(post)' v-for="post in posts" :key='post.id' :post='post' />
@@ -13,6 +14,7 @@
         <cardUpdate :post='passProps' @modalOff="hideModal" />
       </div>
     </b-modal>
+
 
   </div>
 </template>
