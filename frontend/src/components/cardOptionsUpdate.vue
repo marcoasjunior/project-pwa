@@ -3,8 +3,19 @@
         <div id="preview">
             <b-img v-show="url" :src="url" fluid />
         </div>
-        
-            <input id='image_uploads' name="avatar" ref="fileInput" type="file" @change="onFileChange($event)" required capture accept="image/*,.pdf">
+
+            <b-form-file
+                v-model="file"
+                :state="Boolean(file)"
+                placeholder="Escolha uma imagem"
+                name='avatar'
+                ref="fileInput"
+                @change="onFileChange($event)"
+                required 
+                capture 
+                accept="image/*,.pdf"
+                ></b-form-file>
+
             <button type="submit" class="btn btn-primary" @click="sendForm">Alterar Dados</button>
        
     </div>
@@ -84,6 +95,5 @@ export default {
 button {
     margin: 20px
 }
-
 
 </style>

@@ -3,8 +3,8 @@
         <div id="preview">
             <b-img v-show="url" :src="url" fluid />
         </div>
-        <input id='image_uploads' ref="fileInput" type="file" @change="onFileChange($event)" required capture
-            accept="image/*,.pdf">
+        <b-form-file v-model="filev" :state="Boolean(filev)" placeholder="Imagem" name='avatar'
+            ref="fileInput" @change="onFileChange($event)" required capture accept="image/*,.pdf"></b-form-file>
         <div class="card-body">
             <form @submit="sendForm">
                 <div class="form-group">
@@ -47,6 +47,7 @@ export default {
             errors: [],
             url: null,
             putResponse: [],
+            filev: null,
             
             newData: {
                 name: null,

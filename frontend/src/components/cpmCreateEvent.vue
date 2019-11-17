@@ -28,6 +28,8 @@
                     
                     <b-form-input type="date" class="mt-2 mb-3" v-model="data.edate" required></b-form-input>
 
+                    <b-form-input type="time" class="mt-2 mb-3" v-model="data.edate" required></b-form-input> 
+
                 <button type="submit" class="btn btn-primary">Criar Evento</button>
 
             </form>
@@ -49,7 +51,6 @@ export default {
             url: null,
             putResponse: [],
             query: "",
-
             data: {
                 name: '',
                 local: '',
