@@ -154,16 +154,16 @@ export default {
         },
           
           
-        sendForm() {
+        sendData() {
             const dataToSend = new FormData()
             dataToSend.append('file', this.data.file)
             /* eslint-disable no-console */
             // console.log(formData)
             dataToSend.append('name', this.data.name)
-            dataToSend.append('local', this.data.email)
-            dataToSend.append('edate', this.data.file)
-            dataToSend.append('address', this.data.address)
-            dataToSend.append('UserId', sessionStorage.getItem('id'))
+            dataToSend.append('email', this.data.email)
+            dataToSend.append('file', this.data.file)
+            dataToSend.append('password', this.data.password)
+            // dataToSend.append('UserId', sessionStorage.getItem('id'))
             this.putResponse = dataToSend
 
             const config = {
@@ -173,11 +173,11 @@ export default {
             }
 
             axios
-                .post('http://localhost:3000/api/create/event', dataToSend, config)
-                .then(response => this.putResponse = response)
-                .catch(e => {
-                    this.errors.push(e)
-                })
+                .post('http://localhost:3000/api/register/user', dataToSend, config)
+                .then(response => this.putResponse = ( this.checkRegister(response) ))
+                // .catch(e => {
+                //     this.errors.push(e)
+                // })
 
         },
 
