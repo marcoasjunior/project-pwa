@@ -101,6 +101,22 @@
     max-width: 100%;
     width: 50%;
 
+
+    @media screen and (max-width: 600px) {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+
+    .card-modal {
+      margin-top: 1%;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
+      width: 100%;
+
     @media screen and (max-width: 600px) {
       margin-left: auto;
       margin-right: auto;
