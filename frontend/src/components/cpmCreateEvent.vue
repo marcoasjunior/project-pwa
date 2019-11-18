@@ -28,7 +28,7 @@
                     
                     <cardAddress @renderMap='renderingMap' @address='query = $event' :query='query'> </cardAddress>
 
-                    <HereMap :coord='coord' />
+                    <HereMap v-if="coord != null" :coord='coord'/>
                     
                     <b-form-input type="date" class="mt-2 mb-3" v-model="data.edate" required></b-form-input>
 
@@ -80,10 +80,11 @@ export default {
             let replace = this.query.replace(/, /g, '%20')
             let replace2 = replace.replace(/ /g, '%20')
 
+
            axios
                 .get(`https://geocoder.api.here.com/6.2/geocode.json?app_id=g4qzn6OUOLYfn2OFO6Z8&app_code=pAi1rwxOkCnBaQHm4CbURg&searchtext=${replace2}`)
                 .then(response => {
-                    this.coord = response
+                    this.coord = response.data.Response.View[0].Result[0].Location.DisplayPosition
                 })
 
 

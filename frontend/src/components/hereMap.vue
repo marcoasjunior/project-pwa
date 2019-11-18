@@ -1,11 +1,10 @@
 <template>
     <div class="here-map">
-        <canvas ref="map" >{{map}}</canvas>
+        <b-img fluid ref="map" :src="map" id="mapContainer"></b-img>
     </div>
 </template>
 
 <script>
-import { axios } from '../main'
 
 export default {
     name: "HereMap",
@@ -15,24 +14,22 @@ export default {
 
     data() {
         return {
-            map: null,
+            map: `https://image.maps.api.here.com/mia/1.6/mapview?app_id=g4qzn6OUOLYfn2OFO6Z8&app_code=pAi1rwxOkCnBaQHm4CbURg&ta=45&pip&w=300&h=400&sb=mk&z=16&t=2&u=200&lat=${this.coord.Latitude}&lon=${this.coord.Longitude}`,
             errors: null
         }
     },
 
-    methods: {
-
-        callMap() {
-            axios
-                .get(`https://image.maps.api.here.com/mia/1.6/mapview?app_id=g4qzn6OUOLYfn2OFO6Z8&app_code=pAi1rwxOkCnBaQHm4CbURg&lat=${this.coord.lat}&lon=${this.coord.lon}&vt=0&z=14`)
-                .then(response => {
-                    this.map = response
-                })
-
-        }
-    }
 }
 
 
 
 </script>
+
+<style scoped>
+
+img {
+    height: 20%;
+}
+
+
+</style>
