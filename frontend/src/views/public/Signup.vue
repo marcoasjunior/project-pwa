@@ -152,6 +152,34 @@ export default {
             this.url = URL.createObjectURL(file);
             this.data.file = file
         },
+          
+          
+        sendForm() {
+            const formData = new FormData()
+            formData.append('file', this.data.file)
+            /* eslint-disable no-console */
+            // console.log(formData)
+            formData.append('name', this.data.name)
+            formData.append('local', this.data.local)
+            formData.append('edate', this.data.edate)
+            formData.append('address', this.data.address)
+            formData.append('UserId', sessionStorage.getItem('id'))
+            this.putResponse = formData
+
+            const config = {
+                header: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+
+            axios
+                .post('http://localhost:3000/api/create/event', formData, config)
+                .then(response => this.putResponse = response)
+                .catch(e => {
+                    this.errors.push(e)
+                })
+
+        },
 
           getInfoInputs(){
             axios.post('http://localhost:3000/api/register/user' ,this.data, {
