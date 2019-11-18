@@ -9,9 +9,12 @@
     </b-modal>
     <optionsSearch></optionsSearch>
 
-    <h3 class="">Preferências de Eventos</h3>
-    <div class="container box-info box-tags">
+
+<div class="card shadow rounded mb-3">
+    <h3 class="mt-4">Preferências de Eventos</h3>
+    <div class="container box-info box-tags mt-4">
       <tags></tags>
+    </div>
     </div>
 
   </div>

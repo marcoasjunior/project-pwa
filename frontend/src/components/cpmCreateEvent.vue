@@ -1,7 +1,7 @@
 <template>
     <div class="card shadow rounded">
         <div id="preview" class="mt-5">
-            <b-img v-show="!url" :src="url" fluid />
+            <b-img v-show="url" :src="url" fluid />
         </div>
 
 <div class=" ac container-upload mt-3">

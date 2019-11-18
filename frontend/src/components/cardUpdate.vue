@@ -1,5 +1,5 @@
 <template>
-    <div class="card shadow rounded">
+    <div class="card-modal shadow rounded">
         <div id="preview">
             <b-img v-show="url" :src="url" fluid />
         </div>
