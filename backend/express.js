@@ -16,7 +16,6 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded())
 app.use('/api', router)
 app.use(serveStatic(path.join(__dirname, '../dist')))
-app.use(serveStatic(path.join(__dirname, '../frontend/public')))
 
 app.listen(port)
 

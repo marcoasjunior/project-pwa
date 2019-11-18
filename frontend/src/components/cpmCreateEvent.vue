@@ -26,7 +26,9 @@
                     
                     <b-form-input class="mt-2 mb-3" v-model="query" required placeholder="Endereço"></b-form-input>
                     
-                    <cardAddress @address='query = $event' :query='query'> </cardAddress>
+                    <cardAddress @renderMap='renderingMap' @address='query = $event' :query='query'> </cardAddress>
+
+                    <HereMap :coord='coord' />
                     
                     <b-form-input type="date" class="mt-2 mb-3" v-model="data.edate" required></b-form-input>
 
@@ -44,12 +46,14 @@ import {
     axios
 } from '../main'
 import cardAddress from './cardAddress.vue'
+import HereMap from './hereMap'
 
 export default {
 
     data() {
         return {
             errors: [],
+            coord: null,
             url: null,
             putResponse: [],
             query: "",
@@ -59,16 +63,31 @@ export default {
                 edate: '',
                 address: '',
                 file: '',
-            }
+            },
+            
         }
     },
 
     components: {
-        cardAddress
+        cardAddress,
+        HereMap
     },
 
     methods: {
 
+        renderingMap() {
+
+            let replace = this.query.replace(/, /g, '%20')
+            let replace2 = replace.replace(/ /g, '%20')
+
+           axios
+                .get(`https://geocoder.api.here.com/6.2/geocode.json?app_id=g4qzn6OUOLYfn2OFO6Z8&app_code=pAi1rwxOkCnBaQHm4CbURg&searchtext=${replace2}`)
+                .then(response => {
+                    this.coord = response
+                })
+
+
+        },
     
 
         onFileChange(e) {
@@ -105,6 +124,7 @@ export default {
         }
 
     },
+
 
 
 }

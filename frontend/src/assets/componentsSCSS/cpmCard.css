@@ -1,0 +1,86 @@
+.container_card {
+  display: block;
+  max-width: 70%;
+  border-radius: 20px;
+}
+.container_card .container {
+  display: block;
+}
+.container_card .box-info {
+  background-color: #dfdfdf;
+  box-sizing: border-box;
+  display: block;
+  max-width: 100%;
+  min-height: 270px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0px 0px 10px 10px;
+}
+@media screen and (max-width: 1990px) {
+  .container_card .box-info {
+    max-width: 50%;
+    width: 50%;
+  }
+}
+.upload-image-event {
+  border-radius: 10px 10px 0px 0px;
+  display: block;
+  max-width: 100%;
+  min-height: 150px;
+  min-height: 160px;
+  width: 50%;
+  background-color: #f0f0f0;
+}
+@media screen and (max-width: 500px) {
+  .upload-image-event {
+    max-width: 100%;
+    width: 100%;
+    min-height: 200px;
+  }
+}
+.upload-icon {
+  cursor: pointer;
+  width: 200px !important;
+  height: 100px !important;
+  color: #a1a1a1;
+}
+.upload {
+  cursor: pointer;
+}
+.container-upload {
+  overflow: hidden;
+  position: relative;
+  width: 160px;
+  height: 100px;
+}
+.container-upload input,
+.container-upload svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.container-upload input {
+  z-index: 11;
+  opacity: 0;
+}
+.container-upload svg {
+  z-index: 10;
+}
+.image-preview {
+  position: absolute;
+  z-index: 11;
+  left: 0;
+  max-width: 100%;
+}
+.card {
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+button {
+  margin: 20px;
+}

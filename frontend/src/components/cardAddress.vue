@@ -47,41 +47,42 @@ export default {
 
         completeAddress() {
             this.$emit('address', `${this.street}, ${this.complement}, ${this.district}, ${this.city}, ${this.postcode}, ${this.country}`)
+            this.$emit('renderMap')
         }
-        
-    },
 
-    watch: {
-        query: function(value) {
-            fetch(`https://autocomplete.geocoder.api.here.com/6.2/suggest.json?app_id=g4qzn6OUOLYfn2OFO6Z8&app_code=pAi1rwxOkCnBaQHm4CbURg&maxresults=1&language=pt&query=${value}&country=BRA`)
-                .then(result => result.json())
-                .then(result => {
-                    if(result.suggestions && result.suggestions.length > 0) {
-                        if(result.suggestions[0].address.houseNumber && result.suggestions[0].address.street) {
-                            this.street = result.suggestions[0].address.street + ", " + result.suggestions[0].address.houseNumber 
+        },
+
+        watch: {
+            query: function (value) {
+                fetch(`https://autocomplete.geocoder.api.here.com/6.2/suggest.json?app_id=g4qzn6OUOLYfn2OFO6Z8&app_code=pAi1rwxOkCnBaQHm4CbURg&maxresults=1&language=pt&query=${value}&country=BRA`)
+                    .then(result => result.json())
+                    .then(result => {
+                        if (result.suggestions && result.suggestions.length > 0) {
+                            if (result.suggestions[0].address.houseNumber && result.suggestions[0].address.street) {
+                                this.street = result.suggestions[0].address.street + ", " + result.suggestions[0].address.houseNumber
+                            } else {
+                                this.street = "";
+                            }
+                            this.city = result.suggestions[0].address.city ? result.suggestions[0].address.city : "";
+                            this.state = result.suggestions[0].address.state ? result.suggestions[0].address.state : "";
+                            this.postcode = result.suggestions[0].address.postalCode ? result.suggestions[0].address.postalCode : "";
+                            this.district = result.suggestions[0].address.district ? result.suggestions[0].address.district : "";
+                            this.country = result.suggestions[0].address.country ? result.suggestions[0].address.country : "";
                         } else {
                             this.street = "";
+                            this.city = "";
+                            this.state = "";
+                            this.postalCode = "";
+                            this.country = "";
                         }
-                        this.city = result.suggestions[0].address.city ? result.suggestions[0].address.city : "";
-                        this.state = result.suggestions[0].address.state ? result.suggestions[0].address.state : "";
-                        this.postcode = result.suggestions[0].address.postalCode ? result.suggestions[0].address.postalCode : "";
-                        this.district = result.suggestions[0].address.district ? result.suggestions[0].address.district : "";
-                        this.country = result.suggestions[0].address.country ? result.suggestions[0].address.country : "";
-                    } else {
-                        this.street = "";
-                        this.city = "";
-                        this.state = "";
-                        this.postalCode = "";
-                        this.country = "";
-                    }
-                })
-    }
-}
+                    })
+            }
+        }
 
 
 
 
-}
+        }
 
 </script>
 
