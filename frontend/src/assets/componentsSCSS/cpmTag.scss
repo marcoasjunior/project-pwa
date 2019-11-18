@@ -1,4 +1,5 @@
 .tag-preferences{
+    margin: 0;
     display: inline-block;
     margin-left: 15px;
     margin-top: 0.8rem;
@@ -24,7 +25,7 @@
 }
 
 @keyframes tag-preferences-animation {
-    0% { filter: grayscale(0.3);opacity: 0.1;color:#ffd86f;}
-    90% { filter: grayscale(0);opacity: 1;color:white;}
-    100%{filter: grayscale(0);opacity: 1;color:white;}
+    0% { filter: grayscale(0.3);opacity: 0.1;color:#ffd86f; margin: 0;}
+    90% { filter: grayscale(0);opacity: 1;color:white; margin: 0;}
+    100%{filter: grayscale(0);opacity: 1;color:white; margin: 0;}
   }
