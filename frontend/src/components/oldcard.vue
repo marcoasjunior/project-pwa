@@ -54,19 +54,3 @@ export default {
     }
 
 </script>
-
-<style scoped>
-.card {
-  margin-top: 3%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%
-}
-svg {
-  width: 20px;
-  height: 20px;
-}
-
-
-
-</style>

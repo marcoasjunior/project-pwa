@@ -91,14 +91,6 @@ img {
 
 }
 
-.card {
-  margin-top: 1%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-  margin-bottom: 3%
-  
-}
 
 
 

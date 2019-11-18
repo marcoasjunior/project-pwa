@@ -1,6 +1,6 @@
 <template>
     <div class="card shadow rounded">
-        <div id="preview">
+        <div id="preview" class="mt-5">
             <b-img v-show="url" :src="url" fluid />
         </div>
 
@@ -20,6 +20,8 @@
             
             <form @submit="sendForm">
 
+                {{ data }}
+
                     <b-form-input class="mt-5 mb-3" v-model="data.name" required placeholder="Nome do Evento"></b-form-input>
 
                     <b-form-input class="mt-2 mb-3" v-model="data.local" required placeholder="Local do Evento"></b-form-input>
@@ -32,7 +34,7 @@
                     
                     <b-form-input type="date" class="mt-2 mb-3" v-model="data.edate" required></b-form-input>
 
-                    <b-form-input type="time" class="mt-2 mb-3" v-model="data.edate" required></b-form-input> 
+                    <b-form-input type="time" class="mt-2 mb-3" v-model="data.ehours" required></b-form-input> 
 
                 <button type="submit" class="btn btn-primary">Criar Evento</button>
 
@@ -61,6 +63,7 @@ export default {
                 name: '',
                 local: '',
                 edate: '',
+                ehours: '',
                 address: '',
                 file: '',
             },
@@ -102,6 +105,8 @@ export default {
         sendForm() {
             const formData = new FormData()
             formData.append('file', this.data.file)
+            /* eslint-disable no-console */
+            // console.log(formData)
             formData.append('name', this.data.name)
             formData.append('local', this.data.local)
             formData.append('edate', this.data.edate)
@@ -132,15 +137,3 @@ export default {
 
 </script>
 
-<style scoped>
-.card {
-  margin-top: 1%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-}
-svg {
-  width: 20px;
-  height: 20px;
-}
-</style>
