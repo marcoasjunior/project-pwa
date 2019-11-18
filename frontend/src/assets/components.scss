@@ -131,10 +131,10 @@ padding: 0;
 }
 
 .icon-sidebar{
-  width: 23px;
+  width: 45px;
   
-  @media screen and (max-width: 2000px){
-    width: 45px;
+  @media screen and (max-width: 600px){
+    width: 23px;
   }
   .color1{
     color: rgba(255, 142, 66, 0.945);
