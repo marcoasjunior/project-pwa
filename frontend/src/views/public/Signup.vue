@@ -155,16 +155,16 @@ export default {
           
           
         sendForm() {
-            const formData = new FormData()
-            formData.append('file', this.data.file)
+            const dataToSend = new FormData()
+            dataToSend.append('file', this.data.file)
             /* eslint-disable no-console */
             // console.log(formData)
-            formData.append('name', this.data.name)
-            formData.append('local', this.data.local)
-            formData.append('edate', this.data.edate)
-            formData.append('address', this.data.address)
-            formData.append('UserId', sessionStorage.getItem('id'))
-            this.putResponse = formData
+            dataToSend.append('name', this.data.name)
+            dataToSend.append('local', this.data.email)
+            dataToSend.append('edate', this.data.file)
+            dataToSend.append('address', this.data.address)
+            dataToSend.append('UserId', sessionStorage.getItem('id'))
+            this.putResponse = dataToSend
 
             const config = {
                 header: {
@@ -173,7 +173,7 @@ export default {
             }
 
             axios
-                .post('http://localhost:3000/api/create/event', formData, config)
+                .post('http://localhost:3000/api/create/event', dataToSend, config)
                 .then(response => this.putResponse = response)
                 .catch(e => {
                     this.errors.push(e)
