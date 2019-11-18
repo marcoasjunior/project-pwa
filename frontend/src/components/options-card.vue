@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="card shadow rounded">
+
       <img :src='info.picture' class="rounded-circle" @click="showModal">
+      
       <h3 id="emailHelp" class="form-text text-muted">{{info.name}}</h3>
       <small id="emailHelp" class="form-text text-muted">Deseja mudar os seus dados?</small>
       <div class="card-body">

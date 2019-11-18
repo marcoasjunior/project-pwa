@@ -48,7 +48,7 @@ router.post('/register/user', (req, res) => {
 
                 if (created == true) {
                     console.log("usuário criado")
-                    res.send("user_created")
+                    res.send(User)
                 } else if (User.dataValues.email == req.body.email) {
                     console.log("email já cadastrado")
                     res.send("email_alredy_exist")

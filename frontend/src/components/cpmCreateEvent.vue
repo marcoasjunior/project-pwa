@@ -1,7 +1,7 @@
 <template>
     <div class="card shadow rounded">
         <div id="preview" class="mt-5">
-            <b-img v-show="url" :src="url" fluid />
+            <b-img v-show="!url" :src="url" fluid />
         </div>
 
 <div class=" ac container-upload mt-3">
@@ -32,9 +32,9 @@
 
                     <HereMap v-if="coord != null" :coord='coord'/>
                     
-                    <b-form-input type="date" class="mt-2 mb-3" v-model="data.edate" required></b-form-input>
+                    <b-form-input type="datetime-local" class="mt-2 mb-3" v-model="data.edate" required></b-form-input>
 
-                    <b-form-input type="time" class="mt-2 mb-3" v-model="data.ehours" required></b-form-input> 
+                    <!-- <b-form-input type="time" class="mt-2 mb-3" v-model="data.ehours" required></b-form-input>  -->
 
                 <button type="submit" class="btn btn-primary">Criar Evento</button>
 
@@ -63,7 +63,6 @@ export default {
                 name: '',
                 local: '',
                 edate: '',
-                ehours: '',
                 address: '',
                 file: '',
             },
@@ -98,8 +97,6 @@ export default {
             const file = e.target.files[0];
             this.url = URL.createObjectURL(file);
             this.data.file = file
-
-                  
         },
 
         sendForm() {
