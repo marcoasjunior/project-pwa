@@ -1,22 +1,27 @@
 <template>
   <div>
     <div class="card shadow rounded">
-
       <img :src='info.picture' class="rounded-circle" @click="showModal">
-      
       <h3 id="emailHelp" class="form-text text-muted">{{info.name}}</h3>
       <small id="emailHelp" class="form-text text-muted">Deseja mudar os seus dados?</small>
       <div class="card-body">
         <form @submit="sendForm">
           <div class="form-group">
-            <label for="InputEmail">E-mail</label>
-            <input type="email" class="form-control" id="InputEmail1" aria-describedby="emailHelp"
-              v-model="newData.email" :placeholder="info.email" required>
+
+            <b-input-group prepend="@" class="mb-2 mr-sm-2 mb-sm-0">
+              <b-input type="email" v-model="newData.email" :placeholder="info.email" required></b-input>
+            </b-input-group>
+
           </div>
           <div class="form-group">
-            <label for="InputPassword">Password</label>
-            <input type="password" class="form-control" id="InputPassword1" v-model="newData.password"
-              placeholder="Novo Password" required>
+            <b-input-group prepend="Password" class="mb-2 mr-sm-2 mb-sm-0">
+              <b-input type="password" id="text-password" aria-describedby="password-help-block"
+                v-model="newData.password"></b-input>
+            </b-input-group>
+            <b-form-text id="password-help-block">
+              O password deve conter no mínimo 6 caracteres.
+            </b-form-text>
+
           </div>
           <button type="submit" class="btn btn-primary">Alterar Dados</button>
         </form>

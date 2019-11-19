@@ -45,7 +45,7 @@ export default {
     navigator.geolocation.getCurrentPosition(pos => {
       this.gettingLocation = false
       this.location = pos
-      sessionStorage.latidude = pos.coords.latitude
+      sessionStorage.latitude = pos.coords.latitude
       sessionStorage.longitude = pos.coords.longitude
 
     }, err => {
