@@ -20,7 +20,7 @@
             
             <form @submit="sendForm">
 
-                {{ data }}
+                <!-- {{ data }} -->
 
                     <b-form-input class="mt-5 mb-3" v-model="data.name" required placeholder="Nome do Evento"></b-form-input>
 

@@ -31,14 +31,32 @@
       </b-list-group>
 
       <template v-slot:footer>
-        <div>       
-        <b-container class="row">
-          <b-row align-v="center" align-h="center">
+        <div>  
+
+        <b-container class="row ac">
+          <b-row align-v="center" align-h="center" class="container-footer">
+
             <b-col cols='.5'><b-img left :src='avatar' class="rounded-circle avatar" /></b-col>
+
             <b-col align-self="center"><em> Postado {{post.createdAt | formatCreateDate}}</em></b-col>
-            <b-col cols='1'><b-button><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="fire-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-fire-alt fa-w-14 fa-3x"><path fill="currentColor" d="M323.56 51.2c-20.8 19.3-39.58 39.59-56.22 59.97C240.08 73.62 206.28 35.53 168 0 69.74 91.17 0 209.96 0 281.6 0 408.85 100.29 512 224 512s224-103.15 224-230.4c0-53.27-51.98-163.14-124.44-230.4zm-19.47 340.65C282.43 407.01 255.72 416 226.86 416 154.71 416 96 368.26 96 290.75c0-38.61 24.31-72.63 72.79-130.75 6.93 7.98 98.83 125.34 98.83 125.34l58.63-66.88c4.14 6.85 7.91 13.55 11.27 19.97 27.35 52.19 15.81 118.97-33.43 153.42z" class=""></path></svg></b-button></b-col>
+            
+            <b-col cols='1'>
+             
+             
+              <!-- <b-button> -->
+                <svg  class="fire-icon" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="fire" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                  <g class="fire-icon">
+                    <path class="color1" fill="currentColor" d="M216 23.86C216 9.06 204.15 0 192 0a24 24 0 0 0-20.1 10.82C48 191.85 224 200 224 288v.81A64 64 0 0 1 160 352h-.87C124 351.5 96 322.18 96 287v-85.5c0-14.52-11.83-24-24.15-24a23.63 23.63 0 0 0-17.28 7.5C27.8 213.16 0 261.33 0 320c0 105.87 86.13 192 192 192s192-86.13 192-192c0-170.29-168-193-168-296.14zM192 444a123.61 123.61 0 0 1-87.78-36.5l2.63 1.21a129.9 129.9 0 0 0 51.39 11.23h1.78A132 132 0 0 0 292 289.71V288c0-27.83-8.69-54.44-25.84-79.11l-.3-.43c10.81 11 20.62 22.28 28.61 34.68C309.16 265.92 316 290.34 316 320a124.15 124.15 0 0 1-124 124z"></path>
+                    <path class="color2" fill="currentColor" d="M265.86 208.46c10.81 11 20.62 22.28 28.61 34.68C309.16 265.92 316 290.34 316 320a123.94 123.94 0 0 1-211.78 87.5l2.63 1.21a129.9 129.9 0 0 0 51.39 11.23h1.78A132 132 0 0 0 292 289.71V288c0-27.83-8.69-54.44-25.84-79.11l-.3-.43" ></path>
+                  </g>
+                </svg>
+              <!-- </b-button> -->
+            
+            </b-col>
+          
           </b-row>
         </b-container>
+        
         </div>
       </template>
 
