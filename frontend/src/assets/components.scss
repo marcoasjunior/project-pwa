@@ -153,3 +153,18 @@ padding: 0;
 .left-icon{
   margin-left: 40px;
 }
+
+.fire-icon{
+  width: 25px !important;
+  height: 25px !important;
+
+  .color1{
+    color: rgba(255, 142, 66, 0.945);
+  }
+  
+  .color2{
+    color: $orange;
+
+  }
+  
+}

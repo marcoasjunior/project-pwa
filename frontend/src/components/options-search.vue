@@ -13,28 +13,28 @@
 import radiusMap from './radiusMap'
 export default {
 
-    name: 'options-search',
+  name: 'options-search',
 
- data() {
-      return {
-        kilom: '1000',
-        coord: {
-          latitude: sessionStorage.latitude,
-          longitude: sessionStorage.longitude
+  data() {
+    return {
+      kilom: '10000',
+      coord: {
+        latitude: sessionStorage.latitude,
+        longitude: sessionStorage.longitude
       },
-      
-      }
-    },
-    components: {
-    radiusMap
-},
-    filters: {
 
-      kilomReduce(value) {
-        
-        return (value / 1000).toFixed(0)
-      }
-    },    
+    }
+  },
+  components: {
+    radiusMap
+  },
+  filters: {
+
+    kilomReduce(value) {
+
+      return (value / 1000).toFixed(0)
+    }
+  },
 
 
 }
