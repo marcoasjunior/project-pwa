@@ -26,7 +26,9 @@
                     <label for="InputPassword">Nova data</label>
                     <input type="text" class="form-control" id="InputDate1" v-model="newData.edate" required>
                 </div>
+                <b-button @click="deleteEvent" variant="warning">Deletar Evento</b-button>
                 <button type="submit" class="btn btn-primary">Alterar Dados</button>
+
             </form>
         </div>
     </div>
@@ -62,6 +64,16 @@ export default {
     },
     methods: {
 
+    deleteEvent() {
+        axios
+            .delete(`http://localhost:3000/api/delete/event/${this.post.id}`)
+            .then(response => this.putResponse = response)
+            .catch(e => {
+                this.errors.push(e)
+            })
+        this.$emit('modalOff')
+    },
+
     onFileChange(e) {
             const file = e.target.files[0];
             this.url = URL.createObjectURL(file);
@@ -69,33 +81,33 @@ export default {
         },
 
 
-        sendForm() {
-            const formData = new FormData()
-            formData.append('file', this.newData.file)
-            formData.append('name', this.newData.name)
-            formData.append('local', this.newData.local)
-            formData.append('edate', this.newData.edate)
-            formData.append('address', this.newData.address)
-            formData.append('id', this.post.id)
-            this.putResponse = formData
+    sendForm() {
+        const formData = new FormData()
+        formData.append('file', this.newData.file)
+        formData.append('name', this.newData.name)
+        formData.append('local', this.newData.local)
+        formData.append('edate', this.newData.edate)
+        formData.append('address', this.newData.address)
+        formData.append('id', this.post.id)
+        this.putResponse = formData
 
-            const config = {
-                header: {
-                    'Content-Type': 'multipart/form-data'
-                }
+        const config = {
+            header: {
+                'Content-Type': 'multipart/form-data'
             }
-
-            axios
-                .put('http://localhost:3000/api/update/event', formData, config)
-                .then(response => this.putResponse = response)
-                .catch(e => {
-                    this.errors.push(e)
-                })
-            this.$emit('modalOff')
-
         }
 
-        },
+        axios
+            .put('http://localhost:3000/api/update/event', formData, config)
+            .then(response => this.putResponse = response)
+            .catch(e => {
+                this.errors.push(e)
+            })
+        this.$emit('modalOff')
+
+    }
+
+    },
 
     
     }
