@@ -5,9 +5,8 @@
         <h3 class="mr-a ml-2 mt-2"> Configure Sua Imagem de Perfil</h3>
 
         <small class="mt-5"> Clique na imagem para modificar </small>
-
-      <img :src='info.picture' class="rounded-circle" @click="showModal">
-      <h3 id="emailHelp" class="form-text text-muted">{{info.name}}</h3>
+      <img :src='infoData.picture' class="rounded-circle" @click="showModal">
+      <h3 id="emailHelp" class="form-text text-muted">{{infoData.name}}</h3>
       
       <!-- <small id="emailHelp" class="form-text text-muted">Deseja mudar os seus dados?</small> -->
       
@@ -19,7 +18,8 @@
           <div class="form-group">
             
           </div>
-          <button type="submit" class="btn btn-primary" @click="confirmData()" :disabled="info.picture != ''"> Confirma</button>
+
+          <button type="submit" class="btn btn-primary" @click="confirmData()" :disabled="!infoData.picture"> Confirma</button>
         </form>
       </div>
     </div>
@@ -33,6 +33,7 @@ import {
 
 export default {
   name: 'options-card',
+  props: ['infoData'],
   data() {
     return {
       errors: [],
@@ -66,19 +67,20 @@ export default {
     },
     confirmData(){
         this.$router.push('/Feed')
-    }
+    },
+
   },
 
   mounted() {
 
     // requisição inicial para pegar o usuario
 
-    axios
-      .get(`http://localhost:3000/api/user/${sessionStorage.getItem('id')}`)
-      .then(response => this.info = response.data)
-      .catch(e => {
-        this.errors.push(e)
-      })
+    // axios
+    //   .get(`http://localhost:3000/api/user/${sessionStorage.getItem('id')}`)
+    //   .then(response => this.info = response.data)
+    //   .catch(e => {
+    //     this.errors.push(e)
+    //   })
 
   }
 
