@@ -13,8 +13,9 @@
       <p>Adicionar tag:</p>
     </div>
 
+
     <div class="container box-info box-tags">
-      <tag></tag>
+      <tag @click="getTag"></tag>
     </div>
 
 
@@ -53,7 +54,7 @@ export default {
   mounted() {
 
     axios.get('http://localhost:3000/api/tags/preferences')
-      .then(response => this.data = response.data);
+    .then(response => this.data = response.data);
 
   },
   methods: {

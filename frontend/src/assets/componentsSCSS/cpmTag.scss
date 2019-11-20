@@ -10,8 +10,8 @@
     background-color:transparent;
     border:#000000 solid 1px;
     color:#000000;
-    
-    &:hover{
+
+    .tag-preferences-selected{
         background: linear-gradient(40deg, $orange, $rose) !important;
         color:white;
         border:none;
@@ -21,6 +21,7 @@
         animation-timing-function: linear;
         animation-iteration-count: 1;
     }
+    
     
 }
 
