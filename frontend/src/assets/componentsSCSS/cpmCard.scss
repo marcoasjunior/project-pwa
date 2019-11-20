@@ -135,3 +135,20 @@ button {
   max-width: 100%;
     width: 100%;
 }
+
+
+.fake-card {
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 30%;
+
+
+  @media screen and (max-width: 600px) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 100%;
+  }
+}
