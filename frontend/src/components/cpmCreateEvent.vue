@@ -28,7 +28,7 @@
                     
                     <b-form-input class="mt-2 mb-3" v-model="query" required placeholder="Endereço"></b-form-input>
                     
-                    <cardAddress v-model="data.address" @renderMap='renderingMap' @address='query = $event' :query='query'> </cardAddress>
+                    <cardAddress @renderMap='renderingMap' @address='query = $event' :query='query'> </cardAddress>
 
                     <HereMap v-if="coord != null" :coord='coord'/>
                     
@@ -108,7 +108,7 @@ export default {
             formData.append('name', this.data.name)
             formData.append('local', this.data.local)
             formData.append('edate', this.data.edate)
-            formData.append('address', this.data.address)
+            formData.append('address', this.query)
             formData.append('latitude', this.data.latitude)
             formData.append('longitude', this.data.longitude)
             formData.append('UserId', sessionStorage.getItem('id'))

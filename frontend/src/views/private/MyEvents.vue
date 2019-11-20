@@ -39,7 +39,8 @@ export default {
       show: false,
       dismissSecs: 8,
       dismissCountDown: 8,
-      showDismissibleAlert: false
+      showDismissibleAlert: false,
+
     }
   },
 
@@ -58,6 +59,8 @@ export default {
 
       hideModal() {
         this.$refs['modalCardUpdate'].hide()
+        
+
       }
       
   },

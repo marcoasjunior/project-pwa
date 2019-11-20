@@ -322,8 +322,8 @@ router.delete('/delete/event/:id', (req, res) => {
             where: {
                 id: req.params.id
             }
-        }).then(Event => res.sendStatus(status).send(Event))
-        .catch(error => res.es.sendStatus(status).send(error))
+        }).then(Event => res.sendStatus(Event).send(Event))
+        .catch(error => res.sendStatus(error).send(error))
 })
 
 // update preference
