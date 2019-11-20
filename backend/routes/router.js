@@ -211,7 +211,25 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
 // ==================================================== Preferência ==============================================
 
 // criar preference
+router.post('/register/preference', (req, res) => {
+    Preference.create({
+            preference: req.body.preference,
+        },{
+            include: [User]
+        }).then(Preference => res.send(Preference))
+        .catch(error => res.status(400).send(error))
+})
 
+//Cria preferência do usuário
+router.post('/register/user/preference', (req, res) => {
+    User_preference.create({
+            preference: req.body.preference,
+        }).then(Preference => res.send(Preference))
+        .catch(error => res.status(400).send(error))
+})
+
+
+// retorna todas as preferences
 router.get('/tags/preferences', (req, res) => {
     Preference.findAll({
             preference: req.body.preference,
@@ -221,7 +239,7 @@ router.get('/tags/preferences', (req, res) => {
 
 
 
-
+// retorna todas as preferences do User
 router.get('/user/preferences/:id', (req, res) => {
     User_preference.findAll({
         where: {
