@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="mt-7 card shadow rounded">
 
 
     <!-- <options-card @showModal="showModals"></options-card> -->
-  
+
+
     
     <cpmUserImage @showModal="showModals" :infoData="info"></cpmUserImage>
 
@@ -13,6 +14,7 @@
       </div>
     </b-modal>
 
+          <button type="submit" class="btn btn-primary" @click="confirmData()" :disabled="!info.picture"> Confirma</button>
 
 
   </div>
@@ -45,9 +47,13 @@ export default {
 
        hideModals() {
         this.$refs['modalCardUpdate'].hide();
+          // eslint-disable-next-line no-console
+        console.log("antes")
         setTimeout( () =>{ 
-           this.callImage();
-        }, 1000);
+          this.callImage();
+          // eslint-disable-next-line no-console
+        console.log("dentro")
+        }, 2000);
         
       },
       callImage(){
@@ -58,7 +64,10 @@ export default {
         }).catch(e => {
           alert(e)
         })
-      }
+      },
+      confirmData(){
+        this.$router.push('/Feed')
+    },
     
 
   },

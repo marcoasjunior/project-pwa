@@ -1,11 +1,14 @@
 <template>
   <div>
-    <div class="mt-7 card shadow rounded">
 
         <h3 class="mr-a ml-2 mt-2"> Configure Sua Imagem de Perfil</h3>
 
+        <div class="mt-5">
         <small class="mt-5"> Clique na imagem para modificar </small>
+        </div>
+
       <img :src='infoData.picture' class="rounded-circle" @click="showModal">
+      
       <h3 id="emailHelp" class="form-text text-muted">{{infoData.name}}</h3>
       
       <!-- <small id="emailHelp" class="form-text text-muted">Deseja mudar os seus dados?</small> -->
@@ -19,10 +22,10 @@
             
           </div>
 
-          <button type="submit" class="btn btn-primary" @click="confirmData()" :disabled="!infoData.picture"> Confirma</button>
+          <!-- <button type="submit" class="btn btn-primary" @click="confirmData()" :disabled="!infoData.picture"> Confirma</button> -->
         </form>
       </div>
-    </div>
+
   </div>
 </template>
 
@@ -64,9 +67,6 @@ export default {
 
     showModal() {
       this.$emit('showModal')
-    },
-    confirmData(){
-        this.$router.push('/Feed')
     },
 
   },

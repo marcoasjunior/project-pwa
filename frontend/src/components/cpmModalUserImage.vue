@@ -72,6 +72,9 @@ export default {
                 .catch(e => {
                     this.errors.push(e)
                 })
+                
+            // eslint-disable-next-line no-console
+            console.log("asdvdGFASCVG8")
             this.$emit('modalOff')
 
         },

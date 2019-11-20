@@ -71,6 +71,11 @@ router.post('/register/user', (req, res) => {
         )
 })
 
+
+
+
+// =================================================== Usuário ==============================================
+
 // list all users
 router.get('/list/user', (req, res) => {
     User.findAll()
@@ -88,7 +93,6 @@ router.get('/user/:idc', (req, res) => {
         }).then(User => res.status(201).send(User[0]))
         .catch(error => res.status(400).send(error))
 })
-// ============================================================
 
 // pegar avatar do usuario
 
@@ -106,7 +110,6 @@ router.get('/avatar/:idc', (req, res) => {
     }).then(User => res.json(User[0].User.picture))
 });
 
-// ============================================================
 
 router.post('/login/user', (req, res) => {
     User.findOne({
@@ -191,18 +194,88 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
 
 
 })
+// =================================================== Usuário ==============================================
 
 
-// pegar preferencias do usuario
+
+
+
+
+
+
+
+
+
+
+
+// ==================================================== Preferência ==============================================
+
+// criar preference
+
+router.get('/tags/preferences', (req, res) => {
+    Preference.findAll({
+            preference: req.body.preference,
+        }).then(Preference => res.send(Preference))
+        .catch(error => res.status(400).send(error))
+})
+
+
+
 
 router.get('/user/preferences/:id', (req, res) => {
     User_preference.findAll({
+        where: {
+            iduser: req.params.id
+        }
+    }).then(User_preference => res.status(201).send(User_preference))
+    .catch(error => res.status(400).send(error))
+})
+
+
+// pegar eventos com preferencias
+
+router.get('/event/preferences/:id', (req, res) => {
+    Event_preference.findAll({
             where: {
-                iduser: req.params.id
+                idevent: req.params.id
             }
-        }).then(User_preference => res.status(201).send(User_preference))
+        }).then(Event_preference => res.status(201).send(Event_preference))
         .catch(error => res.status(400).send(error))
 })
+
+
+// update preference
+
+router.put('/preference/update', (req, res) => {
+    Preference.update({
+            preference: req.body.preference,
+            where: {
+                idpreference: req.body.id
+            }
+        }).then(Preference => res.status(201).send(Preference))
+        .catch(error => res.status(400).send(error))
+})
+
+// pegar preference
+
+router.get('/preference/:id', (req, res) => {
+    Preference.findAll({
+            where: {
+                idpreference: req.params.id
+            }
+        }).then(Preference => res.status(201).send(Preference))
+        .catch(error => res.status(400).send(error))
+})
+
+// ==================================================== Preferência ==============================================
+
+
+
+
+
+
+
+
 
 
 // registrar evento
@@ -304,16 +377,7 @@ router.put('/updwwate/event', upload.single('file'), (req, res) => {
     )
 })
 
-// pegar eventos com preferencias
 
-router.get('/event/preferences/:id', (req, res) => {
-    Event_preference.findAll({
-            where: {
-                idevent: req.params.id
-            }
-        }).then(Event_preference => res.status(201).send(Event_preference))
-        .catch(error => res.status(400).send(error))
-})
 
 // deletar evento
 
@@ -326,37 +390,7 @@ router.delete('/delete/event/:id', (req, res) => {
         .catch(error => res.sendStatus(error).send(error))
 })
 
-// update preference
 
-router.put('/preference/update', (req, res) => {
-    Preference.update({
-            preference: req.body.preference,
-            where: {
-                idpreference: req.body.id
-            }
-        }).then(Preference => res.status(201).send(Preference))
-        .catch(error => res.status(400).send(error))
-})
-
-// pegar preference
-
-router.get('/preference/:id', (req, res) => {
-    Preference.findAll({
-            where: {
-                idpreference: req.params.id
-            }
-        }).then(Preference => res.status(201).send(Preference))
-        .catch(error => res.status(400).send(error))
-})
-
-// criar preference
-
-router.get('/tags/preferences', (req, res) => {
-    Preference.findAll({
-            preference: req.body.preference,
-        }).then(Preference => res.send(Preference))
-        .catch(error => res.status(400).send(error))
-})
 
 // criar evento
 
