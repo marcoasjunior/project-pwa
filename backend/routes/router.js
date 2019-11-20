@@ -71,15 +71,12 @@ router.post('/register/user', (req, res) => {
         )
 })
 
-
 // list all users
 router.get('/list/user', (req, res) => {
     User.findAll()
         .then(User => res.status(201).send(User))
         .catch(error => res.status(400).send(error))
 })
-
-
 
 // pegar usuário pelo id
 
@@ -94,7 +91,6 @@ router.get('/user/:idc', (req, res) => {
 // ============================================================
 
 // pegar avatar do usuario
-
 
 router.get('/avatar/:idc', (req, res) => {
     Event.findAll({
@@ -111,7 +107,6 @@ router.get('/avatar/:idc', (req, res) => {
 });
 
 // ============================================================
-
 
 router.post('/login/user', (req, res) => {
     User.findOne({
@@ -138,7 +133,6 @@ router.post('/login/user', (req, res) => {
         .catch(error => res.send(error))
 })
 
-// ============================================================
 // update usuário
 
 router.put('/update/user', (req, res) => {
@@ -242,7 +236,6 @@ router.get('/event/:id', (req, res) => {
 
 // pegar todos os eventos ORDER BY DESC
 
-
 router.get('/eventall', (req, res) => {
     Event.findAll({
             order: [
@@ -255,7 +248,6 @@ router.get('/eventall', (req, res) => {
 
 // pegar todos os criados pelo usuario
 
-
 router.get('/eventall/:id', (req, res) => {
     Event.findAll({
             where: {
@@ -265,7 +257,6 @@ router.get('/eventall/:id', (req, res) => {
         .then(Event => res.status(201).send(Event))
         .catch(error => res.status(400).send(error))
 })
-
 
 // update evento 
 
@@ -326,13 +317,13 @@ router.get('/event/preferences/:id', (req, res) => {
 
 // deletar evento
 
-router.delete('/event/delete/:id', (req, res) => {
+router.delete('/delete/event/:id', (req, res) => {
     Event.destroy({
             where: {
-                idevent: req.params.id
+                id: req.params.id
             }
-        }).then(Event => res.status(201).send(Event))
-        .catch(error => res.status(400).send(error))
+        }).then(Event => res.sendStatus(status).send(Event))
+        .catch(error => res.es.sendStatus(status).send(error))
 })
 
 // update preference
@@ -367,7 +358,7 @@ router.get('/tags/preferences', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
-
+// criar evento
 
 router.post('/create/event', upload.single('file'), (req, res) => {
 
@@ -400,21 +391,13 @@ router.post('/create/event', upload.single('file'), (req, res) => {
                     local: req.body.local,
                     edate: req.body.edate,
                     address: req.body.address,
+                    latitude: req.body.latitude,
+                    longitude: req.body.longitude,
                     UserId: req.body.UserId,
                     picture: image.url,
-                },
-
-                // {
-                //     where: {
-                //         id: req.body.id
-                //     }
-                // }
-                
-                )
+                })
         }
     )
-
-
 })
 
 

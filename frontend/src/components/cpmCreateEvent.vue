@@ -28,7 +28,7 @@
                     
                     <b-form-input class="mt-2 mb-3" v-model="query" required placeholder="Endereço"></b-form-input>
                     
-                    <cardAddress @renderMap='renderingMap' @address='query = $event' :query='query'> </cardAddress>
+                    <cardAddress v-model="data.address" @renderMap='renderingMap' @address='query = $event' :query='query'> </cardAddress>
 
                     <HereMap v-if="coord != null" :coord='coord'/>
                     
@@ -65,6 +65,8 @@ export default {
                 edate: '',
                 address: '',
                 file: '',
+                latitude: null,
+                longitude: null
             },
             
         }
@@ -79,16 +81,15 @@ export default {
 
         renderingMap() {
 
-            let replace = this.query.replace(/, /g, '%20')
-            let replace2 = replace.replace(/ /g, '%20')
-
+            let replace = (this.query.replace(/, /g, '%20')).replace(/ /g, '%20')
 
            axios
-                .get(`https://geocoder.api.here.com/6.2/geocode.json?app_id=g4qzn6OUOLYfn2OFO6Z8&app_code=pAi1rwxOkCnBaQHm4CbURg&searchtext=${replace2}`)
+                .get(`https://geocoder.api.here.com/6.2/geocode.json?app_id=g4qzn6OUOLYfn2OFO6Z8&app_code=pAi1rwxOkCnBaQHm4CbURg&searchtext=${replace}`)
                 .then(response => {
                     this.coord = response.data.Response.View[0].Result[0].Location.DisplayPosition
+                    this.data.latitude = this.coord.Latitude
+                    this.data.longitude = this.coord.Longitude
                 })
-
 
         },
     
@@ -108,6 +109,8 @@ export default {
             formData.append('local', this.data.local)
             formData.append('edate', this.data.edate)
             formData.append('address', this.data.address)
+            formData.append('latitude', this.data.latitude)
+            formData.append('longitude', this.data.longitude)
             formData.append('UserId', sessionStorage.getItem('id'))
             this.putResponse = formData
 
