@@ -211,6 +211,13 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
 // ==================================================== Preferência ==============================================
 
 // criar preference
+router.post('/tags/preferences', (req, res) => {
+    Preference.create({
+            preference: req.body.preference,
+        }).then(Preference => res.send(Preference))
+        .catch(error => res.status(400).send(error))
+})
+
 
 router.get('/tags/preferences', (req, res) => {
     Preference.findAll({
