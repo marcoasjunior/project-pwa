@@ -14,10 +14,12 @@
 
           </div>
           <div class="form-group">
+            
             <b-input-group prepend="Password" class="mb-2 mr-sm-2 mb-sm-0">
               <b-input type="password" id="text-password" aria-describedby="password-help-block"
                 v-model="newData.password"></b-input>
             </b-input-group>
+
             <b-form-text id="password-help-block">
               O password deve conter no mínimo 6 caracteres.
             </b-form-text>

@@ -30,6 +30,10 @@ const routes = [
           component: () => import( '../views/public/Main.vue'),
         },
         {
+          path: '/UserImage',
+          component: () => import( '../views/public/UserImage.vue'),
+        },
+        {
           path: '/Loading',
           component: () => import( '../views/public/Loading.vue'),
         },
