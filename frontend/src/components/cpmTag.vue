@@ -65,16 +65,14 @@ export default {
           },
 
           createTagArray(){
-            alert(this.data)
+            // alert(this.data)
             for(let item in this.data){
               this.info[item] = false;
               // this.info['1'] = false
-              
-              
-              /* eslint-disable no-console */
-            
             }
-              console.log(this.info)
+
+            // if()
+              /* eslint-disable no-console */
           },
 
 
@@ -84,10 +82,10 @@ export default {
             this.tagKey = this.tagKey + 1;
             this.info[dataId] = !this.info[dataId] 
               /* eslint-disable no-console */
-              console.log(this.info)
+              // console.log(this.info)
 
             // if(this.info[dataId]){
-            //   /* eslint-disable no-console */
+              //   /* eslint-disable no-console */
             //   console.log(this.info)
             
             // }
@@ -95,12 +93,30 @@ export default {
 
             
             this.tagInfo.push(dataId)
-            alert(this.tagInfo);
+
+            // for(let ids in this.data){
+            //   this.info[ids] = false;
+   
+            // console.log(this.info)
+              
+            // }
+
+            // [1,222,4,'teucu',5,6,674,424324,42423]
+            // {'1': true, '222': false, 4: false, teucu: true}
+            // for( )
+            // index !// !!!: 
+            // prop
+
+            // this.info['1'] = 'dhudhushd'
+            let itemsArray = [];
+            for (var prop in this.info) {if(this.info[prop]){itemsArray.push('' + prop )}}
+            console.log(itemsArray)
+
 
           },
           removetag(dataId){
             this.tagInfo = this.tagInfo.filter(function(value){
-            return value != dataId;
+              return value != dataId;
 
 
           })

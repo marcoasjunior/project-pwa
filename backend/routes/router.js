@@ -212,7 +212,7 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
 // CRIAR PREFERÊNCIA EVENTO
 router.post('/preferences/event', (req, res) => {
     Event_preference.create({
-            preference: req.body.preference,
+            Preferenceid: req.body.arry,
         },
         {
             include: [User, Preference]
