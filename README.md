@@ -47,3 +47,18 @@ https://developer.here.com/blog/validate-street-addresses-with-vue.js-and-the-he
 link CRIAR PREVIEW e carregar imagem https://stackoverflow.com/questions/49106045/preview-an-image-before-it-is-uploaded-vuejs
 
 ```
+
+
+
+
+
+=============================================================== SQL ============================================================
+
+use gb18rjtcz6zwty36;
+
+SHOW TABLES;
+select * from Event;
+select * from Event_preference;
+select * from Preference;
+select * from User;
+select * from User_preference;

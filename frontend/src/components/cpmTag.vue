@@ -2,14 +2,20 @@
 <div>  
 
     <!-- <button type="submit" class="tag-preferences" v-for="item in tagname" v-bind:key="item.name"> {{item.name}}  <br> </button> -->
-    <button type="submit" class="tag-preferences" v-for="item in data" v-bind:key="item.id" @click="getTag(item.id)"> 
-      
+
+
+    <!-- <b-button pill variant="outline-danger" type="submit" class="tag-preferences" v-for="item in data" v-bind:key="item.id" @click="getTag(item.id)"> -->
+   <div v-for="item in data" v-bind:key="item.id">
+
+    <b-button :key="tagKey"  pill variant="outline-danger" type="submit" class="tag-preferences" :class="{ tag_preferences_selected: info[item.id]}" @click="getTag(item.id)">
       {{item.preference}}
+    </b-button>
+
+   </div>
       
-      <br> </button>
+      
 
-
-      {{tagInfo}}
+      <!-- {{info}} -->
 
     <!-- <span v-for="item in data" v-bind:key="item.name" @onload="loadTag()"> {{item.name}}  <br> </span> -->
   
@@ -33,54 +39,64 @@ export default {
   created() {},
         mounted() {
 
-          axios.get('http://localhost:3000/api/tags/preferences')
-          .then(response => this.data = response.data)
+          this.renderTags()
+     
+          // this.info['1'] = fals
 
         },
         data: () => ({
 
           data:'',
+          info:{},
           tagInfo:[],
+          tagname: [],
+          tagKey:0.
             
-            tagname: [
-
-                // dados backend
-                // {name: this.response.data[0].name},
-                // {name: "Rock"},
-                // {name: "Balança Teta"},
-                // {name: "Bailão"},
-                // {name: "Gospel"},
-                // {name: "Lual"},
-                // {name: "Festa de Humanas"},
-                // {name: "UFSC"},
-                // {name: "UDES"},
-                // {name: "Sei não"},
-                // {name: "Casa do Marco"},
-                // {name: "Casa do Pedro"},
-                // {name: "Art's Gastronomia"},
-                // {name: "rolezão"},
-                // {name: "Balada"},
-                // {name: "Pau na lomba"},
-                // {name: "Maré Alta"},
-                // {name: "trintão"},
-                // {name: "Festival"}
-            ]
 
         }),
         methods: {
-          getTag(dataId){
-
+          renderTags(){
+            axios.get('http://localhost:3000/api/tags/preferences')
+            .then( (response) => {
+              this.data = response.data;
+               this.createTagArray();
             
-            // if(item.id){
-            //   tagInfo.className = "tag-preferences-selected"
+            })
+          },
+
+          createTagArray(){
+            alert(this.data)
+            for(let item in this.data){
+              this.info[item] = false;
+              // this.info['1'] = false
+              
+              
+              /* eslint-disable no-console */
+            
+            }
+              console.log(this.info)
+          },
+
+
+
+
+          getTag(dataId){
+            this.tagKey = this.tagKey + 1;
+            this.info[dataId] = !this.info[dataId] 
+              /* eslint-disable no-console */
+              console.log(this.info)
+
+            // if(this.info[dataId]){
+            //   /* eslint-disable no-console */
+            //   console.log(this.info)
+            
             // }
           
 
             
             this.tagInfo.push(dataId)
-            alert(this.tagInfo)
-            
-          ;
+            alert(this.tagInfo);
+
           },
           removetag(dataId){
             this.tagInfo = this.tagInfo.filter(function(value){
