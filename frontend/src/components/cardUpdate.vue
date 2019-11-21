@@ -65,13 +65,13 @@ export default {
     methods: {
 
     deleteEvent() {
-        axios
-            .delete(`http://localhost:3000/api/delete/event/${this.post.id}`)
-            .then(response => this.putResponse = response)
-            .catch(e => {
-                this.errors.push(e)
-            })
-        this.$emit('modalOff')
+        // axios
+        //     .delete(`http://localhost:3000/api/delete/event/${this.post.id}`)
+        //     .then(response => this.putResponse = response)
+        //     .catch(e => {
+        //         this.errors.push(e)
+        //     })
+        this.$emit('modalOff', this.post.id)
     },
 
     onFileChange(e) {
