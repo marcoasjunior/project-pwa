@@ -2,12 +2,17 @@
 <div>  
 
     <!-- <button type="submit" class="tag-preferences" v-for="item in tagname" v-bind:key="item.name"> {{item.name}}  <br> </button> -->
-    <button type="submit" class="tag-preferences" v-for="item in data" v-bind:key="item.name"> {{item.preference}}  <br> </button>
+    <button type="submit" class="tag-preferences" v-for="item in data" v-bind:key="item.id" @click="getTag(item.id)"> 
+      
+      {{item.preference}}
+      
+      <br> </button>
 
 
+      {{tagInfo}}
 
-    <!-- <span v-for="item in data" v-bind:key="item.name" @onload="loadTag()"> {{item.name}}  <br> </span>
-    <span> {{ data }}</span> -->
+    <!-- <span v-for="item in data" v-bind:key="item.name" @onload="loadTag()"> {{item.name}}  <br> </span> -->
+  
 
 
     <!-- <button type="submit" :class=" 'btn white btn-block ' "> </button> -->
@@ -35,6 +40,7 @@ export default {
         data: () => ({
 
           data:'',
+          tagInfo:[],
             
             tagname: [
 
@@ -62,8 +68,26 @@ export default {
 
         }),
         methods: {
-          loadTag(){
-            alert(this.data)
+          getTag(dataId){
+
+            
+            // if(item.id){
+            //   tagInfo.className = "tag-preferences-selected"
+            // }
+          
+
+            
+            this.tagInfo.push(dataId)
+            alert(this.tagInfo)
+            
+          ;
+          },
+          removetag(dataId){
+            this.tagInfo = this.tagInfo.filter(function(value){
+            return value != dataId;
+
+
+          })
           }
 
             

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="es">
 
     <b-alert :show="dismissCountDown" dismissible fade variant="info" @dismiss-count-down="countDownChanged">
       Clique no evento para modificá-lo
@@ -7,7 +7,7 @@
 
     <fakeCard v-show="show" />
     <transition-group name="cardPop" mode=””>
-      <card @click.native='showModal(post)' v-for="post in posts" :key='post.id' :post='post' />
+      <card @click.native='showModal(post)' :ref="'card'+post.id" v-for="post in posts" :key='post.id' :post='post' />
     </transition-group>
     <b-modal id='modal1' ref="modalCardUpdate" centered title="Modificar Evento" hide-footer>
       <div class="d-block text-center">
@@ -57,10 +57,11 @@ export default {
         this.passProps = id
       },
 
-      hideModal() {
+      hideModal(id) {
         this.$refs['modalCardUpdate'].hide()
-        
-
+        let deleted = this.posts.findIndex((o) => o.id == id)
+        this.$delete(this.posts, deleted)
+    
       }
       
   },
@@ -76,6 +77,7 @@ export default {
       .catch(e => {
       this.errors.push(e)
       this.show = true
+      
     })
 
 

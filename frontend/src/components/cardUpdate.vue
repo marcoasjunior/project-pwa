@@ -71,7 +71,7 @@ export default {
             .catch(e => {
                 this.errors.push(e)
             })
-        this.$emit('modalOff')
+        this.$emit('modalOff', this.post.id)
     },
 
     onFileChange(e) {
