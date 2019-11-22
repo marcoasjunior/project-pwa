@@ -5,18 +5,29 @@
       Crie um novo evento abaixo
     </b-alert>
 
-    <marcoPolo></marcoPolo>
+<!-- v-if="created!= true" -->
+    <marcoPolo :cData="{action:true}" @eventCreated="nextStep" v-if="step == 1"></marcoPolo>
+    
+    <div v-if="step == 2">
+      
+      SElecione as tag para seu evento: 
+
+      <tag></tag>
+
+    </div>
+    <button @click="nextStep()"></button>
+{{step}}
 
     
-
+<!-- 
     <div class="col-6 mt-7">
       <p>Adicionar tag:</p>
-    </div>
+    </div> -->
 
 
-    <div class="container box-info box-tags">
+    <!-- <div class="container box-info box-tags">
       <tag @click="getTag"></tag>
-    </div>
+    </div> -->
 
 
 
@@ -25,7 +36,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import tag from '../../components/cpmTag.vue'
 import marcoPolo from '../../components/cpmCreateEvent.vue'
 
@@ -36,11 +47,9 @@ export default {
     tag,
     marcoPolo
   },
-
-  created() {
-    // this.checkUser();
-  },
   data: () => ({
+    step:1,
+
     datas: '',
     data: {
       email: '',
@@ -53,12 +62,21 @@ export default {
   }),
   mounted() {
 
-    axios.get('http://localhost:3000/api/tags/preferences')
-    .then(response => this.data = response.data);
+    // sendTags(){
+
+    // axios.post('http://localhost:3000/api/preferences/event')
+    // .then(response => this.data = response.data);
+    
+    // }
+
 
   },
   methods: {
-
+    nextStep(resp){
+         /* eslint-disable no-console */
+      console.log(resp)
+      this.step ++;
+    }
   },
   computed: {
 

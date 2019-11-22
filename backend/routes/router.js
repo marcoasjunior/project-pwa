@@ -76,6 +76,20 @@ router.post('/register/user', (req, res) => {
 
 // =================================================== Usuário ==============================================
 
+router.post('/preferences/event', (req, res) => {
+
+    Event_preference.create(
+    {
+        EventId:req.body.EventId,
+        PreferenceId:req.body.PreferenceId
+    }
+   
+    )
+    
+    .then(Event_preference => res.send(Event_preference))
+    .catch(error => res.status(400).send(error))
+})
+
 // list all users
 router.get('/list/user', (req, res) => {
     User.findAll()
@@ -211,8 +225,9 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
 // ==================================================== Preferência ==============================================
 // CRIAR PREFERÊNCIA EVENTO
 router.post('/preferences/event', (req, res) => {
-    Event_preference.create({
+    Event_preference.update({
             Preferenceid: req.body.arry,
+            UserId:req.body.user,
         },
         {
             include: [User, Preference]
@@ -459,7 +474,7 @@ router.post('/create/event', upload.single('file'), (req, res) => {
                     longitude: req.body.longitude,
                     UserId: req.body.UserId,
                     picture: image.url,
-                })
+                }).then(res.send(Event))
         }
     )
 })

@@ -1,6 +1,6 @@
 <template>
-    <div class="card shadow rounded">
-
+    <div class="card shadow rounded mb-4">
+  {{ cData }}
 
         <div id="preview" class="mt-5">
             <b-img v-show="url" :src="url" fluid />
@@ -17,7 +17,7 @@
         <div class="card-body">
 
             
-            <form @submit="sendForm">
+            <form @submit="sendForm"  >
 
                 <!-- {{ data }} -->
 
@@ -50,6 +50,7 @@ import cardAddress from './cardAddress.vue'
 import HereMap from './hereMap'
 
 export default {
+  props:['cData'],
 
     data() {
         return {
@@ -77,6 +78,7 @@ export default {
     },
 
     methods: {
+
 
         renderingMap() {
 
@@ -121,12 +123,18 @@ export default {
 
             axios
                 .post('http://localhost:3000/api/create/event', formData, config)
-                .then(response => this.putResponse = response)
+                .then( (response) => {
+                    this.putResponse = response
+                    this.$emit('eventCreated', response)    
+                })
                 .catch(e => {
                     this.errors.push(e)
                 })
 
-        }
+
+
+        },
+
 
     },
 

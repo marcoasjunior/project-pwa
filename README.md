@@ -62,3 +62,7 @@ select * from Event_preference;
 select * from Preference;
 select * from User;
 select * from User_preference;
+
+
+======================================= documentação sequelize ==========================
+https://sequelize.org/master/

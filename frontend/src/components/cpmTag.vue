@@ -64,6 +64,8 @@ export default {
             })
           },
 
+        
+
           createTagArray(){
             // alert(this.data)
             for(let item in this.data){
@@ -117,10 +119,19 @@ export default {
           removetag(dataId){
             this.tagInfo = this.tagInfo.filter(function(value){
               return value != dataId;
-
-
           })
-          }
+          
+          },
+
+          setPreference(){
+          
+          axios.post('http://localhost:3000/api/preferences/event', this.data, {
+            EventId: this.data.email,
+            PreferenceId: this.data.password,
+        
+
+      }).then(response => (this.checkUser(response)))
+        }
 
             
         },
