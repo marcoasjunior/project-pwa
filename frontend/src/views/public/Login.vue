@@ -10,7 +10,7 @@
     <div class="row wp-cntr-1 wp-center">
 
       <b-form-input class="mt-5 mb-3" v-model="data.email" required placeholder="e-mail"></b-form-input>
-      <b-form-input type="password" class="mt-5 mb-3" v-model="data.password" required placeholder="e-mail"></b-form-input>
+      <b-form-input type="password" class="mt-5 mb-3" v-model="data.password" required placeholder="senha"></b-form-input>
 
 
       <div class="col-12 m0">

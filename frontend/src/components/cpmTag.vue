@@ -14,7 +14,7 @@
    </div>
       
       
-
+<button @click="setPreference">Criar Evento</button>
       <!-- {{info}} -->
 
     <!-- <span v-for="item in data" v-bind:key="item.name" @onload="loadTag()"> {{item.name}}  <br> </span> -->
@@ -50,7 +50,8 @@ export default {
           info:{},
           tagInfo:[],
           tagname: [],
-          tagKey:0.
+          sendTags:'',
+          tagKey:0,
             
 
         }),
@@ -83,6 +84,7 @@ export default {
           getTag(dataId){
             this.tagKey = this.tagKey + 1;
             this.info[dataId] = !this.info[dataId] 
+            this.tagInfo.push(dataId)
               /* eslint-disable no-console */
               // console.log(this.info)
 
@@ -94,7 +96,6 @@ export default {
           
 
             
-            this.tagInfo.push(dataId)
 
             // for(let ids in this.data){
             //   this.info[ids] = false;
@@ -111,26 +112,37 @@ export default {
 
             // this.info['1'] = 'dhudhushd'
             let itemsArray = [];
-            for (var prop in this.info) {if(this.info[prop]){itemsArray.push('' + prop )}}
+            for (var prop in this.info) {
+              if(this.info[prop]){
+                itemsArray.push('' + prop )
+            }}
             console.log(itemsArray)
+            this.setPreference(itemsArray)
 
 
           },
           removetag(dataId){
             this.tagInfo = this.tagInfo.filter(function(value){
               return value != dataId;
+
           })
           
           },
 
-          setPreference(){
-          
-          axios.post('http://localhost:3000/api/preferences/event', this.data, {
-            EventId: this.data.email,
-            PreferenceId: this.data.password,
-        
+          setPreference(param){
+            // alert(param)
+            this.sendTags = param
 
-      }).then(response => (this.checkUser(response)))
+
+              
+              console.log(param)
+
+            
+
+          // axios.post('http://localhost:3000/api/preferences/event', this.data, {
+          //  EventId: 1,
+          //  PreferenceId: this.sendTags,
+          // }).then(response => (console.log(response)))
         }
 
             

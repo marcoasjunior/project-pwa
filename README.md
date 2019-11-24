@@ -66,3 +66,7 @@ select * from User_preference;
 
 ======================================= documentação sequelize ==========================
 https://sequelize.org/master/
+
+
+particles for vue 
+https://vue-particles.netlify.com/
