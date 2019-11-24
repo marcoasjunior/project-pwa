@@ -11,12 +11,13 @@
     <div v-if="step == 2">
       
       SElecione as tag para seu evento: 
-
+ 
       <tag></tag>
 
+    <b-button variant="success" @click="nextStep()">Button</b-button>
     </div>
     <button @click="nextStep()"></button>
-{{step}}
+<!-- {{step}} -->
 
     
 <!-- 

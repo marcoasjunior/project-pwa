@@ -1,6 +1,6 @@
 <template>
     <div class="card shadow rounded mb-4">
-  {{ cData }}
+  <!-- {{ cData }} -->
 
         <div id="preview" class="mt-5">
             <b-img v-show="url" :src="url" fluid />

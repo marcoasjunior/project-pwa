@@ -2,7 +2,7 @@
   <div class="home">
 
           <vue-particles
-        color="#dedede"
+        color="#fc6262"
         :particleOpacity="0.7"
         :particlesNumber="80"
         shapeType="circle"
@@ -12,16 +12,25 @@
         :lineLinked="true"
         :lineOpacity="0"
         :linesDistance="150"
-        :moveSpeed="3"
+        :moveSpeed="1"
         :hoverEffect="true"
         hoverMode="grab"
-        :clickEffect="true"
+        :clickEffect="false"
         clickMode="bubble"
       >
   </vue-particles>
+ 
+<div class="container-main">
 
     <div>
-      <img alt="Vue logo" src="../../assets/logo.svg" class="img-principal">
+      <section>
+      <transition name="bounce">
+        <div>
+      <img v-if="bounce" alt="Vue logo" src="../../assets/logo.svg" class="img-principal">
+        </div>
+      </transition>
+      <button @click="bounce = !bounce">bounce</button>
+      </section>
     </div>
       
     <div class="conatiner-button-principal">
@@ -30,6 +39,7 @@
         <router-link to="/Signup"> <button type="button" class=" ac wp-btn-2 btn btn-primary btn-lg btn-block wp-btn-main">Cadastrar</button> </router-link>
     </div>
     </div>
+</div>
     
   </div>
 </template>
@@ -40,8 +50,37 @@
 
 export default {
   name: 'Principal',
+  data () {
+    return{
+      bounce: false
+    }
+  },
   components: {
     // cpmMain
   }
 }
 </script>
+
+
+<style>
+  section{
+    height: 200px;
+  }
+  .bounce-enter-active{
+    animation: bounce-in .5s;
+  }
+  .bounce-leave-active{
+    animation: bounce-in .5s reverse;
+  }
+  @keyframes bounce-in {
+    0%{
+      transform: scale(0)
+    }
+    50%{
+      transform: scale(1.5)
+    }
+    100%{
+      transform: scale(1)
+    }
+  }
+</style>

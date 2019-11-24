@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <topBar></topBar>
+    <topBar v-if="step == 1"></topBar>
+
+<div v-if="step == 1">
 
     <div class="container-text-login">
       <h1>Entrar</h1>
@@ -16,8 +18,9 @@
       <div class="col-12 m0">
         <!-- <router-link to="/Feed">  -->
         <!-- <cButton :cData="{type:'submit', text:'Entrar',link:'SucessLogin',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="checkUser()"></cButton> -->
-        <span @click="login()">
-          <cButton :cData="{type:'submit', text:'Entrar',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}"></cButton>
+        <span>
+          <!-- <cButton :cData="{type:'submit', text:'Entrar',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="nextStep()"></cButton> -->
+            <button @click="login()">next</button>        
         </span>
         <!-- </router-link> -->
 
@@ -25,13 +28,22 @@
 
       </div>
     </div>
+</div>
+
+<!-- {{step}} -->
+<div v-if="step == 2">
+  <cpmSucess></cpmSucess>
+</div>
+  
+  
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import topBar from '../../components/topBar.vue'
-import cButton from '../../components/cpmButton.vue'
+// import cButton from '../../components/cpmButton.vue'
+import cpmSucess from '../../components/cpmSucess.vue'
 import axios from 'axios'
 
 
@@ -40,12 +52,14 @@ export default {
 
   components: {
     topBar,
-    cButton
+    cpmSucess,
+    // cButton
   },
   created() {
     // this.checkUser();
   },
   data: () => ({
+    step:1,
     datas: '',
     data: {
       email: '',
@@ -63,6 +77,12 @@ export default {
   // console.log(response.data)
   ,
   methods: {
+
+      nextStep(){
+         /* eslint-disable no-console */
+      // console.log(resp)
+      this.step ++;
+    },
 
 
     login() {
@@ -84,11 +104,12 @@ export default {
         // eslint-disable-next-line no-console
         console.log('deu boa')
         sessionStorage.id = response.data.id;
-        this.$router.push('/SucessLogin')
+        // this.$router.push('/SucessLogin')
+        this.step = 2
 
       } else if (response.data == 'user_not_valid') {
         // eslint-disable-next-line no-console
-        alert('deu ruim na senha no no email')
+        alert('deu ruim na senha ou no email')
       } else {
         // eslint-disable-next-line no-console
         console.log('user invalid')
