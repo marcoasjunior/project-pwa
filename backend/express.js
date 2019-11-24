@@ -13,7 +13,9 @@ const port = process.env.PORT || 3000
 
 app.use(cors())
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded())
+app.use(bodyParser.urlencoded({
+    extended: true
+  }))
 app.use('/api', router)
 app.use(serveStatic(path.join(__dirname, '../dist')))
 

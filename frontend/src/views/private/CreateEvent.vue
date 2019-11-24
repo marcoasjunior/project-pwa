@@ -10,7 +10,7 @@
     
     <div v-if="step == 2">
       
-      SElecione as tag para seu evento: 
+      Selecione as tag para seu evento: 
  
       <tag></tag>
 
