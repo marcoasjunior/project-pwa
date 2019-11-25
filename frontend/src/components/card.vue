@@ -11,7 +11,7 @@
       class="newcard mb-2 shadow rounded">
 
       <b-list-group flush>
-        <b-list-group-item class=''><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt"
+        <b-list-group-item @click='showLocal' class=''><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt"
             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
             class="svg-inline--fa fa-map-marker-alt fa-w-12 fa-3x">
             <path fill="currentColor"
@@ -19,6 +19,7 @@
               class=""></path>
           </svg> {{post.local}}<br>
           <small class="text-muted">{{post.address}}</small>
+          <hereMap v-if="showMe" :coord='coord' />
 
         </b-list-group-item>
         <b-list-group-item class='justify-content-between align-items-center'> <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="clock" role="img"
@@ -70,6 +71,7 @@
 
 import {moment} from '../main'
 import {axios} from '../main'
+import hereMap from '../components/hereMap'
 
 export default {
     props: {
@@ -78,10 +80,40 @@ export default {
       data() {
         return {
           avatar: '',
-          errors: []
+          errors: [],
+          showMe: false,
+          coord: Object
         }
 
       },
+
+      components: {
+        hereMap
+      },
+
+      methods: {
+
+        showLocal() {
+          alert('wow')
+
+        axios
+          .get(`http://localhost:3000/api/event/coord/${this.post.id}`)
+          .then(response => {
+            this.coord = {
+              Latitude: response.data[0].latitude,
+              Longitude: response.data[0].longitude
+            }
+            this.showMe = true
+            
+          })
+          .catch(e => {
+            this.errors.push(e)
+
+          })
+
+        }
+      },
+      
 
       filters: {
           formatDate(value) {

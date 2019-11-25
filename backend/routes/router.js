@@ -288,6 +288,18 @@ router.get('/event/preferences/:id', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
+// pegar coordenadas
+
+router.get('/event/coord/:id', (req, res) => {
+    Event.findAll({
+            attributes: ['latitude', 'longitude'],
+            where: {
+                id: req.params.id
+            }
+        }).then(Event => res.status(201).send(Event))
+        .catch(error => res.status(400).send(error))
+})
+
 
 // update preference
 
