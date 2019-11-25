@@ -117,17 +117,27 @@ export default {
     SetPreference(){
       
       // let quantPreference = this.tagsSelected
-      // let itens = 0
-        this.data.PreferenceId = this.tagsSelected
+      // let itens = 00
+        // this.data.PreferenceId = this.tagsSelected
 
-      // for(this.info in this.tagsSelected.length ){
-      //   console.log(this.data.PreferenceId)
-      //   }
+
+      for(let item in this.tagsSelected ){
+
+        let data = {
+          EventId: this.data.EventId,
+          PreferenceId:this.tagsSelected[item]       
+          }
+        axios.post('http://localhost:3000/api/preferences/event', data)
+        .then( (response) => {
+          // this.tagData = response.data
+          console.log(response)
+        })
+
+
+        // console.log(this.data.PreferenceId)
+        console.log(item)
+        }
         
-      // axios.post('http://localhost:3000/api/preferences/event')
-      // .then( (response) => {
-      //   this.tagData = response.data;
-      // })
     }
 
   },

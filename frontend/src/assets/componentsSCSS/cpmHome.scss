@@ -20,3 +20,23 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .bg-relative-cnt{
+    position: relative;
+
+    .bg-relative-f, .bg-relative-b{
+      position: absolute;
+      max-width: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    .bg-relative-f{
+      z-index: 10;
+    }
+    
+    .bg-relative-b{
+      z-index: 9;
+    }
+  }
