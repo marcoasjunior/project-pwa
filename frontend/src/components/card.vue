@@ -37,7 +37,7 @@
         <b-container class="row ac">
           <b-row align-v="center" align-h="center" class="container-footer">
 
-            <b-col cols='.5'><b-img left :src='avatar' class="rounded-circle avatar" /></b-col>
+            <b-col cols='.5'><b-img left :src='avatar' class="rounded-circle avatar" alt="avatar" /></b-col>
 
             <b-col align-self="center"><em> Postado {{post.createdAt | formatCreateDate}}</em></b-col>
             
