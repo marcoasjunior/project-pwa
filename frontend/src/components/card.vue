@@ -94,24 +94,22 @@ export default {
       methods: {
 
         showLocal() {
-          alert('wow')
+          axios
+            .get(`http://localhost:3000/api/event/coord/${this.post.id}`)
+            .then(response => {
+              this.coord = {
+                Latitude: response.data[0].latitude,
+                Longitude: response.data[0].longitude
+              }
+              this.showMe = true             
+            })
+            .catch(e => {
+              this.errors.push(e)
+            })          
+          }
 
-        axios
-          .get(`http://localhost:3000/api/event/coord/${this.post.id}`)
-          .then(response => {
-            this.coord = {
-              Latitude: response.data[0].latitude,
-              Longitude: response.data[0].longitude
-            }
-            this.showMe = true
-            
-          })
-          .catch(e => {
-            this.errors.push(e)
 
-          })
 
-        }
       },
       
 
