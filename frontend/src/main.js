@@ -11,7 +11,6 @@ import VueParticles from 'vue-particles'
 
 
 
-
 export {axios, moment}
 
 Vue.config.productionTip = false

@@ -76,6 +76,20 @@ router.post('/register/user', (req, res) => {
 
 // =================================================== Usuário ==============================================
 
+router.post('/preferences/event', (req, res) => {
+
+    Event_preference.create(
+    {
+        EventId:req.body.EventId,
+        PreferenceId:req.body.PreferenceId
+    }
+   
+    )
+    
+    .then(Event_preference => res.send(Event_preference))
+    .catch(error => res.status(400).send(error))
+})
+
 // list all users
 router.get('/list/user', (req, res) => {
     User.findAll()
@@ -164,8 +178,20 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
         api_secret: 'lBY9lvTcbNawz-AyvEg9WMW_ga8'
     })
 
+    cloudinary.image(req.file, {secure: true, transformation: [
+        {width: 150, height: 150, gravity: "face", radius: 20, effect: "sepia", crop: "thumb"},
+        {overlay: "cloudinary_icon", gravity: "south_east", x: 5, y: 5, width: 50, opacity: 60, effect: "brightness:200"},
+        {angle: 10}
+        ]})
+
+
     cloudinary.uploader.upload(req.file.path, {
-            public_id: `users/${uniqueFilename}`
+            secure: true,
+            public_id: `users/${uniqueFilename}`,
+            "width": 700, 
+            "height": 700,
+            crop: "scale"
+
         },
 
         function (err, image) {
@@ -277,6 +303,18 @@ router.get('/event/preferences/:id', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
+// pegar coordenadas
+
+router.get('/event/coord/:id', (req, res) => {
+    Event.findAll({
+            attributes: ['latitude', 'longitude'],
+            where: {
+                id: req.params.id
+            }
+        }).then(Event => res.status(201).send(Event))
+        .catch(error => res.status(400).send(error))
+})
+
 
 // update preference
 
@@ -367,7 +405,7 @@ router.get('/eventall/:id', (req, res) => {
 
 // update evento 
 
-router.put('/updwwate/event', upload.single('file'), (req, res) => {
+router.put('/update/event', upload.single('file'), (req, res) => {
 
     // SEND FILE TO CLOUDINARY
 
@@ -381,6 +419,9 @@ router.put('/updwwate/event', upload.single('file'), (req, res) => {
 
     
     cloudinary.uploader.upload(req.body.file.path, {
+            
+
+
             public_id: `users/${uniqueFilename}`
         },
 
@@ -439,7 +480,11 @@ router.post('/create/event', upload.single('file'), (req, res) => {
     })
 
     cloudinary.uploader.upload(req.file.path, {
-            public_id: `users/${uniqueFilename}`
+        secure: true,
+        public_id: `users/${uniqueFilename}`,
+        "width": 800, 
+        "height": 700,
+        crop: "scale"
         },
 
         function (err, image) {
@@ -484,8 +529,13 @@ router.post('/register/user', upload.single('file'), (req, res) => {
         api_secret: 'lBY9lvTcbNawz-AyvEg9WMW_ga8'
     })
 
+
     cloudinary.uploader.upload(req.file.path, {
-            public_id: `users/${uniqueFilename}`
+        secure: true,
+        public_id: `users/${uniqueFilename}`,
+        "width": 700, 
+        "height": 700,
+        crop: "scale"
         },
 
         function (err, image) {

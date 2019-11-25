@@ -73,6 +73,7 @@ export default {
     tagsSelected:'',
     idEventoCriado:'',
   }),
+
   mounted() {
     // sendTags(){
 
@@ -140,13 +141,10 @@ export default {
         
     }
 
-  },
-  computed: {
+  }
+  }
 
-  },
-  watch: {}
 
-}
 </script>
 <style>
 </style>
