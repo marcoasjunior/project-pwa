@@ -1,3 +1,6 @@
+CreateEvent.vue
+
+
 <template>
   <div>
 
@@ -5,24 +8,34 @@
       Crie um novo evento abaixo
     </b-alert>
 
-    <marcoPolo :cData="{action:true}" @eventCreated="nextStep" v-if="step == 1"></marcoPolo>
+<p>
+  aqui
+</p>
+
+    <cpmCreateEvent :cData="{action:true}" @eventCreated="nextStep" v-if="step == 1"></cpmCreateEvent>
 
       <div v-if="step == 2">
         SElecione as tag para seu evento: 
-        <tag></tag>
+
+          <tag :tagsData="{data:tagData}" @setTags="setTags"></tag>
+
       </div>
 
-      <button @click="nextStep()">next</button>
+      <button v-if="step == 1" @click="nextStep()">next</button>
+      {{tagsSelected}}
 
-    <div class="col-6 mt-7">
+      <button @click="SetPreference()">Set Preference</button>
+    
+
+    <!-- <div class="col-6 mt-7">
       <p>Adicionar tag:</p>
-    </div>
+    </div>  -->
 
 
-    <div class="container box-info box-tags">
+    <!-- <div class="container box-info box-tags">
       <tag @click="getTag"></tag>
-    </div>
-
+    </div> -->
+{{data}}
 
 
   </div>
@@ -30,47 +43,91 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 import tag from '../../components/cpmTag.vue'
-import marcoPolo from '../../components/cpmCreateEvent.vue'
+import cpmCreateEvent from '../../components/cpmCreateEvent.vue'
 
 export default {
   name: 'cadastro',
 
   components: {
     tag,
-    marcoPolo
+    cpmCreateEvent
   },
 
+    
+  
   created() {
+    this.getTags()
     // this.checkUser();
   },
   data: () => ({
-     step:1,
+    step:1,
+    tagData:'',
     datas: '',
-    data: {
-      email: '',
-      password: ''
-    },
+    data: {EventId:'', PreferenceId:''},
     info: '',
     dismissSecs: 8,
     dismissCountDown: 8,
-    showDismissibleAlert: false
+    showDismissibleAlert: false,
+    tagsSelected:'',
+    idEventoCriado:'',
   }),
   mounted() {
     // sendTags(){
+
+    // axios.get('http://localhost:3000/api/tags/preferences')
+    // .then(response => this.data = response.data);
 
     // axios.post('http://localhost:3000/api/preferences/event')
     // .then(response => this.data = response.data);
     
     // }
 
+
+
+
   },
   methods: {
+
     nextStep(resp){
-         /* eslint-disable no-console */
-      console.log(resp)
-      this.step ++;
+      this.step = 2
+      /* eslint-disable no-console */
+      console.log("id do evento "+resp)
+
+      this.data.EventId = resp
+    },
+    getTags(){
+      axios.get('http://localhost:3000/api/tags/preferences')
+      .then( (response) => {
+      this.tagData = response.data;
+
+    
+    })
+ 
+    },
+       setTags(param){
+      //console.log("ha")
+      //console.log(param)
+      this.tagsSelected = param;
+
+
+    },
+
+    SetPreference(){
+      
+      // let quantPreference = this.tagsSelected
+      // let itens = 0
+        this.data.PreferenceId = this.tagsSelected
+
+      // for(this.info in this.tagsSelected.length ){
+      //   console.log(this.data.PreferenceId)
+      //   }
+        
+      // axios.post('http://localhost:3000/api/preferences/event')
+      // .then( (response) => {
+      //   this.tagData = response.data;
+      // })
     }
 
   },
