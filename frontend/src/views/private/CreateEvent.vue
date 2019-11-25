@@ -5,9 +5,14 @@
       Crie um novo evento abaixo
     </b-alert>
 
-    <marcoPolo></marcoPolo>
+    <marcoPolo :cData="{action:true}" @eventCreated="nextStep" v-if="step == 1"></marcoPolo>
 
-    
+      <div v-if="step == 2">
+        SElecione as tag para seu evento: 
+        <tag></tag>
+      </div>
+
+      <button @click="nextStep()">next</button>
 
     <div class="col-6 mt-7">
       <p>Adicionar tag:</p>
@@ -25,7 +30,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 import tag from '../../components/cpmTag.vue'
 import marcoPolo from '../../components/cpmCreateEvent.vue'
 
@@ -41,6 +46,7 @@ export default {
     // this.checkUser();
   },
   data: () => ({
+     step:1,
     datas: '',
     data: {
       email: '',
@@ -52,12 +58,20 @@ export default {
     showDismissibleAlert: false
   }),
   mounted() {
+    // sendTags(){
 
-    axios.get('http://localhost:3000/api/tags/preferences')
-    .then(response => this.data = response.data);
+    // axios.post('http://localhost:3000/api/preferences/event')
+    // .then(response => this.data = response.data);
+    
+    // }
 
   },
   methods: {
+    nextStep(resp){
+         /* eslint-disable no-console */
+      console.log(resp)
+      this.step ++;
+    }
 
   },
   computed: {
