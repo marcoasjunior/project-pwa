@@ -5,22 +5,15 @@
       Crie um novo evento abaixo
     </b-alert>
 
-<!-- v-if="created!= true" -->
     <marcoPolo :cData="{action:true}" @eventCreated="nextStep" v-if="step == 1"></marcoPolo>
-    
-    <div v-if="step == 2">
-      
-      Selecione as tag para seu evento: 
- 
-      <tag></tag>
 
-    <b-button variant="success" @click="nextStep()">Button</b-button>
-    </div>
-    <button @click="nextStep()"></button>
-<!-- {{step}} -->
+      <div v-if="step == 2">
+        SElecione as tag para seu evento: 
+        <tag></tag>
+      </div>
 
-    
-<!-- 
+      <button @click="nextStep()">next</button>
+
     <div class="col-6 mt-7">
       <p>Adicionar tag:</p>
     </div> -->
@@ -51,6 +44,10 @@ export default {
   data: () => ({
     step:1,
 
+  created() {
+    // this.checkUser();
+  },
+  data: () => ({
     datas: '',
     data: {
       email: '',
@@ -62,8 +59,10 @@ export default {
     showDismissibleAlert: false
   }),
   mounted() {
-
     // sendTags(){
+
+    axios.get('http://localhost:3000/api/tags/preferences')
+    .then(response => this.data = response.data);
 
     // axios.post('http://localhost:3000/api/preferences/event')
     // .then(response => this.data = response.data);
@@ -73,11 +72,7 @@ export default {
 
   },
   methods: {
-    nextStep(resp){
-         /* eslint-disable no-console */
-      console.log(resp)
-      this.step ++;
-    }
+
   },
   computed: {
 

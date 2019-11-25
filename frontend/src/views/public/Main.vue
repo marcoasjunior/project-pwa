@@ -23,14 +23,28 @@
 <div class="container-main">
 
     <div>
-      <section>
-      <transition name="bounce">
-        <div>
-      <img v-if="bounce" alt="Vue logo" src="../../assets/logo.svg" class="img-principal">
-        </div>
-      </transition>
-      <button @click="bounce = !bounce">bounce</button>
-      </section>
+
+          <vue-particles
+        color="#dedede"
+        :particleOpacity="0.7"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="4"
+        linesColor="#fff"
+        :linesWidth="1"
+        :lineLinked="true"
+        :lineOpacity="0"
+        :linesDistance="150"
+        :moveSpeed="3"
+        :hoverEffect="true"
+        hoverMode="grab"
+        :clickEffect="true"
+        clickMode="bubble"
+      >
+  </vue-particles>
+
+
+      <img alt="Vue logo" src="../../assets/logo.svg" class="img-principal">
     </div>
       
     <div class="conatiner-button-principal">
