@@ -120,9 +120,10 @@ export default {
 
             axios
                 .post('http://localhost:3000/api/create/event', formData, config)
-                .then( (response) => {
+                .then( (response) =>{
                     this.putResponse = response
-                    this.$emit('eventCreated', response)    
+                    this.$emit("eventCreated", response.data.id);
+                    // console.log(response.data.id)
                 })
                 .catch(e => {
                     this.errors.push(e)

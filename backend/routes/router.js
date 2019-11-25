@@ -473,7 +473,7 @@ router.post('/create/event', upload.single('file'), (req, res) => {
             const fs = require('fs')
             fs.unlinkSync(req.file.path)
             // return image details
-            res.json(image)
+            // res.json(image)
             // eslint-disable-next-line no-console
             console.log(image.url)
 
@@ -486,10 +486,15 @@ router.post('/create/event', upload.single('file'), (req, res) => {
                     longitude: req.body.longitude,
                     UserId: req.body.UserId,
                     picture: image.url,
-                }).then(res.send(Event))
+                }).then((Event) =>{
+                    res.send(Event.dataValues);
+                    console.log(Event.dataValues)
+                })
         }
     )
 })
+
+// .then(Event => res.sendStatus(console.log(Event.dataValues)).send(Event.dataValues))
 
 
 router.post('/register/user', upload.single('file'), (req, res) => {

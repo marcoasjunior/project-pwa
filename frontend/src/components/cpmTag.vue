@@ -1,11 +1,11 @@
 <template>
 <div>  
-
+  <!-- {{tagsData}}<br><br> -->
     <!-- <button type="submit" class="tag-preferences" v-for="item in tagname" v-bind:key="item.name"> {{item.name}}  <br> </button> -->
 
 
     <!-- <b-button pill variant="outline-danger" type="submit" class="tag-preferences" v-for="item in data" v-bind:key="item.id" @click="getTag(item.id)"> -->
-   <div v-for="item in data" v-bind:key="item.id">
+   <div v-for="item in tagsData.data" v-bind:key="item.id" class="container-tag">
 
     <b-button :key="tagKey"  pill variant="outline-danger" type="submit" class="tag-preferences" :class="{ tag_preferences_selected: info[item.id]}" @click="getTag(item.id)">
       {{item.preference}}
@@ -14,7 +14,7 @@
    </div>
       
       
-<button @click="setPreference">Criar Evento</button>
+    <button @click="setPreference">Criar Evento</button>
       <!-- {{info}} -->
 
     <!-- <span v-for="item in data" v-bind:key="item.name" @onload="loadTag()"> {{item.name}}  <br> </span> -->
@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   name: 'cpmButton',
-//    props: ['cName'],
+   props: ['tagsData'],
       
   components: {
       
@@ -39,7 +39,7 @@ export default {
   created() {},
         mounted() {
 
-          this.renderTags()
+          // this.renderTags()
      
           // this.info['1'] = fals
 
@@ -52,18 +52,20 @@ export default {
           tagname: [],
           sendTags:'',
           tagKey:0,
+          // itemsArray:[],
+
             
 
         }),
         methods: {
-          renderTags(){
-            axios.get('http://localhost:3000/api/tags/preferences')
-            .then( (response) => {
-              this.data = response.data;
-               this.createTagArray();
+          // renderTags(){
+          //   axios.get('http://localhost:3000/api/tags/preferences')
+          //   .then( (response) => {
+          //     this.data = response.data;
+          //      this.createTagArray();
             
-            })
-          },
+          //   })
+          // },
 
         
 
@@ -116,7 +118,7 @@ export default {
               if(this.info[prop]){
                 itemsArray.push('' + prop )
             }}
-            console.log(itemsArray)
+            // console.log(itemsArray)
             this.setPreference(itemsArray)
 
 
@@ -130,12 +132,14 @@ export default {
           },
 
           setPreference(param){
+  
             // alert(param)
             this.sendTags = param
+            // console.log(param)
+            this.$emit("setTags", param);
 
 
               
-              console.log(param)
 
             
 
