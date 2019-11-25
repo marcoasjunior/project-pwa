@@ -4,8 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     local: DataTypes.STRING,
     address: DataTypes.STRING,
-    latitude: DataTypes.DECIMAL,
-    longitude: DataTypes.DECIMAL,
+    latitude: DataTypes.DECIMAL(10,7),
+    longitude: DataTypes.DECIMAL(10, 7),
     picture: DataTypes.STRING,
     edate: DataTypes.DATE,
 
