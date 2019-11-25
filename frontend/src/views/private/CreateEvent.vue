@@ -30,7 +30,7 @@
 </template>
 
 <script>
-// import axios from 'axios';
+import axios from 'axios';
 import tag from '../../components/cpmTag.vue'
 import marcoPolo from '../../components/cpmCreateEvent.vue'
 
@@ -41,13 +41,9 @@ export default {
     tag,
     marcoPolo
   },
+
   data: () => ({
     step:1,
-
-  created() {
-    // this.checkUser();
-  },
-  data: () => ({
     datas: '',
     data: {
       email: '',
@@ -57,7 +53,9 @@ export default {
     dismissSecs: 8,
     dismissCountDown: 8,
     showDismissibleAlert: false
+
   }),
+
   mounted() {
     // sendTags(){
 
@@ -70,16 +68,10 @@ export default {
     // }
 
 
-  },
-  methods: {
+  }
+  }
 
-  },
-  computed: {
 
-  },
-  watch: {}
-
-}
 </script>
 <style>
 </style>
