@@ -37,6 +37,10 @@
 <script>
 export default {
 
+          mounted() {
+              this.checkLogin()
+        },
+
     name: 'app',
     data: () => {
 
@@ -73,6 +77,21 @@ export default {
             ],
         }
     },
+
+
+    methods:{
+      checkLogin(){
+
+        if(sessionStorage.id){
+        // eslint-disable-next-line no-console
+        console.log(sessionStorage.id)
+        }else{
+          this.$router.push('/main')
+        }
+        
+      }
+    },
+
 
 }
 

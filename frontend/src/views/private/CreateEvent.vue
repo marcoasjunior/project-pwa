@@ -24,9 +24,8 @@
       <!-- <button @click="SetPreference()">Set Preference</button> -->
     
       <div v-if="step == 3">
-        Evento criado com Sucesso!
 
-          
+        <h1 class="mt-5"> Evento criado com Sucesso! </h1>
 
       </div>
 
