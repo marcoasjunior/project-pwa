@@ -35,7 +35,7 @@
 
                     <!-- <b-form-input type="time" class="mt-2 mb-3" v-model="data.ehours" required></b-form-input>  -->
 
-                <button type="submit" class="btn btn-primary">Criar Evento</button>
+                <button type="submit" class="btn btn-primary button-return ac btn-s">Criar Evento</button>
 
             </form>
         </div>

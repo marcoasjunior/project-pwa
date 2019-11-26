@@ -14,7 +14,6 @@
    </div>
       
       
-    <button @click="setPreference">Criar Evento</button>
       <!-- {{info}} -->
 
     <!-- <span v-for="item in data" v-bind:key="item.name" @onload="loadTag()"> {{item.name}}  <br> </span> -->

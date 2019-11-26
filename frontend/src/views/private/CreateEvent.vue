@@ -1,6 +1,3 @@
-CreateEvent.vue
-
-
 <template>
   <div>
 
@@ -8,24 +5,32 @@ CreateEvent.vue
       Crie um novo evento abaixo
     </b-alert>
 
-<p>
-  aqui
-</p>
 
     <cpmCreateEvent :cData="{action:true}" @eventCreated="nextStep" v-if="step == 1"></cpmCreateEvent>
 
-      <div v-if="step == 2">
-        SElecione as tag para seu evento: 
+      <div class="card rounded mb-4" v-if="step == 2">
+        
+          <h4 class="mt-5"> Como você identifica seu evento? </h4>
+          
+          <tag class="mt-5" :tagsData="{data:tagData}" @setTags="setTags"></tag>
 
-          <tag :tagsData="{data:tagData}" @setTags="setTags"></tag>
+          <b-button class="mt-5 outline-primary button-return ac btn-s" v-if="step == 2" variant="primary" @click="SetPreference()">Selecionar preferências</b-button>
 
       </div>
 
-      <button v-if="step == 1" @click="nextStep()">next</button>
-      {{tagsSelected}}
+      <!-- <button v-if="step == 1" @click="nextStep()">next</button> -->
+      <!-- {{tagsSelected}} -->
 
-      <button @click="SetPreference()">Set Preference</button>
+      <!-- <button @click="SetPreference()">Set Preference</button> -->
     
+      <div v-if="step == 3">
+        Evento criado com Sucesso!
+
+          
+
+      </div>
+
+
 
     <!-- <div class="col-6 mt-7">
       <p>Adicionar tag:</p>
@@ -35,7 +40,7 @@ CreateEvent.vue
     <!-- <div class="container box-info box-tags">
       <tag @click="getTag"></tag>
     </div> -->
-{{data}}
+<!-- {{data}} -->
 
 
   </div>
@@ -134,7 +139,7 @@ export default {
           console.log(response)
         })
 
-
+        this.step = 3
         // console.log(this.data.PreferenceId)
         console.log(item)
         }
