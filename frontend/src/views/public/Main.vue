@@ -3,7 +3,7 @@
     
     <div class="bg-relative-b">
           <vue-particles
-        color="#dedede"
+        color="#ff4fa1"
         :particleOpacity="0.7"
         :particlesNumber="80"
         shapeType="circle"

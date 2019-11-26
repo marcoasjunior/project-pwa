@@ -1,12 +1,12 @@
 module.exports = {
   up: function (queryInterface, DataTypes) {
     return queryInterface.createTable('Event_preference', {
-      idevent_pref: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER
-      },
+      // idevent_pref: {
+      //   allowNull: false,
+      //   autoIncrement: true,
+      //   primaryKey: true,
+      //   type: DataTypes.INTEGER
+      // },
       idpref: {
         type: DataTypes.INTEGER,
         references: {
