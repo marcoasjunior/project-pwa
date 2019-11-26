@@ -480,8 +480,8 @@ router.post('/create/event', upload.single('file'), (req, res) => {
         secure: true,
         public_id: `users/${uniqueFilename}`,
         "width": 800, 
-        "height": 700,
-        crop: "scale"
+        "height": 800,
+        crop: "fit"
         },
 
         function (err, image) {
