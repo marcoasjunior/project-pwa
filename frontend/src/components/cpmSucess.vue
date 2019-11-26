@@ -5,7 +5,7 @@
     <div class="container-text-login">
 
       <h1 class="mb-6">Sucesso!</h1>
-        <b-img src="https://media.giphy.com/media/1GrsfWBDiTN60/giphy.gif" fluid alt="Responsive image"></b-img>
+        <b-img fluid alt="Responsive image"></b-img>
       <br>
       <br>
       <br>
