@@ -1,6 +1,23 @@
 <template>
   <div class="home">
-        <topBar></topBar>
+        <!-- <topBar></topBar> -->
+  <b-alert
+      :show="dismissCountDown"
+      dismissible
+      variant="warning"
+      @dismissed="dismissCountDown=0"
+      @dismiss-count-down="countDownChanged"
+    >
+      Esse email já possui cadastro em nosso site, faça login para acessar o site
+      
+       <!-- {{ dismissCountDown }} -->
+    </b-alert>
+
+
+
+<div class="card shadow rounded mb-3">
+
+
 
     <div class="container-text-login">
       <h1>Cadastrar</h1>
@@ -99,13 +116,29 @@
         <input type="checkbox" v-model="dataValid.chekBox" @click="getStatusCheckBox()"> Concordo com os termos e Condições
     </div> -->
 
-        <div class="col-12 m0">
-          <span @click="getInfoInputs()">
-             <cButton :cData="{type:'submit', text:'Cadastrar',link:'UserImage',class:' ac wp-btn-3 bg-gdr-1'}" ></cButton>
-          </span>
+
+        <div class="container-buttons ac">
+
+        <router-link to="/Main">
+          <b-button variant="outline-primary button-return">Voltar</b-button>
+        </router-link>
+
+
+        <span @click="getInfoInputs()">
+          <b-button variant="outline-primary button-return bg-gdr-1 ac btn-s">Cadastrar</b-button>
+        </span>
+
         </div>
 
+
+        <!-- <div class="col-12 m0">
+             <cButton :cData="{type:'submit', text:'Cadastrar',link:'UserImage',class:' ac wp-btn-3 bg-gdr-1'}" ></cButton>
+        </div> -->
+
+
+
      
+</div>
 
 
 
@@ -114,8 +147,8 @@
 
 <script>
 // @ is an alias to /src
-import cButton from '../../components/cpmButton.vue'
-import topBar from '../../components/topBar.vue'
+// import cButton from '../../components/cpmButton.vue'
+// import topBar from '../../components/topBar.vue'
 import axios from 'axios'
 
 
@@ -123,14 +156,16 @@ export default {
   name: 'Login',
 
   components: {
-    cButton,
-    topBar
+    // cButton,
+    // topBar
   },
   created() {},
         mounted() {
 
         },
         data: () => ({
+          dismissSecs: 5,
+          dismissCountDown: 0,
           disable:{login:false , signup:true},
           data:{email:'',password:'',passwordConfirm:'', file:''},
           formValid: false,
@@ -229,15 +264,26 @@ export default {
           },
 
           checkRegister(response){
-            if(response.data){
-              this.$router.push('/UserImage')
-                sessionStorage.id = response.data.id;
+            if(response.data == "email_alredy_exist"){
+
+              
+              // alert("esse email já possui cadastro no nosso site")
             // eslint-disable-next-line no-console
+            this.showAlert()
             console.log(response)
               
             }else{
-              alert("deu ruim ai mano")
+              this.$router.push('/UserImage')
+              sessionStorage.id = response.data.id;
+            // eslint-disable-next-line no-console
+            console.log(response)
             }
+          },
+          countDownChanged(dismissCountDown) {
+            this.dismissCountDown = dismissCountDown
+          },
+          showAlert() {
+            this.dismissCountDown = this.dismissSecs
           },
 
           checkNameValid(){
@@ -260,7 +306,7 @@ export default {
 
 
             if(!bah){
-              this.warning = "formatação errada, verifique novamente o email";
+              this.warning = "Email Inválido";
               this.warningShow = true;
               
               // console.log(this.warningShow)
@@ -272,7 +318,7 @@ export default {
             }
 
             if(bah.length < 10){
-              this.warning = "Email is not valid";
+              this.warning = "Email não é válido";
 
             // eslint-disable-next-line no-console
 
@@ -286,7 +332,7 @@ export default {
 
           checkPasswordValid(){
               if(this.data.password.length < 5 || !this.data.password){
-                this.warningPassword = "Password too short";
+                this.warningPassword = "Senha muito curta";
                 return false
               }else{
                 this.warningPassword = "";
@@ -296,7 +342,7 @@ export default {
           checkPasswordConfirm(){
 
             if(this.data.password != this.data.passwordConfirm){
-              this.warningPasswordConfirm = "password does not match";
+              this.warningPasswordConfirm = "As senhas não combinam";
                 return false
             }else{
               this.warningPasswordConfirm = "";

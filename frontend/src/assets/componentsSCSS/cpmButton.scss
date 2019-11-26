@@ -1,20 +1,60 @@
 
-.wp-btn-1,.wp-btn-2,.wp-btn-3{
-    display: inline-block;
-    width: 98%;
-    max-width: 250px;
-    border:none;
-    min-height: 40px;
-    border-radius: 30px;
+.container-buttons{
+    // max-width: 100%;
+    // width: 100%;
+    display: flex !important;
+
+
+    @media screen and (max-width: 1200px){
+        flex-direction: column;
+      }
 }
 
-
-.wp-btn-1{
-    margin-top: 70px;
+.btn-s{
+    color: white;
+    border: none !important;
 }
 
-.wp-btn-2{
-    margin-top: 20px;
+.in-button-l{
+    margin-left: auto;
+
+    @media screen and (max-width: 1200px){
+          margin-left: auto !important;
+          margin-right: auto !important;
+      }
+}
+
+.in-button-r{
+    margin-right: auto;
+
+    @media screen and (max-width: 1200px){
+          margin-right: auto !important;
+          margin-left: auto !important;
+      }
+}
+    
+    .wp-btn-1,.wp-btn-2,.wp-btn-3{
+        display: inline-block;
+        width: 98%;
+        max-width: 250px;
+        border:none;
+        min-height: 40px;
+        border-radius: 30px;
+    }
+    
+    .button-return{
+        display: inline-block !important;
+        width: 250px !important;
+        border-radius: 30px !important;
+    }
+    
+    
+    .wp-btn-1{
+        margin-top: 70px;
+    }
+    
+    .wp-btn-2{
+        margin-top: 20px;
 }
 
 .wp-btn-3{

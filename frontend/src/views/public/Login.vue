@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <topBar v-if="step == 1"></topBar>
+
+
+<div class="card shadow rounded mb-3 mt-5">
 
 <div v-if="step == 1">
 
@@ -15,19 +17,32 @@
       <b-form-input type="password" class="mt-5 mb-3" v-model="data.password" required placeholder="senha"></b-form-input>
 
 
-      <div class="col-12 m0">
         <!-- <router-link to="/Feed">  -->
         <!-- <cButton :cData="{type:'submit', text:'Entrar',link:'SucessLogin',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="checkUser()"></cButton> -->
-        <span>
+        <!-- <span> -->
           <!-- <cButton :cData="{type:'submit', text:'Entrar',class:' wp-btn-1 bg-gdr-1',actionType:'Path'}" @click="nextStep()"></cButton> -->
-            <button @click="login()">next</button>        
-        </span>
+            <!-- <button @click="login()">next</button>        
+        </span> -->
         <!-- </router-link> -->
+
+            </div>
+
+        <div class="container-buttons ac mt-5">
+
+        <router-link to="/Main" class="in-button-l">
+          <b-button variant="outline-primary button-return">Voltar</b-button>
+        </router-link>
+
+
+        <span @click="login()" class="in-button-r">
+          <b-button variant="outline-primary button-return bg-gdr-1 ac btn-s">Entrar</b-button>
+        </span>
+
+        </div>
+
 
         <!-- <span>{{ info.data.email }}</span> -->
 
-      </div>
-    </div>
 </div>
 
 <!-- {{step}} -->
@@ -35,13 +50,12 @@
   <cpmSucess></cpmSucess>
 </div>
   
-  
+  </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import topBar from '../../components/topBar.vue'
 // import cButton from '../../components/cpmButton.vue'
 import cpmSucess from '../../components/cpmSucess.vue'
 import axios from 'axios'
@@ -51,7 +65,6 @@ export default {
   // name: 'Login',
 
   components: {
-    topBar,
     cpmSucess,
     // cButton
   },

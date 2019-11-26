@@ -1,4 +1,4 @@
-<template>
+<template class="bc-w">
   <div class="home bg-relative-cnt">
     
     <div class="bg-relative-b">
@@ -55,24 +55,7 @@ export default {
 
 
 <style>
-  section{
-    height: 200px;
-  }
-  .bounce-enter-active{
-    animation: bounce-in .5s;
-  }
-  .bounce-leave-active{
-    animation: bounce-in .5s reverse;
-  }
-  @keyframes bounce-in {
-    0%{
-      transform: scale(0)
-    }
-    50%{
-      transform: scale(1.5)
-    }
-    100%{
-      transform: scale(1)
-    }
+  .bc-w{
+    background-color: rgb(255, 255, 255) !important;
   }
 </style>
