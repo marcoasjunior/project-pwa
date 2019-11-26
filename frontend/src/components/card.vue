@@ -11,6 +11,7 @@
       class="newcard mb-2 shadow rounded">
 
       <b-list-group flush>
+        
         <b-list-group-item @click='showLocal' class=''><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="map-marker-alt"
             role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"
             class="svg-inline--fa fa-map-marker-alt fa-w-12 fa-3x">
@@ -19,15 +20,20 @@
               class=""></path>
           </svg> {{post.local}}<br>
           <small class="text-muted">{{post.address}}</small>
+          <transition name="router-anim">
           <hereMap v-if="showMe" :coord='coord' />
+          </transition>
 
         </b-list-group-item>
-        <b-list-group-item class='justify-content-between align-items-center'> <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="clock" role="img"
+        <b-list-group-item> <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="clock" role="img"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-clock fa-w-16 fa-3x">
             <path fill="currentColor"
               d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"
               class=""></path>
           </svg> {{post.edate | formatDate}} </b-list-group-item>
+
+
+          
 
       </b-list-group>
 
@@ -37,7 +43,7 @@
         <b-container class="row ac">
           <b-row align-v="center" align-h="center" class="container-footer">
 
-            <b-col cols='.5'><b-img left :src='avatar' class="rounded-circle avatar" alt="avatar" /></b-col>
+            <b-col cols='.5'><b-img left :src='avatar.picture' class="rounded-circle avatar" alt="avatar" @click='showProfile' /></b-col>
 
             <b-col align-self="center"><em> Postado {{post.createdAt | formatCreateDate}}</em></b-col>
             
@@ -55,9 +61,19 @@
             
             </b-col>
           
+          </b-row> 
+          
+        </b-container>
+
+        <transition name="router-anim">
+        <b-container v-if="profile">
+          <b-img center :src='avatar.picture' class="rounded-circle avatarPlus" alt="avatar" @click='showProfile' />
+          <b-row align-h="center" class="container-footer">
+            <h3 id="emailHelp" class="form-text text-muted">{{avatar.name}}</h3>
           </b-row>
         </b-container>
-        
+        </transition>
+
         </div>
       </template>
 
@@ -82,7 +98,8 @@ export default {
           avatar: '',
           errors: [],
           showMe: false,
-          coord: Object
+          coord: Object,
+          profile: false
         }
 
       },
@@ -94,21 +111,26 @@ export default {
       methods: {
 
         showLocal() {
-          axios
-            .get(`http://localhost:3000/api/event/coord/${this.post.id}`)
-            .then(response => {
-              this.coord = {
-                Latitude: response.data[0].latitude,
-                Longitude: response.data[0].longitude
-              }
-              this.showMe = true             
-            })
-            .catch(e => {
-              this.errors.push(e)
-            })          
-          }
 
+          this.showMe = this.showMe ? false : axios
+                                                .get(`http://localhost:3000/api/event/coord/${this.post.id}`)
+                                                .then(response => {
+                                                  this.coord = {
+                                                    Latitude: response.data[0].latitude,
+                                                    Longitude: response.data[0].longitude
+                                                  }
+                                                  this.showMe = true             
+                                                })
+                                                .catch(e => {
+                                                  this.errors.push(e)
+                                                }) 
 
+                   
+          },
+
+        showProfile() {
+          this.profile = this.profile ? false : true  
+        }
 
       },
       
@@ -124,7 +146,7 @@ export default {
           formatCreateDate(value) {
           
               if (value) {
-                return moment(String(value)).locale('pt-br').endOf('day').fromNow()
+                return moment(value).locale('pt-br').calendar()
               }
         }
         
@@ -164,6 +186,41 @@ svg {
 .avatar {
   width: 40px;
   height: 40px;
+}
+
+.avatarPlus {
+  width: 100px;
+  height: 100px;
+  margin: 10px
+}
+
+.router-anim-enter-active {
+  animation: coming 1s;
+  animation-delay: .5s;
+  opacity: 0;
+}
+.router-anim-leave-active {
+  animation: going .2s;
+}
+
+@keyframes going {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+@keyframes coming {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 </style>

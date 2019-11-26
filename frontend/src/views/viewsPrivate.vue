@@ -109,7 +109,7 @@ a:hover {
     transform: translateY(0);
   }
   to {
-    transform: translateY(+30px);
+    transform: translateY(-30px);
     opacity: 0;
   }
 }

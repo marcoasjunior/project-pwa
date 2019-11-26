@@ -14,5 +14,11 @@ module.exports = {
   database: 'gb18rjtcz6zwty36',
   host: 'otwsl2e23jrxcqvx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
   dialect: 'mysql',
-  ssl: true
+  ssl: true,
+  dialectOptions: {
+    useUTC: false, //for reading from database
+    dateStrings: true,
+    typeCast: true
+},
+  timezone: '-03:00' //for writing to database
 }

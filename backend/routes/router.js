@@ -121,7 +121,7 @@ router.get('/avatar/:idc', (req, res) => {
             required: true,
             
         }]
-    }).then(User => res.json(User[0].User.picture))
+    }).then(User => res.json(User[0].User))
 });
 
 
