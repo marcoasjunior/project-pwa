@@ -42,9 +42,7 @@ img {
 }
 
 #mapContainer {
-    margin-bottom:  20px;
-    margin-top:  20px
-
+    margin: 20px
 }
 
 </style>
