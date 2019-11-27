@@ -106,17 +106,13 @@ export default {
       axios.get('http://localhost:3000/api/tags/preferences')
       .then( (response) => {
       this.tagData = response.data;
-
-    
     })
- 
     },
        setTags(param){
+        //  alert(param)
       //console.log("ha")
       //console.log(param)
       this.tagsSelected = param;
-
-
     },
 
     SetPreference(){
