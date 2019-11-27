@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-        <!-- <topBar></topBar> -->
+        <topBar></topBar>
   <b-alert
       :show="dismissCountDown"
       dismissible
@@ -148,7 +148,7 @@
 <script>
 // @ is an alias to /src
 // import cButton from '../../components/cpmButton.vue'
-// import topBar from '../../components/topBar.vue'
+import topBar from '../../components/topBar.vue'
 import axios from 'axios'
 
 
@@ -157,7 +157,7 @@ export default {
 
   components: {
     // cButton,
-    // topBar
+    topBar
   },
   created() {},
         mounted() {

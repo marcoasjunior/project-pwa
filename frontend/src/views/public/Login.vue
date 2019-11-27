@@ -1,6 +1,7 @@
 <template>
   <div class="home">
 
+<topBar></topBar>
 
 <div class="card shadow rounded mb-3 mt-5">
 
@@ -58,6 +59,7 @@
 // @ is an alias to /src
 // import cButton from '../../components/cpmButton.vue'
 import cpmSucess from '../../components/cpmSucess.vue'
+import topBar from '../../components/topBar.vue'
 import axios from 'axios'
 
 
@@ -66,6 +68,7 @@ export default {
 
   components: {
     cpmSucess,
+    topBar
     // cButton
   },
   created() {
