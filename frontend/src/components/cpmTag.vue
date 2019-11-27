@@ -11,8 +11,6 @@
       {{item.preference}}
     </b-button>
 
-    
-
    </div>
       
       
