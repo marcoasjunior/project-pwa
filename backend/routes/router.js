@@ -235,6 +235,22 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
 
 
 // ==================================================== Preferência ==============================================
+// CRIAR PREFERÊNCIA USUÁRIO 
+router.post('/preferences/user', (req, res) => {  
+  
+    User_preference.create(  
+    {  
+        UserId:req.body.UserId,  
+        PreferenceId:req.body.PreferenceId  
+    }  
+     
+    ) 
+      
+    .then(User_preference => res.send(User_preference))  
+    .catch(error => res.status(400).send(error))  
+}) 
+ 
+
 // CRIAR PREFERÊNCIA EVENTO
 router.post('/preferences/event', (req, res) => { 
  
