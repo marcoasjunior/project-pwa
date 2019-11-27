@@ -15,7 +15,6 @@ export default {
 
     data() {
         return {
-            lol: null,
             map: `https://image.maps.api.here.com/mia/1.6/region?app_id=g4qzn6OUOLYfn2OFO6Z8&app_code=pAi1rwxOkCnBaQHm4CbURg&a=${this.coord.latitude},${this.coord.longitude}&t=0&z=19&w=600&h=350&rad=${this.radius}`
 
         }
@@ -42,5 +41,8 @@ img {
     height: 20%;
 }
 
+#mapContainer {
+    margin: 20px
+}
 
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class='card shadow rounded'>
-    <label for="range-1">Raio de procura</label>
+    <label for="range-1" class="h5">Raio de procurar eventos</label>
     <b-form-input id="range-1" v-model="kilom" type="range" min="1000" max="50000" number></b-form-input>
     <div class="mt-2">Distância: {{kilom | kilomReduce}}km</div>
 
@@ -39,4 +39,12 @@ export default {
 
 }
 </script>
+
+<style scoped>
+
+label {
+  margin-top: 10px
+}
+
+</style>
 
