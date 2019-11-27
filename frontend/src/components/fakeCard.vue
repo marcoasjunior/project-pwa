@@ -2,7 +2,7 @@
   
     
       <div class="fake-card shadow rounded">
-        <b-img fluid alt="Responsive image"></b-img>
+        <b-img src="https://res.cloudinary.com/dvzbogxib/image/upload/v1574897432/gifs/giphy_oorqsn.gif" fluid alt="Responsive image"></b-img>
         <div class="card-body">
           <h4 class="card-title">Desculpe, mas não encontramos nenhum evento! Tente novamente mais tarde</h4>
           <hr>

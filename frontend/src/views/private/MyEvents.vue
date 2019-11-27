@@ -60,7 +60,8 @@ export default {
       hideModal(id) {
         this.$refs['modalCardUpdate'].hide()
         let deleted = this.posts.findIndex((o) => o.id == id)
-        this.$delete(this.posts, deleted)
+        
+        confirm("Quer mesmo deletar este evento?") ? this.$delete(this.posts, deleted): null
     
       }
       
@@ -73,10 +74,13 @@ export default {
 
     axios
       .get(`http://localhost:3000/api/eventall/${sessionStorage.getItem('id')}`)
-      .then(response => this.posts = response.data)
+      .then(response => {
+        this.posts = response.data
+        this.posts.length != 0 ? this.show = false : this.show = true
+      })
       .catch(e => {
-      this.errors.push(e)
-      this.show = true
+          this.errors.push(e)
+          this.show = true
       
     })
 
