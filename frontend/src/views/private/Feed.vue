@@ -62,6 +62,7 @@ export default {
       .get('http://localhost:3000/api/eventall')
       .then(response => {
         this.posts = response.data
+        this.posts.length != 0 ? this.show = false : this.show = true  
       })
       .catch(e => {
       this.errors.push(e)
