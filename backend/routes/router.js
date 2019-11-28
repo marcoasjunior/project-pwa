@@ -430,14 +430,8 @@ router.put('/update/event', upload.single('file'), (req, res) => {
         api_key: '564392447589239',
         api_secret: 'lBY9lvTcbNawz-AyvEg9WMW_ga8'
     })
-    console.log(req.body.file.path);
-    // console.log()
 
-    
-    cloudinary.uploader.upload(req.body.file.path, {
-            
-
-
+    cloudinary.uploader.upload(req.file.path, {          
             public_id: `users/${uniqueFilename}`
         },
 
@@ -447,7 +441,7 @@ router.put('/update/event', upload.single('file'), (req, res) => {
             console.log('file uploaded to Cloudinary')
             // remove file from server
             const fs = require('fs')
-            fs.unlinkSync(req.body.file.path)
+            fs.unlinkSync(req.file.path)
             // return image details
             res.json(image)
             // eslint-disable-next-line no-console

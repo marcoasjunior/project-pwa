@@ -6,8 +6,6 @@
         <b-form-file v-model="filev" :state="Boolean(filev)" placeholder="Imagem" name='avatar' ref="fileInput"
             @change="onFileChange($event)" required capture accept="image/*,.pdf"></b-form-file>
         <div class="card-body">
-
-
             <form @submit="sendForm">
 
                 <b-form-input class="mt-5 mb-3" v-model="data.name" required placeholder="Nome do Evento"></b-form-input>
@@ -84,19 +82,23 @@ export default {
         },
 
     deleteEvent() {
+        
+  
+        if (confirm("Quer mesmo deletar este evento?")) {
         axios
             .delete(`http://localhost:3000/api/delete/event/${this.post.id}`)
             .then(response => this.putResponse = response)
             .catch(e => {
                 this.errors.push(e)
             })
-        this.$emit('modalOff', this.post.id)
+            this.$emit('dModalOff', this.post.id)}
     },
+       
 
     onFileChange(e) {
             const file = e.target.files[0];
             this.url = URL.createObjectURL(file);
-            this.newData.file = file
+            this.data.file = file
         },
 
 
@@ -107,6 +109,7 @@ export default {
             formData.append('local', this.data.local)
             formData.append('edate', this.data.edate)
             formData.append('address', this.query)
+            formData.append('id', this.post.id)
             this.putResponse = formData
 
             const config = {

@@ -2,7 +2,7 @@
   <div id="es">
 
     <b-alert :show="dismissCountDown" dismissible fade variant="info" @dismiss-count-down="countDownChanged">
-      Clique no evento para modificá-lo
+      Clique no evento para modificá-lo :)
     </b-alert>
 
     <fakeCard v-show="show" />
@@ -11,7 +11,7 @@
     </transition-group>
     <b-modal id='modal1' ref="modalCardUpdate" centered title="Modificar Evento" hide-footer>
       <div class="d-block text-center">
-        <cardUpdate :post='passProps' @modalOff="hideModal" />
+        <cardUpdate :post='passProps' @modalOff="hideModal" @dModalOff='dHideModal' />
       </div>
     </b-modal>
 
@@ -57,11 +57,15 @@ export default {
         this.passProps = id
       },
 
-      hideModal(id) {
+      dHideModal(id) {
         this.$refs['modalCardUpdate'].hide()
         let deleted = this.posts.findIndex((o) => o.id == id)
-        
-        confirm("Quer mesmo deletar este evento?") ? this.$delete(this.posts, deleted): null
+        this.$delete(this.posts, deleted)
+    
+      },
+
+       hideModal() {
+        this.$refs['modalCardUpdate'].hide()
     
       }
       
