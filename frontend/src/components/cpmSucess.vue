@@ -4,19 +4,16 @@
 
     <div class="container-text-login">
 
-      <h1 class="mb-6">Sucesso!</h1>
-        <b-img fluid alt="Responsive image"></b-img>
-      <br>
-      <br>
-      <br>
-      <p> Let's party!</p>
+        <h4 class="h4">Sucesso!</h4>
+        <b-img src="https://res.cloudinary.com/dvzbogxib/image/upload/v1574904024/gifs/giphy_1_iiyyj6.gif" fluid alt="Responsive image"></b-img>
+
     </div>
 
     <div class="row wp-cntr-1 wp-center">
 
         <div class="col-12 m0">
             <router-link to="/Feed"> 
-            <b-button variant="primary">PARTY!</b-button>
+            <b-button variant="primary">Party!</b-button>
              </router-link>
         </div>
     </div>
