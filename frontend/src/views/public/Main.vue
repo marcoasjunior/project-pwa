@@ -26,8 +26,16 @@
     <div class="conatiner-button-principal bg-relative-f">
       <img alt="Vue logo" src="../../assets/logo.svg" class="img-principal">
       <div class="container-buttons-home col-12">
-        <router-link to="/Login"> <button type="button" class=" ac wp-btn-1 btn btn-primary btn-lg btn-block wp-btn-main">Entrar</button> </router-link>
-        <router-link to="/Signup"> <button type="button" class=" ac wp-btn-2 btn btn-primary btn-lg btn-block wp-btn-main">Cadastrar</button> </router-link>
+        <router-link to="/Login"> 
+        <!-- <button type="button" class=" ac wp-btn-1 btn btn-primary btn-lg btn-block wp-btn-main">Entrar</button>  -->
+        <b-button pill variant="outline-secondary btn btn-lg wp-btn-main button-main">Entrar</b-button>
+        </router-link>
+        
+        <router-link to="/Signup"> 
+        <!-- <button type="button" class=" ac wp-btn-2 btn btn-primary btn-lg btn-block wp-btn-main">Cadastrar</button>  -->
+        <b-button pill variant="outline-secondary btn btn-lg wp-btn-main button-main">Cadastrar</b-button>
+        
+        </router-link>
     </div>
     </div>
 

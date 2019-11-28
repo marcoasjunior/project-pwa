@@ -65,4 +65,22 @@
     margin-top: 20px !important;
     margin-left: 10px;
     margin-right: 10px;
+    text-decoration: none !important;
+
+    &:hover {
+        text-decoration: none !important;
+    }
+}
+
+.button-main{
+    color: rgb(0, 0, 0);
+    max-width: 100%;
+    width: 250px;
+    background-color: rgb(255, 255, 255) !important;
+    
+    &:hover{
+        color: white;
+        transition: 0.1s;
+        background: linear-gradient(40deg , #f9a538, $rose) !important;
+    }
 }

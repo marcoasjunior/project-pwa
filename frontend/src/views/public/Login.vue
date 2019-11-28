@@ -8,6 +8,8 @@
 <div v-if="step == 1">
 
     <div class="container-text-login">
+
+      {{url}}
       <h1>Entrar</h1>
       <p> Faça o Login com seu e-mail e senha</p>
     </div>
@@ -31,12 +33,14 @@
         <div class="container-buttons ac mt-5">
 
         <router-link to="/Main" class="in-button-l">
-          <b-button variant="outline-primary button-return">Voltar</b-button>
+          <b-button variant="outline-primary button-return btn-lg">Voltar</b-button>
         </router-link>
 
 
         <span @click="login()" class="in-button-r">
-          <b-button variant="outline-primary button-return bg-gdr-1 ac btn-s">Entrar</b-button>
+          <!-- <b-button variant="outline-primary button-return bg-gdr-1 ac btn-s">Entrar</b-button> -->
+          <b-button pill variant="outline-secondary btn btn-lg wp-btn-main button-main">Entrar</b-button>
+
         </span>
 
         </div>
@@ -75,6 +79,7 @@ export default {
     // this.checkUser();
   },
   data: () => ({
+    url: process.env.VUE_APP_LOCAL_API,
     step:1,
     datas: '',
     data: {
@@ -83,7 +88,9 @@ export default {
     },
     info: ''
   }),
-  mounted() {}
+  mounted() {
+    this.variable()
+  }
 
 
 
@@ -94,8 +101,12 @@ export default {
   ,
   methods: {
 
+    variable(){
+      /* eslint-disable no-console */
+      console.log("variavel=" + this.url)
+    },
+
       nextStep(){
-         /* eslint-disable no-console */
       // console.log(resp)
       this.step ++;
     },

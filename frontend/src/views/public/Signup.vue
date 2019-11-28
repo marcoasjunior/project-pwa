@@ -120,12 +120,13 @@
         <div class="container-buttons ac">
 
         <router-link to="/Main">
-          <b-button variant="outline-primary button-return">Voltar</b-button>
+          <b-button variant="outline-primary button-return btn-lg">Voltar</b-button>
         </router-link>
 
 
         <span @click="getInfoInputs()">
-          <b-button variant="outline-primary button-return bg-gdr-1 ac btn-s">Cadastrar</b-button>
+          <!-- <b-button variant="outline-primary button-return bg-gdr-1 ac btn-s">Cadastrar</b-button> -->
+          <b-button pill variant="outline-secondary btn btn-lg wp-btn-main button-main">Cadastrar</b-button>
         </span>
 
         </div>
