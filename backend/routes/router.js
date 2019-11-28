@@ -203,11 +203,13 @@ router.put('/update/user/image', upload.single('file'), (req, res) => {
             fs.unlinkSync(req.file.path)
             // return image details
             res.json(image)
+
+            const replaced = image.url.replace(/http/i, 'https')
             // eslint-disable-next-line no-console
-            console.log(image.url)
+            console.log(replaced)
 
             User.update({
-                    picture: image.url,
+                    picture: replaced,
                 },
 
                 {
@@ -366,23 +368,7 @@ router.get('/preference/:id', (req, res) => {
 
 
 
-// registrar evento
-router.post('/register/event', (req, res) => {
-    Event.create({
-            name: req.body.name,
-            local: req.body.local,
-            picture: req.body.picture,
-            edate: req.body.edate,
-            addres: req.body.addres,
-            UserId: req.body.UserId,
-        }, {
 
-            // incluindo o usuário na tabela de evento 
-            include: [User]
-        }).then(Event => res.status(201).send(Event))
-        .catch(error => res.status(400).send(error))
-
-})
 
 // pegar evento pelo id
 
@@ -444,6 +430,7 @@ router.put('/update/event', upload.single('file'), (req, res) => {
             fs.unlinkSync(req.file.path)
             // return image details
             res.json(image)
+            const replaced = image.url.replace(/http/i, 'https')
             // eslint-disable-next-line no-console
             console.log(image.url)
 
@@ -451,7 +438,7 @@ router.put('/update/event', upload.single('file'), (req, res) => {
                 name: req.body.name,
                 local: req.body.local,
                 address: req.body.address,
-                picture: image.url,
+                picture: replaced,
                 edate: req.body.edate
             }, {
                 where: {
@@ -507,6 +494,7 @@ router.post('/create/event', upload.single('file'), (req, res) => {
             // return image details
             // res.json(image)
             // eslint-disable-next-line no-console
+            const replaced = image.url.replace(/http/i, 'https')
             console.log(image.url)
 
             Event.create({
@@ -517,7 +505,7 @@ router.post('/create/event', upload.single('file'), (req, res) => {
                     latitude: req.body.latitude,
                     longitude: req.body.longitude,
                     UserId: req.body.UserId,
-                    picture: image.url,
+                    picture: replaced,
                 }).then((Event) =>{
                     res.send(Event.dataValues);
                     console.log(Event.dataValues)
@@ -557,6 +545,7 @@ router.post('/register/user', upload.single('file'), (req, res) => {
             fs.unlinkSync(req.file.path)
             // return image details
             res.json(image)
+            const replaced = image.url.replace(/http/i, 'https')
             // eslint-disable-next-line no-console
             console.log(image.url)
 
@@ -564,7 +553,7 @@ router.post('/register/user', upload.single('file'), (req, res) => {
                     name: req.body.name,
                     email: req.body.email,
                     password: req.body.password,
-                    picture: image.url,
+                    picture: replaced,
                 },
 
                 // {
