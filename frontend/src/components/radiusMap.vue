@@ -41,8 +41,4 @@ img {
     height: 20%;
 }
 
-#mapContainer {
-    margin: 20px
-}
-
 </style>
