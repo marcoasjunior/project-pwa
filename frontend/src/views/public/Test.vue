@@ -27,7 +27,7 @@ export default {
 
         getData(){
 
-        axios.get('http://localhost:3000/api/list/user')
+        axios.get(`${process.env.PROD_API}/list/user`)
         .then(response => this.datas = response)
         // .catch(e => {
             // this.errors.push(e)

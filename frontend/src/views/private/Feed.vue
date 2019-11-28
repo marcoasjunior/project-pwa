@@ -57,9 +57,10 @@ export default {
   mounted() {
 
   // requisição inicial para pegar os eventos 
-
+  /* eslint-disable no-console */
+  console.log(process.env.VUE_APP_LOCAL_API)
     axios
-      .get('http://localhost:3000/api/eventall')
+      .get(`${process.env.PROD_API}/eventall`)
       .then(response => {
         this.posts = response.data
         this.posts.length != 0 ? this.show = false : this.show = true  

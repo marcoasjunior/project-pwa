@@ -119,7 +119,7 @@ export default {
             }
 
             axios
-                .put('http://localhost:3000/api/update/event', formData, config)
+                .put(`${process.env.PROD_API}/update/event`, formData, config)
                 .then(response => this.putResponse = response)
                 .catch(e => {
                     this.errors.push(e)

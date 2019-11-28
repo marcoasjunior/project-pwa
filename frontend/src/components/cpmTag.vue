@@ -58,7 +58,7 @@ export default {
         }),
         methods: {
           // renderTags(){
-          //   axios.get('http://localhost:3000/api/tags/preferences')
+          //   axios.get(`${process.env.PROD_API}/tags/preferences')
           //   .then( (response) => {
           //     this.data = response.data;
           //      this.createTagArray();
@@ -142,7 +142,7 @@ export default {
 
             
 
-          // axios.post('http://localhost:3000/api/preferences/event', this.data, {
+          // axios.post(`${process.env.PROD_API}/preferences/event', this.data, {
           //  EventId: 1,
           //  PreferenceId: this.sendTags,
           // }).then(response => (console.log(response)))

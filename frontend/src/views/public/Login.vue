@@ -94,7 +94,7 @@ export default {
 
 
 
-  // axios.get('http://localhost:3000/api/list/user')
+  // axios.get(`${process.env.PROD_API}/list/user')
   //   .then(response => this.info = response.data)
   //   .catch(e => {this.datas.push(e)})
   // console.log(response.data)
@@ -114,7 +114,7 @@ export default {
 
     login() {
 
-      axios.post('http://localhost:3000/api/login/user', this.data, {
+      axios.post(`${process.env.PROD_API}/login/user`, this.data, {
         email: this.data.email,
         password: this.data.password,
         // password: this.data.password,
