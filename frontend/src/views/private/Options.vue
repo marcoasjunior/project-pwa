@@ -63,6 +63,7 @@ export default {
            this.callImage();
         }, 1500);
       },
+      
       callImage(){
         axios.get(`http://localhost:3000/api/user/${sessionStorage.getItem('id')}`)
         .then(response =>{
