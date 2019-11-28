@@ -1,4 +1,4 @@
-# projeto-pwa
+# WeParty
 
 ## Project setup
 ```
