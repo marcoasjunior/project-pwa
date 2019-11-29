@@ -67,7 +67,7 @@ export default {
             }
 
             axios
-                .put(`${process.env.PROD_API}/update/user/image`, formData, config)
+                .put('http://localhost:3000/api/update/user/image', formData, config)
                 .then(response => this.putResponse = response)
                 .catch(e => {
                     this.errors.push(e)

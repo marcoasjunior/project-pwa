@@ -66,7 +66,7 @@ export default {
   created() {},
         mounted() {
 
-          axios.get(`${process.env.PROD_API}/tags/preferences`)
+          axios.get('http://localhost:3000/api/tags/preferences')
           .then(response => this.data = response.data)
           
 
@@ -141,7 +141,7 @@ export default {
 
 
               axios
-                .post(`${process.env.PROD_API}/create/event', imageData, config`)
+                .post('http://localhost:3000/api/create/event', imageData, config)
                 .then(response => 
                     // eslint-disable-next-line no-console
                   console.log(response)
@@ -150,7 +150,7 @@ export default {
 
       
 
-            // axios.post(`${process.env.PROD_API}/register/event' ,this.data, {
+            // axios.post('http://localhost:3000/api/register/event' ,this.data, {
             // name: this.datas.name,
             // placeName: this.datas.local,
             // date: this.datas.date,

@@ -209,7 +209,7 @@ export default {
             }
 
             axios
-                .post(`${process.env.PROD_API}/register/user`, dataToSend, config)
+                .post('http://localhost:3000/api/register/user', dataToSend, config)
                 .then(response => this.putResponse = ( this.checkRegister(response) ))
                 // .catch(e => {
                 //     this.errors.push(e)
@@ -218,7 +218,7 @@ export default {
         },
 
           getInfoInputs(){
-            axios.post(`${process.env.PROD_API}/register/user` ,this.data, {
+            axios.post('http://localhost:3000/api/register/user' ,this.data, {
             name: this.data.name,
             email: this.data.email,
             picture: this.data.file,

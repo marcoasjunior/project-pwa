@@ -73,7 +73,7 @@ export default {
         })
       },
       getTags(){
-      axios.get(`${process.env.PROD_API}/tags/preferences`)
+      axios.get('http://localhost:3000/api/tags/preferences')
       .then( (response) => {
       this.tagData = response.data;
     })
@@ -99,7 +99,7 @@ export default {
         UserId: sessionStorage.getItem('id'),
         PreferenceId:this.tagsSelected[item]       
         }
-      axios.post(`${process.env.PROD_API}/preferences/user`, data)
+      axios.post('http://localhost:3000/api/preferences/user', data)
       .then( (response) => {
         // this.tagData = response.data
         console.log(response)

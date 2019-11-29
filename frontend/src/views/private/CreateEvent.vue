@@ -81,10 +81,10 @@ export default {
   mounted() {
     // sendTags(){
 
-    // axios.get(`${process.env.PROD_API}/tags/preferences')
+    // axios.get('http://localhost:3000/api/tags/preferences')
     // .then(response => this.data = response.data);
 
-    // axios.post(`${process.env.PROD_API}/preferences/event')
+    // axios.post('http://localhost:3000/api/preferences/event')
     // .then(response => this.data = response.data);
     
     // }
@@ -103,7 +103,7 @@ export default {
       this.data.EventId = resp
     },
     getTags(){
-      axios.get(`${process.env.PROD_API}/tags/preferences`)
+      axios.get('http://localhost:3000/api/tags/preferences')
       .then( (response) => {
       this.tagData = response.data;
 
@@ -132,7 +132,7 @@ export default {
           EventId: this.data.EventId,
           PreferenceId:this.tagsSelected[item]       
           }
-        axios.post(`${process.env.PROD_API}/preferences/event`, data)
+        axios.post('http://localhost:3000/api/preferences/event', data)
         .then( (response) => {
           // this.tagData = response.data
           console.log(response)

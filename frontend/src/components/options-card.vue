@@ -58,7 +58,7 @@ export default {
 
     sendForm() {
       axios
-        .put(`${process.env.PROD_API}/update/user`, this.newData)
+        .put('http://localhost:3000/api/update/user', this.newData)
         .then(response => this.putResponse = response)
         .catch(e => {
           this.errors.push(e)

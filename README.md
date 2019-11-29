@@ -23,7 +23,7 @@ No Workbench - create database dbeventos - user: root, senha: root
 ### Criar tabelas
 ```
 DESCOMENTAR AS LINHAS DO ARQUIVO EXPRESS.JS (9 e 10) - RODAR - DEPOIS COMENTAR NOVAMENTE
-```
+
 
 ### SCRIPT BANCO
 ```
@@ -31,11 +31,7 @@ DESCOMENTAR AS LINHAS DO ARQUIVO EXPRESS.JS (9 e 10) - RODAR - DEPOIS COMENTAR N
 insert into User (name, email, password, picture) values ('Marco', 'marco@gmail.com', '1234', 'http://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2018/01/bryan-cranston-breaking-bad.jpg');
 insert into User (name, email, password, picture) values ('Pedro', 'pedro@gmail.com', '1234', 'http://www.tenhomaisdiscosqueamigos.com/wp-content/uploads/2018/01/bryan-cranston-breaking-bad.jpg');
 insert into Event (name, local, picture, edate, address, UserId) values ('Sunset Party', 'Praia do Rosa', 'http://destinoflorianopolis.com.br/wp-content/uploads/2018/06/Iha-do-Campeche.jpg', '12-12-2019', 'Rua do Serviço', 1);
-```
 
-
-### ALTERAR ENV VARIAVEIS NO DEPLY - VUE.CONFIG.JS
-```
 
 ### Links que acessamos para fazer coneção com heroku
 https://medium.com/tableless/fazendo-deploy-de-apps-vue-webpack-no-heroku-89340028a88e
