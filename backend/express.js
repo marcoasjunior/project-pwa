@@ -4,7 +4,7 @@ const router = require('./routes/router')
 const cors = require('cors')
 const path = require('path')
 const serveStatic = require('serve-static')
-const history = require('connect-history-api-fallback');
+// const history = require('connect-history-api-fallback');
 const port = process.env.PORT || 3000
 
 //SOMENTE USAR PARA CRIAR TABELAS
@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000
 // const Models = require('./models')
 // Models.sequelize.sync({ force: true })
 
-app.use(history())
+// app.use(history())
 app.use(cors())
 
 // ATIVAR SOMENTE QUANDO FOR PARA PRODUÇÃO
