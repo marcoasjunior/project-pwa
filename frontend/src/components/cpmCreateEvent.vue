@@ -17,7 +17,7 @@
         <div class="card-body">
 
             
-            <form @submit="sendForm"  >
+            <div>
 
                 <!-- {{ data }} -->
 
@@ -35,9 +35,9 @@
 
                     <!-- <b-form-input type="time" class="mt-2 mb-3" v-model="data.ehours" required></b-form-input>  -->
 
-                <button type="submit" class="btn btn-primary button-return ac btn-s">Criar Evento</button>
+                <button @click="sendForm()" class="btn btn-primary button-return ac btn-s">Criar Evento</button>
 
-            </form>
+            </div>
         </div>
     </div>
 </template>
