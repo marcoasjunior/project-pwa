@@ -58,6 +58,8 @@ export default {
 
   // requisição inicial para pegar os eventos 
 
+  /* eslint-disable no-console */
+    console.log(process.env.PROD_API)
     axios
       .get('http://localhost:3000/api/eventall')
       .then(response => {
