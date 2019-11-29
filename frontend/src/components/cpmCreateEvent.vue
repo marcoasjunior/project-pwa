@@ -119,7 +119,8 @@ export default {
             }
 
             axios
-                .post('http://localhost:3000/api/create/event', formData, config)
+                // .post('http://localhost:3000/api/create/event', formData, config)
+                .post('https://weparty-app.herokuapp.com/api/create/event', formData, config)
                 .then( (response) =>{
                     this.putResponse = response
                     this.$emit("eventCreated", response.data.id);

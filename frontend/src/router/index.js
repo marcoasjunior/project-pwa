@@ -45,10 +45,6 @@ const routes = [
           path: '/SucessSignup',
           component: () => import( '../views/public/SucessSignup.vue'),
         },
-        {
-          path: '/Test',
-          component: () => import( '../views/public/Test.vue'),
-        },
         
    
     ]

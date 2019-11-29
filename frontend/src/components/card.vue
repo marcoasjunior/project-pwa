@@ -118,7 +118,8 @@ export default {
         showLocal() {
 
           this.showMe = this.showMe ? false : axios
-                                                .get(`http://localhost:3000/api/event/coord/${this.post.id}`)
+                                                // .get(`http://localhost:3000/api/event/coord/${this.post.id}`)
+                                                .get(`https://weparty-app.herokuapp.com/api/event/coord/${this.post.id}`)
                                                 .then(response => {
                                                   this.coord = {
                                                     Latitude: response.data[0].latitude,
@@ -139,7 +140,8 @@ export default {
 
         showWeather() {
           this.weather = this.weather ? false : axios
-                                                  .get(`http://localhost:3000/api/event/coord/${this.post.id}`)
+                                                  // .get(`http://localhost:3000/api/event/coord/${this.post.id}`)
+                                                  .get(`https://weparty-app.herokuapp.com/api/event/coord/${this.post.id}`)
                                                   .then(response => {
                                                     this.coord = {
                                                       Latitude: response.data[0].latitude,
@@ -177,7 +179,8 @@ export default {
   // requisição inicial para pegar o avatar 
 
     axios
-      .get(`http://localhost:3000/api/avatar/${this.post.id}`)
+      // .get(`http://localhost:3000/api/avatar/${this.post.id}`)
+      .get(`https://weparty-app.herokuapp.com/api/avatar/${this.post.id}`)
       .then(response => {
         this.avatar = response.data
       })

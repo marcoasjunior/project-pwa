@@ -53,7 +53,8 @@ export default {
 
     sendForm() {
       axios
-        .put('http://localhost:3000/api/update/user', this.newData)
+        // .put('http://localhost:3000/api/update/user', this.newData)
+        .put('https://weparty-app.herokuapp.com/api/update/user', this.newData)
         .then(response => this.putResponse = response)
         .catch(e => {
           this.errors.push(e)

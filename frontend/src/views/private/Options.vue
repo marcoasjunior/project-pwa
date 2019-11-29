@@ -65,7 +65,8 @@ export default {
       },
       
       callImage(){
-        axios.get(`http://localhost:3000/api/user/${sessionStorage.getItem('id')}`)
+        // axios.get(`http://localhost:3000/api/user/${sessionStorage.getItem('id')}`)
+        axios.get(`https://weparty-app.herokuapp.com/api/user/${sessionStorage.getItem('id')}`)
         .then(response =>{
                 this.info = response.data
         }).catch(e => {
@@ -73,7 +74,8 @@ export default {
         })
       },
       getTags(){
-      axios.get('http://localhost:3000/api/tags/preferences')
+      // axios.get('http://localhost:3000/api/tags/preferences')
+      axios.get('https://weparty-app.herokuapp.com/api/tags/preferences')
       .then( (response) => {
       this.tagData = response.data;
     })
@@ -99,7 +101,8 @@ export default {
         UserId: sessionStorage.getItem('id'),
         PreferenceId:this.tagsSelected[item]       
         }
-      axios.post('http://localhost:3000/api/preferences/user', data)
+      // axios.post('http://localhost:3000/api/preferences/user', data)
+      axios.post('https://weparty-app.herokuapp.com/api/preferences/user', data)
       .then( (response) => {
         // this.tagData = response.data
         console.log(response)

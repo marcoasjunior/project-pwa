@@ -86,7 +86,8 @@ export default {
   
         if (confirm("Quer mesmo deletar este evento?")) {
         axios
-            .delete(`http://localhost:3000/api/delete/event/${this.post.id}`)
+            // .delete(`http://localhost:3000/api/delete/event/${this.post.id}`)
+            .delete(`https://weparty-app.herokuapp.com/api/delete/event/${this.post.id}`)
             .then(response => this.putResponse = response)
             .catch(e => {
                 this.errors.push(e)
@@ -119,7 +120,8 @@ export default {
             }
 
             axios
-                .put('http://localhost:3000/api/update/event', formData, config)
+                // .put('http://localhost:3000/api/update/event', formData, config)
+                .put('https://weparty-app.herokuapp.com/api/update/event', formData, config)
                 .then(response => this.putResponse = response)
                 .catch(e => {
                     this.errors.push(e)

@@ -103,7 +103,8 @@ export default {
       this.data.EventId = resp
     },
     getTags(){
-      axios.get('http://localhost:3000/api/tags/preferences')
+      // axios.get('http://localhost:3000/api/tags/preferences')
+      axios.get('https://weparty-app.herokuapp.com/api/tags/preferences')
       .then( (response) => {
       this.tagData = response.data;
 
@@ -132,7 +133,8 @@ export default {
           EventId: this.data.EventId,
           PreferenceId:this.tagsSelected[item]       
           }
-        axios.post('http://localhost:3000/api/preferences/event', data)
+        // axios.post('http://localhost:3000/api/preferences/event', data)
+        axios.post('https://weparty-app.herokuapp.com/api/preferences/event', data)
         .then( (response) => {
           // this.tagData = response.data
           console.log(response)

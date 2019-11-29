@@ -77,7 +77,8 @@ export default {
   // requisição inicial para pegar os eventos 
 
     axios
-      .get(`http://localhost:3000/api/eventall/${sessionStorage.getItem('id')}`)
+      // .get(`http://localhost:3000/api/eventall/${sessionStorage.getItem('id')}`)
+      .get(`https://weparty-app.herokuapp.com/api/eventall/${sessionStorage.getItem('id')}`)
       .then(response => {
         this.posts = response.data
         this.posts.length != 0 ? this.show = false : this.show = true

@@ -77,6 +77,7 @@ export default {
   },
   created() {
     // this.checkUser();
+    this.variable()
   },
   data: () => ({
     url: process.env.VUE_APP_LOCAL_API,
@@ -89,7 +90,7 @@ export default {
     info: ''
   }),
   mounted() {
-    this.variable()
+    
   }
 
 
@@ -103,7 +104,7 @@ export default {
 
     variable(){
       /* eslint-disable no-console */
-      console.log("variavel=" + this.url)
+      console.log(process.env.VUE_APP_LOCAL_API)
     },
 
       nextStep(){
@@ -114,7 +115,8 @@ export default {
 
     login() {
 
-      axios.post('http://localhost:3000/api/login/user', this.data, {
+      // axios.post('http://localhost:3000/api/login/user', this.data, {
+      axios.post('https://weparty-app.herokuapp.com/api/login/user', this.data, {
         email: this.data.email,
         password: this.data.password,
         // password: this.data.password,
