@@ -58,7 +58,7 @@ export default {
       },
       callImage(){
 
-        axios.get(`http://localhost:3000/api/user/${sessionStorage.getItem('id')}`)
+        axios.get(`https://weparty-app.herokuapp.com/api/user/${sessionStorage.getItem('id')}`)
         .then(response =>{
           this.info = response.data
         }).catch(e => {

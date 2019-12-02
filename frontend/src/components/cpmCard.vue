@@ -66,7 +66,7 @@ export default {
   created() {},
         mounted() {
 
-          axios.get('http://localhost:3000/api/tags/preferences')
+          axios.get('https://weparty-app.herokuapp.com/api/tags/preferences')
           .then(response => this.data = response.data)
           
 
@@ -141,7 +141,7 @@ export default {
 
 
               axios
-                .post('http://localhost:3000/api/create/event', imageData, config)
+                .post('https://weparty-app.herokuapp.com/api/create/event', imageData, config)
                 .then(response => 
                     // eslint-disable-next-line no-console
                   console.log(response)
