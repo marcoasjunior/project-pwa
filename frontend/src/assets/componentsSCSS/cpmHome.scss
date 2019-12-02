@@ -40,5 +40,15 @@
     
     .bg-relative-b{
       z-index: 9;
+
+      @media screen and (max-width: 800px){
+        height: 100vh;
+        // height: 100%;
     }
+    }
+  }
+
+  .space-particles{
+    height: 100vh;
+
   }

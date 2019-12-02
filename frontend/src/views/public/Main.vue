@@ -3,6 +3,7 @@
     
     <div class="bg-relative-b">
           <vue-particles
+          class="space-particles"
         color="#ff4fa1"
         :particleOpacity="0.7"
         :particlesNumber="80"
