@@ -84,3 +84,15 @@
         background: linear-gradient(40deg , #f9a538, $rose) !important;
     }
 }
+
+.sair{
+    color: rgb(255, 59, 59);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 59, 59);
+    
+    &:hover{
+        background-color: rgb(255, 59, 59);
+        border: 1px solid rgb(255, 59, 59);
+        
+    }
+}

@@ -19,6 +19,8 @@
 
     </div>
 
+
+  <b-button variant="danger" class="sair" @click="outApp()">Sair</b-button>
   </div>
 </template>
 
@@ -112,6 +114,11 @@ export default {
       console.log(item)
       }
       
+  },
+
+  outApp(){
+    sessionStorage.clear()
+    this.$router.push('/Main')
   },
 
   },
