@@ -2,7 +2,7 @@
     <div class="weather">
         <div>
             Tempo agora
-    <b-img :src="`http://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}@2x.png`" fluid alt="Responsive image"></b-img>
+    <b-img :src="`https://openweathermap.org/img/wn/${weatherInfo.weather[0].icon}@2x.png`" fluid alt="Responsive image"></b-img>
       <p>Temperatura:</p> {{ weatherInfo.main.temp }}°C
     </div>
      
