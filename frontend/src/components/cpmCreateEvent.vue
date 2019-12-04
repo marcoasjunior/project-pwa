@@ -1,6 +1,5 @@
 <template>
     <div class="card shadow rounded mb-4">
-  <!-- {{ cData }} -->
 
         <div id="preview" class="mt-5">
             <b-img v-show="url" :src="url" fluid />
@@ -19,8 +18,6 @@
             
             <div>
 
-                <!-- {{ data }} -->
-
                     <b-form-input class="mt-5 mb-3" v-model="data.name" required placeholder="Nome do Evento"></b-form-input>
 
                     <b-form-input class="mt-2 mb-3" v-model="data.local" required placeholder="Local do Evento"></b-form-input>
@@ -32,8 +29,6 @@
                     <HereMap v-if="coord" :coord='coord'/>
                     
                     <b-form-input type="datetime-local" class="mt-2 mb-3" v-model="data.edate" required></b-form-input>
-
-                    <!-- <b-form-input type="time" class="mt-2 mb-3" v-model="data.ehours" required></b-form-input>  -->
 
                 <button @click="sendForm()" class="btn btn-primary button-return ac btn-s">Criar Evento</button>
 
@@ -79,8 +74,7 @@ export default {
 
     methods: {
 
-
-        renderingMap() {
+       renderingMap() {
 
             let replace = (this.query.replace(/, /g, '%20')).replace(/ /g, '%20')
 
@@ -129,17 +123,8 @@ export default {
                 .catch(e => {
                     this.errors.push(e)
                 })
-
-
-
         },
-
-
     },
-
-
-
 }
-
 </script>
 

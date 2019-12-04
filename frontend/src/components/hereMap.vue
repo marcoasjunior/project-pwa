@@ -21,8 +21,6 @@ export default {
 
 }
 
-
-
 </script>
 
 <style scoped>
@@ -30,6 +28,5 @@ export default {
 img {
     height: 20%;
 }
-
 
 </style>
