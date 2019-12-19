@@ -297,13 +297,11 @@ router.get('/tags/preferences', (req, res) => {
         .catch(error => res.status(400).send(error))
 })
 
-
-
 // retorna todas as preferences do User
 router.get('/user/preferences/:id', (req, res) => {
     User_preference.findAll({
         where: {
-            iduser: req.params.id
+            UserId: req.params.id
         }
     }).then(User_preference => res.status(201).send(User_preference))
     .catch(error => res.status(400).send(error))

@@ -14,7 +14,7 @@
    </div>
       
       
-      <!-- {{info}} -->
+      <!-- {{tagsData}} -->
 
     <!-- <span v-for="item in data" v-bind:key="item.name" @onload="loadTag()"> {{item.name}}  <br> </span> -->
   
@@ -35,7 +35,9 @@ export default {
   components: {
       
   },
-  created() {},
+  created() {
+    this.setPreferenceOnLoad()
+  },
         mounted() {
 
           // this.renderTags()
@@ -146,6 +148,14 @@ export default {
           //  EventId: 1,
           //  PreferenceId: this.sendTags,
           // }).then(response => (console.log(response)))
+        },
+
+        setPreferenceOnLoad(){
+
+          for(let itens in this.tagsData.filtered){
+            this.getTag(this.tagsData.filtered[itens])
+            // console.log('tag',itens)
+          }
         }
 
             
