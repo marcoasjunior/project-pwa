@@ -1,5 +1,17 @@
 <template>
   <div>
+    <b-alert
+      :show="dismissCountDown"
+      dismissible
+      variant="success"
+      @dismissed="dismissCountDown=0"
+      @dismiss-count-down="countDownChanged"
+    >
+      Preferências registradas com sucesso!
+      <!-- {{ dismissCountDown }} seconds... -->
+    </b-alert>
+
+
     <options-card @showModal="showModals" :infoData="info"></options-card>
 
     <b-modal id='modal1' ref="modalCardUpdate" centered title="Modificar Foto" hide-footer>
@@ -13,7 +25,9 @@
 <div class="card shadow rounded mb-3">
     <h3 class="mt-4">Preferências de Eventos</h3>
     <div class="container box-info box-tags mt-4">
-     <tag class="mt-5" :tagsData="{data:tagData, filtered:tagsFiltered}"  @setTags="selecTags"></tag>
+
+     <tag class="mt-5" v-if="tagsFiltered" :tagsData="{data:tagData, filtered:tagsFiltered}"  @setTags="selecTags"></tag>
+
     <b-button class="mt-5 outline-primary button-return ac btn-s" variant="primary" @click="SetPreference()">Selecionar preferências</b-button>
     </div>
 
@@ -50,9 +64,11 @@ export default {
   name: 'options',
       data() {
         return {
+        dismissSecs: 5,
+        dismissCountDown: 0,
           info:'',
         tagData:'',
-        tagsFiltered:'',
+        tagsFiltered:null,
         tagsSelecteds:'',
         data:{UserId:'', PreferenceId:''},
         datas:'',
@@ -106,7 +122,7 @@ export default {
     // let itens = 00
       // this.data.PreferenceId = this.tagsSelected
 
-      
+      this.showAlert()
 
     for(let item in this.tagsSelected ){
 
@@ -125,6 +141,12 @@ export default {
       console.log("item: " + item)
       }
 
+  },
+  countDownChanged(dismissCountDown) {
+    this.dismissCountDown = dismissCountDown
+  },
+  showAlert() {
+        this.dismissCountDown = this.dismissSecs
   },
 
     async getTags(){
@@ -160,6 +182,8 @@ export default {
     for(let item in preferences){
       simplifiedArray.push(preferences[item].PreferenceId)
     }
+    console.log("st1")
+
     console.log(simplifiedArray)
     console.log('tags', this.tagData)
     let newSarray = []

@@ -11,7 +11,7 @@
       {{item.preference}}
     </b-button>
 
-   </div>
+   </div> 
       
       
       <!-- {{tagsData}} -->
@@ -151,6 +151,7 @@ export default {
         },
 
         setPreferenceOnLoad(){
+
 
           for(let itens in this.tagsData.filtered){
             this.getTag(this.tagsData.filtered[itens])
